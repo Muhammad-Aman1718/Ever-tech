@@ -24,16 +24,37 @@ export const courseForm = createAsyncThunk(
   }
 );
 
+// export const uploadImageToCloudinary = createAsyncThunk(
+//   "image/uploadImageToCloudinary",
+//   async (file: File, thunkAPI) => {
+//     try {
+//       const response = await axiosInstance.post(
+//         "https://api.cloudinary.com/v1_1/your_cloud_name/image/upload",
+//         formData
+//       );
+
+//       return response.data.secure_url; // ✅ Image URL
+//     } catch (error: any) {
+//       return thunkAPI.rejectWithValue(error.response?.data || "Upload failed");
+//     }
+//   }
+// );
+
 export const uploadImageToCloudinary = createAsyncThunk(
   "image/uploadImageToCloudinary",
   async (file: File, thunkAPI) => {
     try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "your_unsigned_preset"); // 👈 Replace this
+      formData.append("cloud_name", "your_cloud_name"); // 👈 Optional for endpoint
+
       const response = await axiosInstance.post(
         "https://api.cloudinary.com/v1_1/your_cloud_name/image/upload",
         formData
       );
 
-      return response.data.secure_url; // ✅ Image URL
+      return response.data.secure_url;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response?.data || "Upload failed");
     }
