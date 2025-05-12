@@ -25,6 +25,9 @@ model UserData {
   education   String
   course      String
   message     String
+  profilePic  String
+  cnicFront   String
+  cnicBack    String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

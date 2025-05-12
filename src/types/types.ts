@@ -8,6 +8,9 @@ export interface userData {
   education?: string;
   course?: string;
   message?: string;
+  profilePic?: string;
+  cnicFront?: string;
+  cnicBack?: string;
 }
 
 export const provinces = [
@@ -19,4 +22,3 @@ export const provinces = [
   "Gilgit-Baltistan",
   "Azad Jammu & Kashmir",
 ];
-

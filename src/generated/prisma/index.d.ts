@@ -844,6 +844,9 @@ export namespace Prisma {
     education: string | null
     course: string | null
     message: string | null
+    profilePic: string | null
+    cnicFront: string | null
+    cnicBack: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -859,6 +862,9 @@ export namespace Prisma {
     education: string | null
     course: string | null
     message: string | null
+    profilePic: string | null
+    cnicFront: string | null
+    cnicBack: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -874,6 +880,9 @@ export namespace Prisma {
     education: number
     course: number
     message: number
+    profilePic: number
+    cnicFront: number
+    cnicBack: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -891,6 +900,9 @@ export namespace Prisma {
     education?: true
     course?: true
     message?: true
+    profilePic?: true
+    cnicFront?: true
+    cnicBack?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -906,6 +918,9 @@ export namespace Prisma {
     education?: true
     course?: true
     message?: true
+    profilePic?: true
+    cnicFront?: true
+    cnicBack?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -921,6 +936,9 @@ export namespace Prisma {
     education?: true
     course?: true
     message?: true
+    profilePic?: true
+    cnicFront?: true
+    cnicBack?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1009,6 +1027,9 @@ export namespace Prisma {
     education: string
     course: string
     message: string
+    profilePic: string
+    cnicFront: string
+    cnicBack: string
     createdAt: Date
     updatedAt: Date
     _count: UserDataCountAggregateOutputType | null
@@ -1041,6 +1062,9 @@ export namespace Prisma {
     education?: boolean
     course?: boolean
     message?: boolean
+    profilePic?: boolean
+    cnicFront?: boolean
+    cnicBack?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["userData"]>
@@ -1058,11 +1082,14 @@ export namespace Prisma {
     education?: boolean
     course?: boolean
     message?: boolean
+    profilePic?: boolean
+    cnicFront?: boolean
+    cnicBack?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "fatherName" | "email" | "phoneNumber" | "city" | "province" | "education" | "course" | "message" | "createdAt" | "updatedAt", ExtArgs["result"]["userData"]>
+  export type UserDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "fatherName" | "email" | "phoneNumber" | "city" | "province" | "education" | "course" | "message" | "profilePic" | "cnicFront" | "cnicBack" | "createdAt" | "updatedAt", ExtArgs["result"]["userData"]>
 
   export type $UserDataPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "UserData"
@@ -1078,6 +1105,9 @@ export namespace Prisma {
       education: string
       course: string
       message: string
+      profilePic: string
+      cnicFront: string
+      cnicBack: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["userData"]>
@@ -1482,6 +1512,9 @@ export namespace Prisma {
     readonly education: FieldRef<"UserData", 'String'>
     readonly course: FieldRef<"UserData", 'String'>
     readonly message: FieldRef<"UserData", 'String'>
+    readonly profilePic: FieldRef<"UserData", 'String'>
+    readonly cnicFront: FieldRef<"UserData", 'String'>
+    readonly cnicBack: FieldRef<"UserData", 'String'>
     readonly createdAt: FieldRef<"UserData", 'DateTime'>
     readonly updatedAt: FieldRef<"UserData", 'DateTime'>
   }
@@ -1847,6 +1880,9 @@ export namespace Prisma {
     education: 'education',
     course: 'course',
     message: 'message',
+    profilePic: 'profilePic',
+    cnicFront: 'cnicFront',
+    cnicBack: 'cnicBack',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -1934,6 +1970,9 @@ export namespace Prisma {
     education?: StringFilter<"UserData"> | string
     course?: StringFilter<"UserData"> | string
     message?: StringFilter<"UserData"> | string
+    profilePic?: StringFilter<"UserData"> | string
+    cnicFront?: StringFilter<"UserData"> | string
+    cnicBack?: StringFilter<"UserData"> | string
     createdAt?: DateTimeFilter<"UserData"> | Date | string
     updatedAt?: DateTimeFilter<"UserData"> | Date | string
   }
@@ -1949,6 +1988,9 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    profilePic?: SortOrder
+    cnicFront?: SortOrder
+    cnicBack?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -1967,6 +2009,9 @@ export namespace Prisma {
     education?: StringFilter<"UserData"> | string
     course?: StringFilter<"UserData"> | string
     message?: StringFilter<"UserData"> | string
+    profilePic?: StringFilter<"UserData"> | string
+    cnicFront?: StringFilter<"UserData"> | string
+    cnicBack?: StringFilter<"UserData"> | string
     createdAt?: DateTimeFilter<"UserData"> | Date | string
     updatedAt?: DateTimeFilter<"UserData"> | Date | string
   }, "id" | "email">
@@ -1982,6 +2027,9 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    profilePic?: SortOrder
+    cnicFront?: SortOrder
+    cnicBack?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserDataCountOrderByAggregateInput
@@ -2003,6 +2051,9 @@ export namespace Prisma {
     education?: StringWithAggregatesFilter<"UserData"> | string
     course?: StringWithAggregatesFilter<"UserData"> | string
     message?: StringWithAggregatesFilter<"UserData"> | string
+    profilePic?: StringWithAggregatesFilter<"UserData"> | string
+    cnicFront?: StringWithAggregatesFilter<"UserData"> | string
+    cnicBack?: StringWithAggregatesFilter<"UserData"> | string
     createdAt?: DateTimeWithAggregatesFilter<"UserData"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"UserData"> | Date | string
   }
@@ -2018,6 +2069,9 @@ export namespace Prisma {
     education: string
     course: string
     message: string
+    profilePic: string
+    cnicFront: string
+    cnicBack: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2033,6 +2087,9 @@ export namespace Prisma {
     education: string
     course: string
     message: string
+    profilePic: string
+    cnicFront: string
+    cnicBack: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2047,6 +2104,9 @@ export namespace Prisma {
     education?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
+    profilePic?: StringFieldUpdateOperationsInput | string
+    cnicFront?: StringFieldUpdateOperationsInput | string
+    cnicBack?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2061,6 +2121,9 @@ export namespace Prisma {
     education?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
+    profilePic?: StringFieldUpdateOperationsInput | string
+    cnicFront?: StringFieldUpdateOperationsInput | string
+    cnicBack?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2076,6 +2139,9 @@ export namespace Prisma {
     education: string
     course: string
     message: string
+    profilePic: string
+    cnicFront: string
+    cnicBack: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2090,6 +2156,9 @@ export namespace Prisma {
     education?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
+    profilePic?: StringFieldUpdateOperationsInput | string
+    cnicFront?: StringFieldUpdateOperationsInput | string
+    cnicBack?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2104,6 +2173,9 @@ export namespace Prisma {
     education?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
+    profilePic?: StringFieldUpdateOperationsInput | string
+    cnicFront?: StringFieldUpdateOperationsInput | string
+    cnicBack?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2145,6 +2217,9 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    profilePic?: SortOrder
+    cnicFront?: SortOrder
+    cnicBack?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2160,6 +2235,9 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    profilePic?: SortOrder
+    cnicFront?: SortOrder
+    cnicBack?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2175,6 +2253,9 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    profilePic?: SortOrder
+    cnicFront?: SortOrder
+    cnicBack?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }

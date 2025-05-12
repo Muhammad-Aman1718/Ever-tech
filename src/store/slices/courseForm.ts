@@ -23,6 +23,26 @@ export const courseForm = createAsyncThunk(
     }
   }
 );
+export const imgUploader = createAsyncThunk(
+  "courseForm/post",
+  async (userData) => {
+    try {
+      const response = await axiosInstance.post("/api/upload", userData);
+      console.log(
+        "This is response on slice post user data data =========> ",
+        response.data
+      );
+
+      return response.data;
+    } catch (error) {
+      const errorAxios = error as AxiosError;
+      const errorMessage =
+        (errorAxios.response?.data as { message?: string })?.message ||
+        "Something went wrong!";
+      throw new Error(errorMessage);
+    }
+  }
+);
 
 interface courseFormState {
   userData: userData[]; // Array of 'userData' type
@@ -52,8 +72,20 @@ const courseFormSlice = createSlice({
       })
       .addCase(courseForm.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || "Failed to post course data";
-      });
+        state.error = action.error.message || "Failed to upload img";
+      })
+      // .addCase(imgUploader.pending, (state) => {
+      //   state.loading = true;
+      //   state.error = null;
+      // })
+      // .addCase(imgUploader.fulfilled, (state, action) => {
+      //   state.loading = false;
+      //   state.userData.push(action.payload); // Add the user data to state
+      // })
+      // .addCase(imgUploader.rejected, (state, action) => {
+      //   state.loading = false;
+      //   state.error = action.error.message || "Failed to upload img";
+      // });
   },
 });
 

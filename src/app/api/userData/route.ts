@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/config/prisma";
 import { AxiosError } from "axios";
-// import { userData } from "@/types/types";
+import { userData } from "@/types/types";
 
 export const POST = async (req: NextRequest) => {
   try {
-    const body = await req.json();
+    const body: userData = await req.json();
     const {
       fullName,
       fatherName,
@@ -16,6 +16,9 @@ export const POST = async (req: NextRequest) => {
       education,
       course,
       message,
+      profilePic,
+      cnicFront,
+      cnicBack,
     } = body;
 
     console.log("this is user data body ===========>", body);
@@ -29,7 +32,10 @@ export const POST = async (req: NextRequest) => {
       !province ||
       !education ||
       !course ||
-      !message
+      !message ||
+      !profilePic ||
+      !cnicFront ||
+      !cnicBack
     ) {
       return NextResponse.json(
         {
@@ -69,6 +75,9 @@ export const POST = async (req: NextRequest) => {
         education: education,
         course: course,
         message: message,
+        profilePic: profilePic,
+        cnicFront: cnicFront,
+        cnicBack: cnicBack,
       },
     });
 
