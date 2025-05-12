@@ -83,7 +83,7 @@ export const uploadImageToCloudinary = createAsyncThunk(
 // );
 
 interface courseFormState {
-  userData: userData[]; // Array of 'userData' type
+  userData: userData[];
   loading: boolean;
   error: string | null;
 }

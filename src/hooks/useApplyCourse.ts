@@ -1,4 +1,4 @@
-import { courseForm } from "@/store/slices/courseForm";
+import { courseForm, uploadImageToCloudinary } from "@/store/slices/courseForm";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { showToast } from "@/utils/showToast";
 import { AxiosError } from "axios";
@@ -29,19 +29,45 @@ const useApplyCourse = () => {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.courseFormReducer.loading);
 
-  //   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files?.[0];
-  //   if (file) {
-  //     const imageUrl = await uplo(file);
-  //     console.log("Cloudinary Image URL:", imageUrl);
-  //   }
-  // };
-
   useEffect(() => {
     if (selectedCourse) {
       setCourse(selectedCourse);
     }
   }, [selectedCourse]);
+
+  const handleFileChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    type: "profile" | "front" | "back"
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    switch (type) {
+      case "profile":
+        setProfilePic(file);
+        const profileResult = await dispatch(uploadImageToCloudinary(file));
+        if (uploadImageToCloudinary.fulfilled.match(profileResult)) {
+          setProfilePicURL(profileResult.payload as string);
+        }
+        break;
+
+      case "front":
+        setCnicFront(file);
+        const frontResult = await dispatch(uploadImageToCloudinary(file));
+        if (uploadImageToCloudinary.fulfilled.match(frontResult)) {
+          setCnicFrontURL(frontResult.payload as string);
+        }
+        break;
+
+      case "back":
+        setCnicBack(file);
+        const backResult = await dispatch(uploadImageToCloudinary(file));
+        if (uploadImageToCloudinary.fulfilled.match(backResult)) {
+          setCnicBackURL(backResult.payload as string);
+        }
+        break;
+    }
+  };
 
   const validateForm = () => {
     const nameRegex = /^[A-Za-z\s]+$/;
@@ -110,13 +136,6 @@ const useApplyCourse = () => {
       console.log(" handleSubmit was clicked");
 
       await dispatch(courseForm(userData));
-      //   if (courseForm.rejected.match(resultAction)) {
-      //     showToast(
-      //       "error",
-      //       resultAction.error.message || "Something went wrong!"
-      //     );
-      //     return;
-      //   }
       setFullName("");
       setFatherName("");
       setEmail("");
@@ -155,6 +174,13 @@ const useApplyCourse = () => {
     setCourse,
     message,
     setMessage,
+    profilePic,
+    setProfilePic,
+    cnicFront,
+    setCnicFront,
+    cnicBack,
+    setCnicBack,
+    handleFileChange,
     loading,
     handleSubmit,
   };

@@ -2,14 +2,14 @@ import useChooseImg from "@/hooks/useChooseImg";
 import React, { useState } from "react";
 
 const ChooseImg = () => {
-  const { profilePic, cnicFront, cnicBack, handleFileChange } = useChooseImg();
+//   const { profilePic, cnicFront, cnicBack, handleFileChange } = useChooseImg();
 
   return (
     <div className="flex flex-col gap-6 py-5  rounded-xl w-full max-w-md ">
       <h2 className="text-[#4D4D4D] text-xl font-bold text-strat">
         Upload Documents
       </h2>
-
+{/* 
       <div>
         <label className="block text-[#4D4D4D] font-medium mb-1">
           Profile Picture
@@ -59,7 +59,7 @@ const ChooseImg = () => {
             Selected: {cnicBack.name}
           </p>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
