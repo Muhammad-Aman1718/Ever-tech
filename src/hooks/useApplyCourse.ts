@@ -145,18 +145,3 @@ const useApplyCourse = () => {
 };
 
 export default useApplyCourse;
-
-
-
-
-// datasource db {
-//   provider = "mongodb"
-//   url      = env("DATABASE_URL")
-// }
-
-
-
-
-// mongodb+srv://ever-tech:evertech@ever-tech-solution.m2k4r3g.mongodb.net/ever-tech-solution?retryWrites=true&w=majority&appName=ever-tech-solution
-
-// NEXTAUTH_URL = http://localhost:3000
