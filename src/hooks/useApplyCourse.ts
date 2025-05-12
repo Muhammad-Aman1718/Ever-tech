@@ -21,6 +21,16 @@ const useApplyCourse = () => {
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.courseFormReducer.loading);
 
+//   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+//   const file = e.target.files?.[0];
+//   if (file) {
+//     const imageUrl = await uplo(file);
+//     console.log("Cloudinary Image URL:", imageUrl);
+//   }
+// };
+
+
+
   useEffect(() => {
     if (selectedCourse) {
       setCourse(selectedCourse);

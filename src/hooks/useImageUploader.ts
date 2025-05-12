@@ -1,4 +1,4 @@
-import { imgUploader } from "@/store/slices/courseForm";
+// import { imgUploader } from "@/store/slices/courseForm";
 import { useAppDispatch } from "@/store/store";
 import React, { useState } from "react";
 
@@ -14,7 +14,7 @@ const useImageUploader = () => {
     formData.append("file", file);
 
     try {
-      await dispatch(imgUploader());
+    //   await dispatch(imgUploader());
     } catch (error) {}
   };
   return {

@@ -23,26 +23,43 @@ export const courseForm = createAsyncThunk(
     }
   }
 );
-export const imgUploader = createAsyncThunk(
-  "courseForm/post",
-  async (userData) => {
+
+export const uploadImageToCloudinary = createAsyncThunk(
+  "image/uploadImageToCloudinary",
+  async (file: File, thunkAPI) => {
     try {
-      const response = await axiosInstance.post("/api/upload", userData);
-      console.log(
-        "This is response on slice post user data data =========> ",
-        response.data
+      const response = await axiosInstance.post(
+        "https://api.cloudinary.com/v1_1/your_cloud_name/image/upload",
+        formData
       );
 
-      return response.data;
-    } catch (error) {
-      const errorAxios = error as AxiosError;
-      const errorMessage =
-        (errorAxios.response?.data as { message?: string })?.message ||
-        "Something went wrong!";
-      throw new Error(errorMessage);
+      return response.data.secure_url; // ✅ Image URL
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response?.data || "Upload failed");
     }
   }
 );
+
+// export const imgUploader = createAsyncThunk(
+//   "courseForm/post",
+//   async (userData) => {
+//     try {
+//       const response = await axiosInstance.post("/api/upload", userData);
+//       console.log(
+//         "This is response on slice post user data data =========> ",
+//         response.data
+//       );
+
+//       return response.data;
+//     } catch (error) {
+//       const errorAxios = error as AxiosError;
+//       const errorMessage =
+//         (errorAxios.response?.data as { message?: string })?.message ||
+//         "Something went wrong!";
+//       throw new Error(errorMessage);
+//     }
+//   }
+// );
 
 interface courseFormState {
   userData: userData[]; // Array of 'userData' type
@@ -73,19 +90,19 @@ const courseFormSlice = createSlice({
       .addCase(courseForm.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to upload img";
-      })
-      // .addCase(imgUploader.pending, (state) => {
-      //   state.loading = true;
-      //   state.error = null;
-      // })
-      // .addCase(imgUploader.fulfilled, (state, action) => {
-      //   state.loading = false;
-      //   state.userData.push(action.payload); // Add the user data to state
-      // })
-      // .addCase(imgUploader.rejected, (state, action) => {
-      //   state.loading = false;
-      //   state.error = action.error.message || "Failed to upload img";
-      // });
+      });
+    // .addCase(imgUploader.pending, (state) => {
+    //   state.loading = true;
+    //   state.error = null;
+    // })
+    // .addCase(imgUploader.fulfilled, (state, action) => {
+    //   state.loading = false;
+    //   state.userData.push(action.payload); // Add the user data to state
+    // })
+    // .addCase(imgUploader.rejected, (state, action) => {
+    //   state.loading = false;
+    //   state.error = action.error.message || "Failed to upload img";
+    // });
   },
 });
 

@@ -1,12 +1,13 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import InputField from "@/components/inputs/InputField";
 import MainContainer from "@/components/MainContainer";
 import useApplyCourse from "@/hooks/useApplyCourse";
-import { courseOptions, educationOptions } from "@/constant/data";
 import Loader from "@/components/Loader";
-import { provinces } from "@/types/types";
 import ImageUploader from "@/components/ImageUploader";
+import { courseOptions, educationOptions } from "@/constant/data";
+import { provinces } from "@/types/types";
+import ChooseImg from "@/components/coursesSection/ChooseImg";
 
 const Form = () => {
   const {
@@ -34,9 +35,8 @@ const Form = () => {
 
   return (
     <div>
-      <MainContainer>
+      <MainContainer className="py-10 ">
         <h1 className="text-center text-[#4D4D4D] text-[36px] font-semibold leading-[44px] my-10 ">
-          {" "}
           Apply Course
         </h1>
         <div className="grid grid-cols-2  gap-x-10 gap-y-7 ">
@@ -157,9 +157,9 @@ const Form = () => {
             />
           </div>
         </div>
-
-        <ImageUploader />
-
+        <div className="">
+          <ChooseImg />
+        </div>
         <button
           onClick={handleSubmit}
           className="bg-[#2A75BB] text-white w-[134px] font-semibold rounded-xl py-3 px-6 mt-10 transition-colors duration-300 ease-in-out hover:bg-[#1e5a93] cursor-pointer "
