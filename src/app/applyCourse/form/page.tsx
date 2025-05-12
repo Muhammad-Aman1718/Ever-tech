@@ -177,7 +177,7 @@ const Form = () => {
               </label>
               <input
                 type="file"
-                onChange={(e) => handleFileChange(e, "profile")}
+                onChange={handleFileChange}
                 className="block w-full p-2 border border-[#2A75BB] rounded cursor-pointer"
                 required
               />
@@ -188,7 +188,7 @@ const Form = () => {
               )}
             </div>
 
-            <div>
+            {/* <div>
               <label className="block text-[#4D4D4D] font-medium mb-1">
                 CNIC Front
               </label>
@@ -220,7 +220,7 @@ const Form = () => {
                   Selected: {cnicBack.name}
                 </p>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
         <button

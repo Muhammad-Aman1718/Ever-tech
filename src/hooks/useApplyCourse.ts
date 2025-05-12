@@ -35,39 +35,22 @@ const useApplyCourse = () => {
     }
   }, [selectedCourse]);
 
-  const handleFileChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-    type: "profile" | "front" | "back"
-  ) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) setProfilePic(e.target.files[0]);
 
-    switch (type) {
-      case "profile":
-        setProfilePic(file);
-        const profileResult = await dispatch(uploadImageToCloudinary(file));
-        if (uploadImageToCloudinary.fulfilled.match(profileResult)) {
-          setProfilePicURL(profileResult.payload as string);
-        }
-        break;
-
-      case "front":
-        setCnicFront(file);
-        const frontResult = await dispatch(uploadImageToCloudinary(file));
-        if (uploadImageToCloudinary.fulfilled.match(frontResult)) {
-          setCnicFrontURL(frontResult.payload as string);
-        }
-        break;
-
-      case "back":
-        setCnicBack(file);
-        const backResult = await dispatch(uploadImageToCloudinary(file));
-        if (uploadImageToCloudinary.fulfilled.match(backResult)) {
-          setCnicBackURL(backResult.payload as string);
-        }
-        break;
-    }
+    // setProfilePic(file);
+    // switch (type) {
+    //   case "profile":
+    //     break;
+    //   case "front":
+    //     setCnicFront(file);
+    //     break;
+    //   case "back":
+    //     setCnicBack(file);
+    //     break;
+    // }
   };
+  console.log("this is profileImg", profilePic);
 
   const validateForm = () => {
     const nameRegex = /^[A-Za-z\s]+$/;
@@ -116,26 +99,95 @@ const useApplyCourse = () => {
     return true;
   };
 
+  // const handleSubmit = async () => {
+  //   if (!validateForm()) {
+  //     return; // Stop the submission if validation fails
+  //   }
+  //   const userData = {
+  //     fullName,
+  //     fatherName,
+  //     email,
+  //     phoneNumber,
+  //     city,
+  //     province,
+  //     education,
+  //     course,
+  //     message,
+  //   };
+
+  //   try {
+  //     console.log(" handleSubmit was clicked");
+
+  //     await dispatch(courseForm(userData));
+  //     setFullName("");
+  //     setFatherName("");
+  //     setEmail("");
+  //     setPhoneNumber("");
+  //     setCity("");
+  //     setProvince("");
+  //     setEducation("");
+  //     setCourse("");
+  //     setMessage("");
+  //   } catch (error) {
+  //     const errorAxios = error as AxiosError;
+  //     showToast(
+  //       "error",
+  //       errorAxios.message ||
+  //         "There was an issue submitting your form. Please try again."
+  //     );
+  //   }
+  // };
+
   const handleSubmit = async () => {
     if (!validateForm()) {
-      return; // Stop the submission if validation fails
+      return;
     }
-    const userData = {
-      fullName,
-      fatherName,
-      email,
-      phoneNumber,
-      city,
-      province,
-      education,
-      course,
-      message,
-    };
 
     try {
-      console.log(" handleSubmit was clicked");
+      // let uploadedProfilePicURL = profilePicURL;
+      // let uploadedCnicFrontURL = cnicFrontURL;
+      // let uploadedCnicBackURL = cnicBackURL;
+
+      if (profilePic) {
+        const result = await dispatch(uploadImageToCloudinary(profilePic));
+        // if (uploadImageToCloudinary.fulfilled.match(result)) {
+        //   uploadedProfilePicURL = result.payload as string;
+        // }
+        console.log(" this is result ======> ", result);
+      }
+
+      // if (cnicFront) {
+      //   const result = await dispatch(uploadImageToCloudinary(cnicFront));
+      //   if (uploadImageToCloudinary.fulfilled.match(result)) {
+      //     uploadedCnicFrontURL = result.payload as string;
+      //   }
+      // }
+
+      // if (cnicBack) {
+      //   const result = await dispatch(uploadImageToCloudinary(cnicBack));
+      //   if (uploadImageToCloudinary.fulfilled.match(result)) {
+      //     uploadedCnicBackURL = result.payload as string;
+      //   }
+      // }
+
+      const userData = {
+        fullName,
+        fatherName,
+        email,
+        phoneNumber,
+        city,
+        province,
+        education,
+        course,
+        message,
+        profilePic,
+        cnicFront,
+        cnicBack,
+      };
 
       await dispatch(courseForm(userData));
+
+      // Clear form after submit
       setFullName("");
       setFatherName("");
       setEmail("");
@@ -145,6 +197,12 @@ const useApplyCourse = () => {
       setEducation("");
       setCourse("");
       setMessage("");
+      setProfilePic(null);
+      setCnicFront(null);
+      setCnicBack(null);
+      setProfilePicURL("");
+      setCnicFrontURL("");
+      setCnicBackURL("");
     } catch (error) {
       const errorAxios = error as AxiosError;
       showToast(
