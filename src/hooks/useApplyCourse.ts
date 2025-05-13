@@ -22,9 +22,9 @@ const useApplyCourse = () => {
   const [cnicFront, setCnicFront] = useState<File | null>(null);
   const [cnicBack, setCnicBack] = useState<File | null>(null);
 
-  const [profilePicURL, setProfilePicURL] = useState<string>("");
-  const [cnicFrontURL, setCnicFrontURL] = useState<string>("");
-  const [cnicBackURL, setCnicBackURL] = useState<string>("");
+  // const [profilePicURL, setProfilePicURL] = useState<string>("");
+  // const [cnicFrontURL, setCnicFrontURL] = useState<string>("");
+  // const [cnicBackURL, setCnicBackURL] = useState<string>("");
 
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.courseFormReducer.loading);
@@ -51,6 +51,9 @@ const useApplyCourse = () => {
     // }
   };
   console.log("this is profileImg", profilePic);
+  const handleImgSubmit = () => {
+    if (profilePic) dispatch(uploadImageToCloudinary(profilePic));
+  };
 
   const validateForm = () => {
     const nameRegex = /^[A-Za-z\s]+$/;
@@ -180,14 +183,13 @@ const useApplyCourse = () => {
         education,
         course,
         message,
-        profilePic,
-        cnicFront,
-        cnicBack,
+        profilePic: profilePic,
+        cnicFront: cnicFront,
+        cnicBack: cnicBack,
       };
 
       await dispatch(courseForm(userData));
 
-      // Clear form after submit
       setFullName("");
       setFatherName("");
       setEmail("");
@@ -200,9 +202,9 @@ const useApplyCourse = () => {
       setProfilePic(null);
       setCnicFront(null);
       setCnicBack(null);
-      setProfilePicURL("");
-      setCnicFrontURL("");
-      setCnicBackURL("");
+      // setProfilePicURL("");
+      // setCnicFrontURL("");
+      // setCnicBackURL("");
     } catch (error) {
       const errorAxios = error as AxiosError;
       showToast(
@@ -241,6 +243,7 @@ const useApplyCourse = () => {
     handleFileChange,
     loading,
     handleSubmit,
+    handleImgSubmit,
   };
 };
 

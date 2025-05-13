@@ -46,13 +46,10 @@ export const uploadImageToCloudinary = createAsyncThunk(
     try {
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", "Ever-tech-solution"); // 👈 Replace this
-      formData.append("cloud_name", "dprzsp6w8"); // 👈 Optional for endpoint
+      formData.append("upload_preset", "Ever-tech-solution");
+      formData.append("cloud_name", "dprzsp6w8");
 
-      const response = await axiosInstance.post(
-        "https://api.cloudinary.com/v1_1/dprzsp6w8/image/upload",
-        formData
-      );
+      const response = await axiosInstance.post("/api/upload", formData);
 
       return response.data.secure_url;
     } catch (error: any) {

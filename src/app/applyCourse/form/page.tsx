@@ -8,6 +8,7 @@ import ImageUploader from "@/components/ImageUploader";
 import { courseOptions, educationOptions } from "@/constant/data";
 import { provinces } from "@/types/types";
 import ChooseImg from "@/components/coursesSection/ChooseImg";
+import useChooseImg from "@/hooks/useChooseImg";
 
 const Form = () => {
   const {
@@ -29,8 +30,8 @@ const Form = () => {
     setCourse,
     message,
     setMessage,
-    profilePic,
-    setProfilePic,
+    // profilePic,
+    // setProfilePic,
     cnicFront,
     setCnicFront,
     cnicBack,
@@ -38,7 +39,10 @@ const Form = () => {
     handleFileChange,
     loading,
     handleSubmit,
+    // handleImgSubmit,
   } = useApplyCourse();
+
+  const { profilePic, handleChange , handleImgSubmit } = useChooseImg();
 
   return (
     <div>
@@ -177,7 +181,7 @@ const Form = () => {
               </label>
               <input
                 type="file"
-                onChange={handleFileChange}
+                onChange={handleChange}
                 className="block w-full p-2 border border-[#2A75BB] rounded cursor-pointer"
                 required
               />
@@ -187,6 +191,13 @@ const Form = () => {
                 </p>
               )}
             </div>
+
+            <button
+              onClick={handleImgSubmit}
+              className="bg-[#2A75BB] text-white w-[134px] font-semibold rounded-xl py-3 px-6 mt-10 transition-colors duration-300 ease-in-out hover:bg-[#1e5a93] cursor-pointer "
+            >
+              Submit Image
+            </button>
 
             {/* <div>
               <label className="block text-[#4D4D4D] font-medium mb-1">
