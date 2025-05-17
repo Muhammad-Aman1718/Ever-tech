@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div className=" flex flex-col gap-y-4  ">
         <h1 className=" text-[64px] leading-[76px] font-semibold  ">
           Lessons and insights
-        </h1>{" "}
+        </h1>
         <h1 className="text-[64px] leading-[76px] font-semibold ">
           from 8 years
         </h1>

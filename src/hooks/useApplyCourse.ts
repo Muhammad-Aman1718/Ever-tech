@@ -1,13 +1,136 @@
-import { courseForm, uploadImageToCloudinary } from "@/store/slices/courseForm";
-import { useAppDispatch, useAppSelector } from "@/store/store";
-import { showToast } from "@/utils/showToast";
-import { AxiosError } from "axios";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+// import { useState } from "react";
+// import { useRouter } from "next/navigation";
+// import { toast } from "react-toastify";
+// import { useAppDispatch } from "@/store/store";
+// import { courseForm } from "@/store/slices/courseForm";
+
+// const useApplyCourse = () => {
+//   const dispatch = useAppDispatch();
+//   const router = useRouter();
+
+//   const [fullName, setFullName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [phone, setPhone] = useState("");
+//   const [cnic, setCnic] = useState("");
+//   const [city, setCity] = useState("");
+//   const [address, setAddress] = useState("");
+//   const [profilePic, setProfilePic] = useState<File | null>(null);
+//   const [cnicFront, setCnicFront] = useState<File | null>(null);
+//   const [cnicBack, setCnicBack] = useState<File | null>(null);
+
+//   const [isLoading, setIsLoading] = useState(false);
+
+//   const validateFields = () => {
+//     if (!fullName || !email || !phone || !cnic || !city || !address) {
+//       toast.error("Please fill in all required fields.");
+//       return false;
+//     }
+//     if (!profilePic || !cnicFront || !cnicBack) {
+//       toast.error("Please upload all required images.");
+//       return false;
+//     }
+//     return true;
+//   };
+
+//   const handleImageUpload = async (file: File | null): Promise<string> => {
+//     if (!file) return "";
+//     const result = await dispatch(uploadImageToCloudinary([file]));
+//     if (uploadImageToCloudinary.fulfilled.match(result)) {
+//       const urls = result.payload as string[];
+//       return urls[0];
+//     } else {
+//       toast.error("Image upload failed.");
+//       return "";
+//     }
+//   };
+
+//   const handleSubmit = async (courseId: string) => {
+//     if (!validateFields()) return;
+
+//     setIsLoading(true);
+//     try {
+//       // Upload all 3 images
+//       const [profilePicURL, cnicFrontURL, cnicBackURL] = await Promise.all([
+//         handleImageUpload(profilePic),
+//         handleImageUpload(cnicFront),
+//         handleImageUpload(cnicBack),
+//       ]);
+
+//       if (!profilePicURL || !cnicFrontURL || !cnicBackURL) {
+//         toast.error("Image upload failed. Please try again.");
+//         setIsLoading(false);
+//         return;
+//       }
+
+//       const formData = {
+//         fullName,
+//         email,
+//         phone,
+//         cnic,
+//         city,
+//         address,
+//         profilePic: profilePicURL,
+//         cnicFront: cnicFrontURL,
+//         cnicBack: cnicBackURL,
+//         course: courseId,
+//       };
+
+//       const result = await dispatch(courseForm(formData));
+//       if (courseForm.fulfilled.match(result)) {
+//         toast.success("Successfully Applied!");
+//         router.push("/dashboard");
+//       } else {
+//         toast.error("Application failed. Please try again.");
+//       }
+//     } catch (error) {
+//       console.error("Error applying for course:", error);
+//       toast.error("Something went wrong. Please try again.");
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   };
+
+//   return {
+//     fullName,
+//     setFullName,
+//     email,
+//     setEmail,
+//     phone,
+//     setPhone,
+//     cnic,
+//     setCnic,
+//     city,
+//     setCity,
+//     address,
+//     setAddress,
+//     profilePic,
+//     setProfilePic,
+//     cnicFront,
+//     setCnicFront,
+//     cnicBack,
+//     setCnicBack,
+//     isLoading,
+//     handleSubmit,
+//   };
+// };
+
+// export default useApplyCourse;
+
+
+
+
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { useAppDispatch } from "@/store/store";
+import { courseForm, resetFormState } from "@/store/slices/courseForm";
 
 const useApplyCourse = () => {
-  const searchParams = useSearchParams();
-  const selectedCourse = searchParams.get("course");
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  // Text fields
   const [fullName, setFullName] = useState("");
   const [fatherName, setFatherName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,232 +141,120 @@ const useApplyCourse = () => {
   const [course, setCourse] = useState("");
   const [message, setMessage] = useState("");
 
+  // File fields
   const [profilePic, setProfilePic] = useState<File | null>(null);
   const [cnicFront, setCnicFront] = useState<File | null>(null);
   const [cnicBack, setCnicBack] = useState<File | null>(null);
 
-  // const [profilePicURL, setProfilePicURL] = useState<string>("");
-  // const [cnicFrontURL, setCnicFrontURL] = useState<string>("");
-  // const [cnicBackURL, setCnicBackURL] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const dispatch = useAppDispatch();
-  const loading = useAppSelector((state) => state.courseFormReducer.loading);
-
-  useEffect(() => {
-    if (selectedCourse) {
-      setCourse(selectedCourse);
-    }
-  }, [selectedCourse]);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) setProfilePic(e.target.files[0]);
-
-    // setProfilePic(file);
-    // switch (type) {
-    //   case "profile":
-    //     break;
-    //   case "front":
-    //     setCnicFront(file);
-    //     break;
-    //   case "back":
-    //     setCnicBack(file);
-    //     break;
-    // }
-  };
-  console.log("this is profileImg", profilePic);
-  const handleImgSubmit = () => {
-    if (profilePic) dispatch(uploadImageToCloudinary(profilePic));
-  };
-
-  const validateForm = () => {
-    const nameRegex = /^[A-Za-z\s]+$/;
-    if (!nameRegex.test(fullName)) {
-      showToast("error", "Full Name should only contain alphabets.");
+  const validateFields = () => {
+    const requiredFields = [
+      fullName, fatherName, email, phoneNumber, 
+      city, province, education, course
+    ];
+    
+    if (requiredFields.some(field => !field)) {
+      toast.error("Please fill all required fields");
       return false;
     }
 
-    if (!nameRegex.test(fatherName)) {
-      showToast("error", "Father's Name should only contain alphabets.");
-      return false;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      showToast("error", "Please enter a valid email.");
-      return false;
-    }
-
-    const phoneRegex = /^[0-9]+$/;
-    if (!phoneRegex.test(phoneNumber)) {
-      showToast("error", "Phone Number should only contain numbers.");
-      return false;
-    }
-
-    if (!nameRegex.test(city)) {
-      showToast("error", "City should only contain alphabets. ");
-      return false;
-    }
-
-    if (
-      !fullName ||
-      !fatherName ||
-      !email ||
-      !phoneNumber ||
-      !city ||
-      !province ||
-      !education ||
-      !course ||
-      !message
-    ) {
-      showToast("error", "All fields are required!");
+    if (!profilePic || !cnicFront || !cnicBack) {
+      toast.error("Please upload all required documents");
       return false;
     }
 
     return true;
   };
 
-  // const handleSubmit = async () => {
-  //   if (!validateForm()) {
-  //     return; // Stop the submission if validation fails
-  //   }
-  //   const userData = {
-  //     fullName,
-  //     fatherName,
-  //     email,
-  //     phoneNumber,
-  //     city,
-  //     province,
-  //     education,
-  //     course,
-  //     message,
-  //   };
+  const buildFormData = () => {
+    const formData = new FormData();
+    
+    // Append text fields
+    formData.append('fullName', fullName);
+    formData.append('fatherName', fatherName);
+    formData.append('email', email);
+    formData.append('phoneNumber', phoneNumber);
+    formData.append('city', city);
+    formData.append('province', province);
+    formData.append('education', education);
+    formData.append('course', course);
+    formData.append('message', message);
 
-  //   try {
-  //     console.log(" handleSubmit was clicked");
+    // Append files
+    if (profilePic) formData.append('profilePic', profilePic);
+    if (cnicFront) formData.append('cnicFront', cnicFront);
+    if (cnicBack) formData.append('cnicBack', cnicBack);
 
-  //     await dispatch(courseForm(userData));
-  //     setFullName("");
-  //     setFatherName("");
-  //     setEmail("");
-  //     setPhoneNumber("");
-  //     setCity("");
-  //     setProvince("");
-  //     setEducation("");
-  //     setCourse("");
-  //     setMessage("");
-  //   } catch (error) {
-  //     const errorAxios = error as AxiosError;
-  //     showToast(
-  //       "error",
-  //       errorAxios.message ||
-  //         "There was an issue submitting your form. Please try again."
-  //     );
-  //   }
-  // };
+    return formData;
+  };
 
   const handleSubmit = async () => {
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateFields()) return;
 
+    setIsLoading(true);
     try {
-      // let uploadedProfilePicURL = profilePicURL;
-      // let uploadedCnicFrontURL = cnicFrontURL;
-      // let uploadedCnicBackURL = cnicBackURL;
+      const formData = buildFormData();
+      const result = await dispatch(courseForm(formData));
 
-      if (profilePic) {
-        const result = await dispatch(uploadImageToCloudinary(profilePic));
-        // if (uploadImageToCloudinary.fulfilled.match(result)) {
-        //   uploadedProfilePicURL = result.payload as string;
-        // }
-        console.log(" this is result ======> ", result);
+      if (courseForm.fulfilled.match(result)) {
+        toast.success("Application submitted successfully!");
+        router.push("/dashboard");
+        dispatch(resetFormState());
+      } else {
+        toast.error("Submission failed");
       }
-
-      // if (cnicFront) {
-      //   const result = await dispatch(uploadImageToCloudinary(cnicFront));
-      //   if (uploadImageToCloudinary.fulfilled.match(result)) {
-      //     uploadedCnicFrontURL = result.payload as string;
-      //   }
-      // }
-
-      // if (cnicBack) {
-      //   const result = await dispatch(uploadImageToCloudinary(cnicBack));
-      //   if (uploadImageToCloudinary.fulfilled.match(result)) {
-      //     uploadedCnicBackURL = result.payload as string;
-      //   }
-      // }
-
-      const userData = {
-        fullName,
-        fatherName,
-        email,
-        phoneNumber,
-        city,
-        province,
-        education,
-        course,
-        message,
-        profilePic: profilePic,
-        cnicFront: cnicFront,
-        cnicBack: cnicBack,
-      };
-
-      await dispatch(courseForm(userData));
-
-      setFullName("");
-      setFatherName("");
-      setEmail("");
-      setPhoneNumber("");
-      setCity("");
-      setProvince("");
-      setEducation("");
-      setCourse("");
-      setMessage("");
-      setProfilePic(null);
-      setCnicFront(null);
-      setCnicBack(null);
-      // setProfilePicURL("");
-      // setCnicFrontURL("");
-      // setCnicBackURL("");
     } catch (error) {
-      const errorAxios = error as AxiosError;
-      showToast(
-        "error",
-        errorAxios.message ||
-          "There was an issue submitting your form. Please try again."
-      );
+      toast.error("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleFileChange = (type: 'profile' | 'front' | 'back', file: File | null) => {
+    switch (type) {
+      case 'profile':
+        setProfilePic(file);
+        break;
+      case 'front':
+        setCnicFront(file);
+        break;
+      case 'back':
+        setCnicBack(file);
+        break;
     }
   };
 
   return {
+    // State
     fullName,
-    setFullName,
     fatherName,
-    setFatherName,
     email,
-    setEmail,
     phoneNumber,
-    setPhoneNumber,
     city,
-    setCity,
     province,
-    setProvince,
     education,
-    setEducation,
     course,
-    setCourse,
     message,
-    setMessage,
     profilePic,
-    setProfilePic,
     cnicFront,
-    setCnicFront,
     cnicBack,
-    setCnicBack,
+    isLoading,
+
+    // Setters
+    setFullName,
+    setFatherName,
+    setEmail,
+    setPhoneNumber,
+    setCity,
+    setProvince,
+    setEducation,
+    setCourse,
+    setMessage,
     handleFileChange,
-    loading,
-    handleSubmit,
-    handleImgSubmit,
+
+    // Actions
+    handleSubmit
   };
 };
 

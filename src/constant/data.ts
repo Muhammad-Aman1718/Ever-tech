@@ -111,3 +111,12 @@ export const educationOptions = [
   "Diploma / Certificate Course",
   "Other",
 ];
+export const provinces = [
+  "Punjab",
+  "Sindh",
+  "Khyber Pakhtunkhwa",
+  "Balochistan",
+  "Islamabad Capital Territory",
+  "Gilgit-Baltistan",
+  "Azad Jammu & Kashmir",
+];

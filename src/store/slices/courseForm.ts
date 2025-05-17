@@ -1,102 +1,48 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
-import { userData } from "@/types/types";
 
 export const courseForm = createAsyncThunk(
   "courseForm/post",
-  async (userData: userData) => {
+  async (formData: FormData, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("/api/userData", userData);
-      console.log(
-        "This is response on slice post user data data =========> ",
-        response.data
-      );
-
+      const response = await axiosInstance.post("/api/userData", formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
       return response.data;
     } catch (error) {
       const errorAxios = error as AxiosError;
-      const errorMessage =
-        (errorAxios.response?.data as { message?: string })?.message ||
-        "Something went wrong!";
-      throw new Error(errorMessage);
+      return rejectWithValue({
+        message: errorAxios.response?.data?.message || "Submission failed",
+        code: errorAxios.code
+      });
     }
   }
 );
 
-// export const uploadImageToCloudinary = createAsyncThunk(
-//   "image/uploadImageToCloudinary",
-//   async (file: File, thunkAPI) => {
-//     try {
-//       const response = await axiosInstance.post(
-//         "https://api.cloudinary.com/v1_1/your_cloud_name/image/upload",
-//         formData
-//       );
-
-//       return response.data.secure_url; // ✅ Image URL
-//     } catch (error: any) {
-//       return thunkAPI.rejectWithValue(error.response?.data || "Upload failed");
-//     }
-//   }
-// );
-
-export const uploadImageToCloudinary = createAsyncThunk(
-  "image/uploadImageToCloudinary",
-  async (file: File, thunkAPI) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "Ever-tech-solution");
-      formData.append("cloud_name", "dprzsp6w8");
-
-      const response = await axiosInstance.post("/api/upload", formData);
-
-      return response.data.secure_url;
-    } catch (error: any) {
-      console.error(" this  is cloudinary error ", error.response?.data);
-      return thunkAPI.rejectWithValue(error.response?.data || "Upload failed");
-    }
-  }
-);
-
-// export const imgUploader = createAsyncThunk(
-//   "courseForm/post",
-//   async (userData) => {
-//     try {
-//       const response = await axiosInstance.post("/api/upload", userData);
-//       console.log(
-//         "This is response on slice post user data data =========> ",
-//         response.data
-//       );
-
-//       return response.data;
-//     } catch (error) {
-//       const errorAxios = error as AxiosError;
-//       const errorMessage =
-//         (errorAxios.response?.data as { message?: string })?.message ||
-//         "Something went wrong!";
-//       throw new Error(errorMessage);
-//     }
-//   }
-// );
-
-interface courseFormState {
-  userData: userData[];
+interface CourseFormState {
   loading: boolean;
   error: string | null;
+  submittedData: any | null;
 }
 
-const initialState: courseFormState = {
-  userData: [],
+const initialState: CourseFormState = {
   loading: false,
   error: null,
+  submittedData: null
 };
 
 const courseFormSlice = createSlice({
   name: "courseForm",
   initialState,
-  reducers: {},
-  extraReducers(builder) {
+  reducers: {
+    resetFormState: (state) => {
+      state.loading = false;
+      state.error = null;
+      state.submittedData = null;
+    }
+  },
+  extraReducers: (builder) => {
     builder
       .addCase(courseForm.pending, (state) => {
         state.loading = true;
@@ -104,25 +50,14 @@ const courseFormSlice = createSlice({
       })
       .addCase(courseForm.fulfilled, (state, action) => {
         state.loading = false;
-        state.userData.push(action.payload); // Add the user data to state
+        state.submittedData = action.payload;
       })
       .addCase(courseForm.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || "Failed to upload img";
+        state.error = (action.payload as { message: string }).message || "Submission failed";
       });
-    // .addCase(imgUploader.pending, (state) => {
-    //   state.loading = true;
-    //   state.error = null;
-    // })
-    // .addCase(imgUploader.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.userData.push(action.payload); // Add the user data to state
-    // })
-    // .addCase(imgUploader.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.error = action.error.message || "Failed to upload img";
-    // });
   },
 });
 
+export const { resetFormState } = courseFormSlice.actions;
 export default courseFormSlice.reducer;

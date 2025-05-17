@@ -13,12 +13,3 @@ export interface userData {
   cnicBack?: string;
 }
 
-export const provinces = [
-  "Punjab",
-  "Sindh",
-  "Khyber Pakhtunkhwa",
-  "Balochistan",
-  "Islamabad Capital Territory",
-  "Gilgit-Baltistan",
-  "Azad Jammu & Kashmir",
-];
