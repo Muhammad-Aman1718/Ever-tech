@@ -136,6 +136,9 @@ export const POST = async (req: NextRequest) => {
     const cnicFrontFile = formData.get("cnicFront") as File;
     const cnicBackFile = formData.get("cnicBack") as File;
 
+    console.log("This is formData =========> " , formData);
+    
+
     // Validate all fields
     if (
       !fullName ||

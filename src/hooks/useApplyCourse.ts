@@ -1,125 +1,3 @@
-// import { useState } from "react";
-// import { useRouter } from "next/navigation";
-// import { toast } from "react-toastify";
-// import { useAppDispatch } from "@/store/store";
-// import { courseForm } from "@/store/slices/courseForm";
-
-// const useApplyCourse = () => {
-//   const dispatch = useAppDispatch();
-//   const router = useRouter();
-
-//   const [fullName, setFullName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [phone, setPhone] = useState("");
-//   const [cnic, setCnic] = useState("");
-//   const [city, setCity] = useState("");
-//   const [address, setAddress] = useState("");
-//   const [profilePic, setProfilePic] = useState<File | null>(null);
-//   const [cnicFront, setCnicFront] = useState<File | null>(null);
-//   const [cnicBack, setCnicBack] = useState<File | null>(null);
-
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   const validateFields = () => {
-//     if (!fullName || !email || !phone || !cnic || !city || !address) {
-//       toast.error("Please fill in all required fields.");
-//       return false;
-//     }
-//     if (!profilePic || !cnicFront || !cnicBack) {
-//       toast.error("Please upload all required images.");
-//       return false;
-//     }
-//     return true;
-//   };
-
-//   const handleImageUpload = async (file: File | null): Promise<string> => {
-//     if (!file) return "";
-//     const result = await dispatch(uploadImageToCloudinary([file]));
-//     if (uploadImageToCloudinary.fulfilled.match(result)) {
-//       const urls = result.payload as string[];
-//       return urls[0];
-//     } else {
-//       toast.error("Image upload failed.");
-//       return "";
-//     }
-//   };
-
-//   const handleSubmit = async (courseId: string) => {
-//     if (!validateFields()) return;
-
-//     setIsLoading(true);
-//     try {
-//       // Upload all 3 images
-//       const [profilePicURL, cnicFrontURL, cnicBackURL] = await Promise.all([
-//         handleImageUpload(profilePic),
-//         handleImageUpload(cnicFront),
-//         handleImageUpload(cnicBack),
-//       ]);
-
-//       if (!profilePicURL || !cnicFrontURL || !cnicBackURL) {
-//         toast.error("Image upload failed. Please try again.");
-//         setIsLoading(false);
-//         return;
-//       }
-
-//       const formData = {
-//         fullName,
-//         email,
-//         phone,
-//         cnic,
-//         city,
-//         address,
-//         profilePic: profilePicURL,
-//         cnicFront: cnicFrontURL,
-//         cnicBack: cnicBackURL,
-//         course: courseId,
-//       };
-
-//       const result = await dispatch(courseForm(formData));
-//       if (courseForm.fulfilled.match(result)) {
-//         toast.success("Successfully Applied!");
-//         router.push("/dashboard");
-//       } else {
-//         toast.error("Application failed. Please try again.");
-//       }
-//     } catch (error) {
-//       console.error("Error applying for course:", error);
-//       toast.error("Something went wrong. Please try again.");
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   return {
-//     fullName,
-//     setFullName,
-//     email,
-//     setEmail,
-//     phone,
-//     setPhone,
-//     cnic,
-//     setCnic,
-//     city,
-//     setCity,
-//     address,
-//     setAddress,
-//     profilePic,
-//     setProfilePic,
-//     cnicFront,
-//     setCnicFront,
-//     cnicBack,
-//     setCnicBack,
-//     isLoading,
-//     handleSubmit,
-//   };
-// };
-
-// export default useApplyCourse;
-
-
-
-
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -168,6 +46,8 @@ const useApplyCourse = () => {
   };
 
   const buildFormData = () => {
+    console.log("build form is run ======> ");
+    
     const formData = new FormData();
     
     // Append text fields
@@ -190,6 +70,8 @@ const useApplyCourse = () => {
   };
 
   const handleSubmit = async () => {
+
+    console.log("Handle submit is run ======> ");
     if (!validateFields()) return;
 
     setIsLoading(true);
