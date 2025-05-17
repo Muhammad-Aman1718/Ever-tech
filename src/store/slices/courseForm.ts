@@ -2,19 +2,25 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
 
+interface ErrorResponse {
+  message: string;
+}
+
 export const courseForm = createAsyncThunk(
   "courseForm/post",
   async (formData: FormData, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post("/api/userData", formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+        headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log("this is response.data =====> ", response.data);
+
       return response.data;
     } catch (error) {
-      const errorAxios = error as AxiosError;
+      const errorAxios = error as AxiosError<ErrorResponse>;
       return rejectWithValue({
         message: errorAxios.response?.data?.message || "Submission failed",
-        code: errorAxios.code
+        code: errorAxios.code,
       });
     }
   }
@@ -29,7 +35,7 @@ interface CourseFormState {
 const initialState: CourseFormState = {
   loading: false,
   error: null,
-  submittedData: null
+  submittedData: null,
 };
 
 const courseFormSlice = createSlice({
@@ -40,7 +46,7 @@ const courseFormSlice = createSlice({
       state.loading = false;
       state.error = null;
       state.submittedData = null;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -54,7 +60,9 @@ const courseFormSlice = createSlice({
       })
       .addCase(courseForm.rejected, (state, action) => {
         state.loading = false;
-        state.error = (action.payload as { message: string }).message || "Submission failed";
+        state.error =
+          (action.payload as { message: string }).message ||
+          "Submission failed";
       });
   },
 });

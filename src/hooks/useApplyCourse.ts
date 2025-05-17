@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "@/store/store";
 import { courseForm, resetFormState } from "@/store/slices/courseForm";
+import { showToast } from "@/utils/showToast";
 
 const useApplyCourse = () => {
   const dispatch = useAppDispatch();
@@ -28,17 +29,23 @@ const useApplyCourse = () => {
 
   const validateFields = () => {
     const requiredFields = [
-      fullName, fatherName, email, phoneNumber, 
-      city, province, education, course
+      fullName,
+      fatherName,
+      email,
+      phoneNumber,
+      city,
+      province,
+      education,
+      course,
     ];
-    
-    if (requiredFields.some(field => !field)) {
-      toast.error("Please fill all required fields");
+
+    if (requiredFields.some((field) => !field)) {
+      showToast("error", "Please fill all required fields");
       return false;
     }
 
     if (!profilePic || !cnicFront || !cnicBack) {
-      toast.error("Please upload all required documents");
+      showToast("error", "Please upload all required documents");
       return false;
     }
 
@@ -47,30 +54,31 @@ const useApplyCourse = () => {
 
   const buildFormData = () => {
     console.log("build form is run ======> ");
-    
+
     const formData = new FormData();
-    
+
     // Append text fields
-    formData.append('fullName', fullName);
-    formData.append('fatherName', fatherName);
-    formData.append('email', email);
-    formData.append('phoneNumber', phoneNumber);
-    formData.append('city', city);
-    formData.append('province', province);
-    formData.append('education', education);
-    formData.append('course', course);
-    formData.append('message', message);
+    formData.append("fullName", fullName);
+    formData.append("fatherName", fatherName);
+    formData.append("email", email);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("city", city);
+    formData.append("province", province);
+    formData.append("education", education);
+    formData.append("course", course);
+    formData.append("message", message);
 
     // Append files
-    if (profilePic) formData.append('profilePic', profilePic);
-    if (cnicFront) formData.append('cnicFront', cnicFront);
-    if (cnicBack) formData.append('cnicBack', cnicBack);
+    if (profilePic) formData.append("profilePic", profilePic);
+    if (cnicFront) formData.append("cnicFront", cnicFront);
+    if (cnicBack) formData.append("cnicBack", cnicBack);
+
+    console.log("This is hook form data ======> ", formData);
 
     return formData;
   };
 
   const handleSubmit = async () => {
-
     console.log("Handle submit is run ======> ");
     if (!validateFields()) return;
 
@@ -81,27 +89,30 @@ const useApplyCourse = () => {
 
       if (courseForm.fulfilled.match(result)) {
         toast.success("Application submitted successfully!");
-        router.push("/dashboard");
+        // router.push("/dashboard");
         dispatch(resetFormState());
       } else {
-        toast.error("Submission failed");
+        showToast("error", "Submission failed");
       }
     } catch (error) {
-      toast.error("An unexpected error occurred");
+      showToast("error", "An unexpected error occurred");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleFileChange = (type: 'profile' | 'front' | 'back', file: File | null) => {
+  const handleFileChange = (
+    type: "profile" | "front" | "back",
+    file: File | null
+  ) => {
     switch (type) {
-      case 'profile':
+      case "profile":
         setProfilePic(file);
         break;
-      case 'front':
+      case "front":
         setCnicFront(file);
         break;
-      case 'back':
+      case "back":
         setCnicBack(file);
         break;
     }
@@ -136,7 +147,7 @@ const useApplyCourse = () => {
     handleFileChange,
 
     // Actions
-    handleSubmit
+    handleSubmit,
   };
 };
 
