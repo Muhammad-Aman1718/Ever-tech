@@ -13,3 +13,6 @@ export interface userData {
   cnicBack?: string;
 }
 
+export interface ErrorResponse {
+  message: string;
+}

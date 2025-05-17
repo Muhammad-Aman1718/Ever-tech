@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
+import { ErrorResponse } from "@/types/types";
 
-interface ErrorResponse {
-  message: string;
-}
+
 
 export const courseForm = createAsyncThunk(
   "courseForm/post",

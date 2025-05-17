@@ -73,8 +73,6 @@ const useApplyCourse = () => {
     if (cnicFront) formData.append("cnicFront", cnicFront);
     if (cnicBack) formData.append("cnicBack", cnicBack);
 
-    console.log("This is hook form data ======> ", formData);
-
     return formData;
   };
 
@@ -85,11 +83,11 @@ const useApplyCourse = () => {
     setIsLoading(true);
     try {
       const formData = buildFormData();
+      console.log("This is hook form data ======> ", formData);
       const result = await dispatch(courseForm(formData));
 
       if (courseForm.fulfilled.match(result)) {
         toast.success("Application submitted successfully!");
-        // router.push("/dashboard");
         dispatch(resetFormState());
       } else {
         showToast("error", "Submission failed");
