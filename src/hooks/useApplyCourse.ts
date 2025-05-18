@@ -77,14 +77,20 @@ const useApplyCourse = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("Handle submit is run ======> ");
-    if (!validateFields()) return;
+    console.log("1. Submit Button Clicked"); // ✅ Step 1
+    if (!validateFields()) {
+      console.log("2. Validation Failed");
+      return;
+    }
+    console.log("3. Validation Passed"); // ✅ Step 3
 
     setIsLoading(true);
     try {
+      console.log("4. Building FormData"); // ✅ Step 4
       const formData = buildFormData();
-      console.log("This is hook form data ======> ", formData);
+      console.log("5. Dispatching Action"); // ✅ Step 5
       const result = await dispatch(courseForm(formData));
+      console.log("6. Action Result:", result); // ✅ Step 6
 
       if (courseForm.fulfilled.match(result)) {
         toast.success("Application submitted successfully!");

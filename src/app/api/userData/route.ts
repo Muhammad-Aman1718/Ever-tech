@@ -136,8 +136,7 @@ export const POST = async (req: NextRequest) => {
     const cnicFrontFile = formData.get("cnicFront") as File;
     const cnicBackFile = formData.get("cnicBack") as File;
 
-    console.log("This is formData =========> " , formData);
-    
+    console.log("This is formData =========> ", formData);
 
     // Validate all fields
     if (
@@ -160,6 +159,8 @@ export const POST = async (req: NextRequest) => {
       );
     }
 
+    console.log("this is validation is pass ============>");
+
     // Upload files to Cloudinary
     const [profilePic, cnicFront, cnicBack] = await Promise.all([
       uploadFile(profilePicFile),
@@ -167,6 +168,7 @@ export const POST = async (req: NextRequest) => {
       uploadFile(cnicBackFile),
     ]);
 
+    console.log("this is exsit user check ============>");
     // Check for existing user
     const existingUser = await prisma.userData.findUnique({
       where: { email },
@@ -178,6 +180,7 @@ export const POST = async (req: NextRequest) => {
         { status: 400 }
       );
     }
+    console.log("this is exsit user check is pass ============>");
 
     // Save to database
     const userData = await prisma.userData.create({
@@ -197,13 +200,14 @@ export const POST = async (req: NextRequest) => {
       },
     });
 
+    console.log("API Success - Data saved:", userData);
     return NextResponse.json({
       success: true,
       message: "Data saved successfully",
       data: userData,
     });
   } catch (error) {
-    console.error(error);
+    console.error("API Error==========> :", error);
     return NextResponse.json(
       {
         success: false,

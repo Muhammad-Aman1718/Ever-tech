@@ -3,22 +3,30 @@ import axiosInstance from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
 import { ErrorResponse } from "@/types/types";
 
-
-
 export const courseForm = createAsyncThunk(
   "courseForm/post",
   async (formData: FormData, { rejectWithValue }) => {
+    console.log("Thunk Start - FormData:", formData);
     try {
       const response = await axiosInstance.post("/api/userData", formData, {
         headers: { "Content-Type": "multipart/form-data" },
+        timeout: 15000,
       });
-      console.log("this is response.data =====> ", response.data);
+      // console.log("this is response.data =====> ", response.data);
 
-      return response.data;
+      // return response.data;
+
+      console.log("API Response data:", response.data.data);
+
+      // Handle backend success/failure
+      if (response.data.success) {
+        return response.data.data;
+      }
+      return rejectWithValue(response.data);
     } catch (error) {
       const errorAxios = error as AxiosError<ErrorResponse>;
       return rejectWithValue({
-        message: errorAxios.response?.data?.message || "Submission failed",
+        message: errorAxios.response?.data?.message || "mission failed",
         code: errorAxios.code,
       });
     }
