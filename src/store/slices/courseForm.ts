@@ -10,28 +10,15 @@ export const courseForm = createAsyncThunk(
     try {
       const response = await axiosInstance.post("/api/userData", formData, {
         headers: { "Content-Type": "multipart/form-data" },
-        timeout: 30000,
+        timeout: 100000,
       });
 
-      // console.log("Raw API Response:", response.data);
-
-      // if (response.data.success) {
-      //   console.log("Success Response Data:", response.data.data);
-      //   return response.data.data;
-      // }
-
-      console.log("Full API Response:", response.data); // 👈 Debug entire response
-
-      // If success flag exists (adapt to your API's actual response)
-      // if (response.data?.success) {
-      // return response.data; // 👈 Return entire response.data
-      // }
+      console.log("Full API Response:", response.data);
       return response.data;
-      // return rejectWithValue(response.data);
     } catch (error) {
       const errorAxios = error as AxiosError<ErrorResponse>;
       return rejectWithValue({
-        message: errorAxios.response?.data?.message || "mission failed",
+        message: errorAxios.response?.data?.message || "Submission failed",
         code: errorAxios.code,
       });
     }

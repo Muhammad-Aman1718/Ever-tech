@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "@/store/store";
 import { courseForm, resetFormState } from "@/store/slices/courseForm";
@@ -7,7 +7,7 @@ import { showToast } from "@/utils/showToast";
 
 const useApplyCourse = () => {
   const dispatch = useAppDispatch();
-  const router = useRouter();
+  const searchParams = useSearchParams();
 
   // Text fields
   const [fullName, setFullName] = useState("");
@@ -26,6 +26,13 @@ const useApplyCourse = () => {
   const [cnicBack, setCnicBack] = useState<File | null>(null);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const courseFromURL = searchParams.get("course");
+    if (courseFromURL) {
+      setCourse(courseFromURL);
+    }
+  }, [searchParams]);
 
   const validateFields = () => {
     const requiredFields = [
@@ -107,15 +114,35 @@ const useApplyCourse = () => {
     try {
       console.log("4. Building FormData"); // ✅ Step 4
       const formData = buildFormData();
-      console.log("5. Dispatching Action and form Data ======> ", ...formData.entries()); // ✅ Step 5
+      console.log(
+        "5. Dispatching Action and form Data ======> ",
+        ...formData.entries()
+      ); // ✅ Step 5
       const result = await dispatch(courseForm(formData));
       console.log("6. Action Result:", result); // ✅ Step 6
 
       if (courseForm.fulfilled.match(result)) {
         toast.success("Application submitted successfully!");
         dispatch(resetFormState());
-      } else {
-        showToast("error", "Submission failed");
+
+        setFullName("");
+        setFatherName("");
+        setEmail("");
+        setPhoneNumber("");
+        setCity("");
+        setProvince("");
+        setEducation("");
+        setCourse("");
+        setMessage("");
+        setProfilePic(null);
+        setCnicFront(null);
+        setCnicBack(null);
+      }
+      if (courseForm.rejected.match(result)) {
+        const errorMessage =
+          (result.payload as { message: string })?.message ||
+          "Submission failed";
+        toast.error(errorMessage); // ✅ Show toast for error
       }
     } catch (error) {
       showToast("error", "An unexpected error occurred");
