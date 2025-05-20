@@ -49,6 +49,24 @@ const useApplyCourse = () => {
       return false;
     }
 
+    const MAX_FILE_SIZE_MB = 2;
+    const MAX_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024;
+
+    if (profilePic.size > MAX_SIZE) {
+      showToast("error", "Profile picture must be less than 2 MB");
+      return false;
+    }
+
+    if (cnicFront.size > MAX_SIZE) {
+      showToast("error", "CNIC front image must be less than 2 MB");
+      return false;
+    }
+
+    if (cnicBack.size > MAX_SIZE) {
+      showToast("error", "CNIC back image must be less than 2 MB");
+      return false;
+    }
+
     return true;
   };
 
@@ -73,6 +91,7 @@ const useApplyCourse = () => {
     if (cnicFront) formData.append("cnicFront", cnicFront);
     if (cnicBack) formData.append("cnicBack", cnicBack);
 
+    console.log("build form is run ======> ", formData);
     return formData;
   };
 
@@ -88,7 +107,7 @@ const useApplyCourse = () => {
     try {
       console.log("4. Building FormData"); // ✅ Step 4
       const formData = buildFormData();
-      console.log("5. Dispatching Action"); // ✅ Step 5
+      console.log("5. Dispatching Action and form Data ======> ", ...formData.entries()); // ✅ Step 5
       const result = await dispatch(courseForm(formData));
       console.log("6. Action Result:", result); // ✅ Step 6
 
@@ -110,14 +129,6 @@ const useApplyCourse = () => {
     file: File | null
   ) => {
     if (!file) return;
-
-    const MAX_FILE_SIZE_MB = 5;
-    const isTooLarge = file.size > MAX_FILE_SIZE_MB * 1024 * 1024;
-
-    if (isTooLarge) {
-      showToast("error", "File size should not exceed 5MB");
-      return;
-    }
 
     switch (type) {
       case "profile":

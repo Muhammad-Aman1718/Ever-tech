@@ -6,23 +6,28 @@ import { ErrorResponse } from "@/types/types";
 export const courseForm = createAsyncThunk(
   "courseForm/post",
   async (formData: FormData, { rejectWithValue }) => {
-    console.log("Thunk Start - FormData:", formData);
+    console.log("Thunk Start - FormData:", ...formData.entries());
     try {
       const response = await axiosInstance.post("/api/userData", formData, {
         headers: { "Content-Type": "multipart/form-data" },
-        timeout: 15000,
+        timeout: 30000,
       });
-      // console.log("this is response.data =====> ", response.data);
 
-      // return response.data;
+      // console.log("Raw API Response:", response.data);
 
-      console.log("API Response data:", response.data.data);
+      // if (response.data.success) {
+      //   console.log("Success Response Data:", response.data.data);
+      //   return response.data.data;
+      // }
 
-      // Handle backend success/failure
-      if (response.data.success) {
-        return response.data.data;
-      }
-      return rejectWithValue(response.data);
+      console.log("Full API Response:", response.data); // 👈 Debug entire response
+
+      // If success flag exists (adapt to your API's actual response)
+      // if (response.data?.success) {
+      // return response.data; // 👈 Return entire response.data
+      // }
+      return response.data;
+      // return rejectWithValue(response.data);
     } catch (error) {
       const errorAxios = error as AxiosError<ErrorResponse>;
       return rejectWithValue({

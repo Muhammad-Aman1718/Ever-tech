@@ -102,17 +102,40 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/config/prisma";
 import cloudinary from "@/lib/cloudinary";
 
+// async function uploadFile(file: File): Promise<string> {
+//   const bytes = await file.arrayBuffer();
+//   const buffer = Buffer.from(bytes);
+
+//   return new Promise((resolve, reject) => {
+//     cloudinary.uploader
+//       .upload_stream({ folder: "uploads" }, (error, result) => {
+//         if (error) reject(error);
+//         resolve(result?.secure_url ?? "");
+//       })
+//       .end(buffer);
+//   });
+// }
+
 async function uploadFile(file: File): Promise<string> {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
   return new Promise((resolve, reject) => {
-    cloudinary.uploader
-      .upload_stream({ folder: "uploads" }, (error, result) => {
-        if (error) reject(error);
-        resolve(result?.secure_url ?? "");
-      })
-      .end(buffer);
+    const stream = cloudinary.uploader.upload_stream(
+      { folder: "uploads" },
+      (error, result) => {
+        if (error) {
+          console.error("Cloudinary upload error:", error); // ✅ Better logging
+          reject(error);
+        } else if (result?.secure_url) {
+          resolve(result.secure_url);
+        } else {
+          reject(new Error("Upload failed without error message"));
+        }
+      }
+    );
+
+    stream.end(buffer); // Ensure buffer is properly ended
   });
 }
 
@@ -176,7 +199,6 @@ export const POST = async (req: NextRequest) => {
     console.log("this is exsit user check is pass ============>");
     console.log("this is img uploading... ");
 
-    // Upload files to Cloudinary
     const [profilePic, cnicFront, cnicBack] = await Promise.all([
       uploadFile(profilePicFile),
       uploadFile(cnicFrontFile),
