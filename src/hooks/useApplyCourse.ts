@@ -109,6 +109,16 @@ const useApplyCourse = () => {
     type: "profile" | "front" | "back",
     file: File | null
   ) => {
+    if (!file) return;
+
+    const MAX_FILE_SIZE_MB = 5;
+    const isTooLarge = file.size > MAX_FILE_SIZE_MB * 1024 * 1024;
+
+    if (isTooLarge) {
+      showToast("error", "File size should not exceed 5MB");
+      return;
+    }
+
     switch (type) {
       case "profile":
         setProfilePic(file);

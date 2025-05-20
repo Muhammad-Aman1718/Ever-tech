@@ -161,13 +161,6 @@ export const POST = async (req: NextRequest) => {
 
     console.log("this is validation is pass ============>");
 
-    // Upload files to Cloudinary
-    const [profilePic, cnicFront, cnicBack] = await Promise.all([
-      uploadFile(profilePicFile),
-      uploadFile(cnicFrontFile),
-      uploadFile(cnicBackFile),
-    ]);
-
     console.log("this is exsit user check ============>");
     // Check for existing user
     const existingUser = await prisma.userData.findUnique({
@@ -181,6 +174,15 @@ export const POST = async (req: NextRequest) => {
       );
     }
     console.log("this is exsit user check is pass ============>");
+    console.log("this is img uploading... ");
+
+    // Upload files to Cloudinary
+    const [profilePic, cnicFront, cnicBack] = await Promise.all([
+      uploadFile(profilePicFile),
+      uploadFile(cnicFrontFile),
+      uploadFile(cnicBackFile),
+    ]);
+    console.log("this is img uploading done ");
 
     // Save to database
     const userData = await prisma.userData.create({
