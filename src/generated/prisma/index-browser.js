@@ -135,8 +135,7 @@ exports.Prisma.AdminScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
-  role: 'role',
-  createdAt: 'createdAt'
+  role: 'role'
 };
 
 exports.Prisma.SortOrder = {

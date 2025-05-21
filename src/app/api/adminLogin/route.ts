@@ -1,43 +1,88 @@
-// app/api/admin/login/route.ts
-import { NextResponse } from "next/server";
-// import { PrismaClient } from "@prisma/client";
+
+// app/api/adminLogin/route.ts
+import { prisma } from "@/config/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { prisma } from "@/config/prisma";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-const SECRET = process.env.JWT_SECRET || "ZXZlclRlY2hTb2x1dGlvbnM";
+export async function POST(request: NextRequest) {
+  try {
+    console.log("1. Starting login process");
 
-export const POST = async (req: Request) => {
-  const body = await req.json();
-  const { email, password } = body;
+    // Parse request body
+    const body = await request.json();
+    console.log("2. Parsed body:", body);
 
-  if (!email || !password) {
+    const { email, password } = body;
+    if (!email || !password) {
+      console.log("3. Validation failed - missing fields");
+      return NextResponse.json(
+        { success: false, error: "Missing credentials" },
+        { status: 400 }
+      );
+    }
+
+    console.log("4. Searching user in database");
+    const admin = await prisma.admin.findUnique({
+      where: { email: email },
+    });
+
+    if (!admin) {
+      console.log("5. User not found");
+      return NextResponse.json(
+        { success: false, error: "Invalid credentials" },
+        { status: 401 }
+      );
+    }
+
+    console.log("6. Comparing passwords");
+    const passwordValid = await bcrypt.compare(password, admin.password);
+    console.log("this is valid password========> ", passwordValid);
+
+    if (!passwordValid) {
+      console.log("7. Password mismatch");
+      return NextResponse.json(
+        { success: false, error: "Invalid credentials" },
+        { status: 401 }
+      );
+    }
+
+    console.log("8. Generating JWT");
+    if (!process.env.JWT_SECRET) {
+      console.error("9. JWT_SECRET missing");
+      throw new Error("JWT secret not configured");
+    }
+
+    const token = jwt.sign(
+      { userId: admin.id, role: admin.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    console.log("10. Login successful");
+    return NextResponse.json({
+      success: true,
+      token,
+      role: admin.role,
+      userId: admin.id,
+    });
+  } catch (error) {
+    console.error("ERROR STACK TRACE:", error);
     return NextResponse.json(
-      { message: "Email and password required" },
-      { status: 400 }
+      {
+        success: false,
+        error: "Internal server error",
+        debugInfo:
+          process.env.NODE_ENV === "development"
+            ? {
+                message:
+                  error instanceof Error ? error.message : "Unknown error",
+                stack: error instanceof Error ? error.stack : undefined,
+              }
+            : undefined,
+      },
+      { status: 500 }
     );
   }
-
-  const admin = await prisma.admin.findUnique({ where: { email } });
-  if (!admin) {
-    return NextResponse.json(
-      { message: "Invalid credentials" },
-      { status: 401 }
-    );
-  }
-
-  const isMatch = await bcrypt.compare(password, admin.password);
-  if (!isMatch) {
-    return NextResponse.json(
-      { message: "Invalid credentials" },
-      { status: 401 }
-    );
-  }
-
-  const token = jwt.sign({ adminId: admin.id }, SECRET, { expiresIn: "1d" });
-
-  return NextResponse.json(
-    { message: "Login successful", token },
-    { status: 200 }
-  );
-};
+}

@@ -1971,7 +1971,6 @@ export namespace Prisma {
     email: string | null
     password: string | null
     role: string | null
-    createdAt: Date | null
   }
 
   export type AdminMaxAggregateOutputType = {
@@ -1979,7 +1978,6 @@ export namespace Prisma {
     email: string | null
     password: string | null
     role: string | null
-    createdAt: Date | null
   }
 
   export type AdminCountAggregateOutputType = {
@@ -1987,7 +1985,6 @@ export namespace Prisma {
     email: number
     password: number
     role: number
-    createdAt: number
     _all: number
   }
 
@@ -1997,7 +1994,6 @@ export namespace Prisma {
     email?: true
     password?: true
     role?: true
-    createdAt?: true
   }
 
   export type AdminMaxAggregateInputType = {
@@ -2005,7 +2001,6 @@ export namespace Prisma {
     email?: true
     password?: true
     role?: true
-    createdAt?: true
   }
 
   export type AdminCountAggregateInputType = {
@@ -2013,7 +2008,6 @@ export namespace Prisma {
     email?: true
     password?: true
     role?: true
-    createdAt?: true
     _all?: true
   }
 
@@ -2094,7 +2088,6 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    createdAt: Date
     _count: AdminCountAggregateOutputType | null
     _min: AdminMinAggregateOutputType | null
     _max: AdminMaxAggregateOutputType | null
@@ -2119,7 +2112,6 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     role?: boolean
-    createdAt?: boolean
   }, ExtArgs["result"]["admin"]>
 
 
@@ -2129,10 +2121,9 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     role?: boolean
-    createdAt?: boolean
   }
 
-  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "role" | "createdAt", ExtArgs["result"]["admin"]>
+  export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "role", ExtArgs["result"]["admin"]>
 
   export type $AdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Admin"
@@ -2142,7 +2133,6 @@ export namespace Prisma {
       email: string
       password: string
       role: string
-      createdAt: Date
     }, ExtArgs["result"]["admin"]>
     composites: {}
   }
@@ -2539,7 +2529,6 @@ export namespace Prisma {
     readonly email: FieldRef<"Admin", 'String'>
     readonly password: FieldRef<"Admin", 'String'>
     readonly role: FieldRef<"Admin", 'String'>
-    readonly createdAt: FieldRef<"Admin", 'DateTime'>
   }
     
 
@@ -2917,8 +2906,7 @@ export namespace Prisma {
     id: 'id',
     email: 'email',
     password: 'password',
-    role: 'role',
-    createdAt: 'createdAt'
+    role: 'role'
   };
 
   export type AdminScalarFieldEnum = (typeof AdminScalarFieldEnum)[keyof typeof AdminScalarFieldEnum]
@@ -3100,7 +3088,6 @@ export namespace Prisma {
     email?: StringFilter<"Admin"> | string
     password?: StringFilter<"Admin"> | string
     role?: StringFilter<"Admin"> | string
-    createdAt?: DateTimeFilter<"Admin"> | Date | string
   }
 
   export type AdminOrderByWithRelationInput = {
@@ -3108,7 +3095,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
@@ -3119,7 +3105,6 @@ export namespace Prisma {
     NOT?: AdminWhereInput | AdminWhereInput[]
     password?: StringFilter<"Admin"> | string
     role?: StringFilter<"Admin"> | string
-    createdAt?: DateTimeFilter<"Admin"> | Date | string
   }, "id" | "email">
 
   export type AdminOrderByWithAggregationInput = {
@@ -3127,7 +3112,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
     _count?: AdminCountOrderByAggregateInput
     _max?: AdminMaxOrderByAggregateInput
     _min?: AdminMinOrderByAggregateInput
@@ -3141,7 +3125,6 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Admin"> | string
     password?: StringWithAggregatesFilter<"Admin"> | string
     role?: StringWithAggregatesFilter<"Admin"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
   }
 
   export type UserDataCreateInput = {
@@ -3271,7 +3254,6 @@ export namespace Prisma {
     email: string
     password: string
     role?: string
-    createdAt?: Date | string
   }
 
   export type AdminUncheckedCreateInput = {
@@ -3279,21 +3261,18 @@ export namespace Prisma {
     email: string
     password: string
     role?: string
-    createdAt?: Date | string
   }
 
   export type AdminUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminUncheckedUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminCreateManyInput = {
@@ -3301,21 +3280,18 @@ export namespace Prisma {
     email: string
     password: string
     role?: string
-    createdAt?: Date | string
   }
 
   export type AdminUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminUncheckedUpdateManyInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3435,7 +3411,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type AdminMaxOrderByAggregateInput = {
@@ -3443,7 +3418,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type AdminMinOrderByAggregateInput = {
@@ -3451,7 +3425,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
