@@ -131,6 +131,14 @@ exports.Prisma.UserDataScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AdminScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password',
+  role: 'role',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -143,7 +151,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  UserData: 'UserData'
+  UserData: 'UserData',
+  Admin: 'Admin'
 };
 
 /**
