@@ -14,6 +14,7 @@ const Login = () => {
     setEmail,
     setPassword,
     setShowPassword,
+    handleSubmit,
   } = useLogin();
 
   return (
@@ -53,6 +54,12 @@ const Login = () => {
             </button>
           </div>
         </div>
+        <button
+          onClick={handleSubmit}
+          className="border rounded-[10px] mt-[60px] py-[10px] w-[150px] cursor-pointer "
+        >
+          Login
+        </button>
       </MainContainer>
     </div>
   );
