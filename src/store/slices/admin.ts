@@ -12,6 +12,10 @@ export const admin = createAsyncThunk<
   try {
     const response = await axiosInstance.post("/api/adminLogin", loginData);
     console.log("Full API Response:", response.data);
+    const { token } = response.data;
+    console.log("token ========> ", token);
+
+    localStorage.setItem("token", token);
     return response.data;
   } catch (error) {
     const errorAxios = error as AxiosError<ErrorResponse>;

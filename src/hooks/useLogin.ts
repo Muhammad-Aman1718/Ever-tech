@@ -1,7 +1,9 @@
+"use client";
 import { useState } from "react";
 import { admin } from "@/store/slices/admin";
 import { useAppDispatch } from "@/store/store";
 import { showToast } from "@/utils/showToast";
+import { useRouter } from "next/navigation";
 
 const useLogin = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +11,7 @@ const useLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const handleSubmit = async () => {
     const adminData = { email, password };
@@ -16,7 +19,7 @@ const useLogin = () => {
     try {
       console.log("Dispatching admin login...");
 
-      const resultAction = await dispatch(admin(adminData));
+      const resultAction = await dispatch(admin(adminData)).unwrap();
 
       if (admin.rejected.match(resultAction)) {
         const errorMessage =
@@ -28,6 +31,10 @@ const useLogin = () => {
         console.log("Admin login successful!");
         setEmail("");
         setPassword("");
+        // if (resultAction?.token) {
+        //   localStorage.setItem("adminToken", resultAction.token);
+        //   router.push("/admin/dashboard"); // Redirect to dashboard
+        // }
       }
     } catch (error) {
       // Catch any unexpected errors

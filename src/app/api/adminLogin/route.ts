@@ -1,4 +1,3 @@
-
 // app/api/adminLogin/route.ts
 import { prisma } from "@/config/prisma";
 import bcrypt from "bcryptjs";
@@ -27,6 +26,8 @@ export async function POST(request: NextRequest) {
     const admin = await prisma.admin.findUnique({
       where: { email: email },
     });
+
+    console.log("this is admin =======> ", admin);
 
     if (!admin) {
       console.log("5. User not found");
