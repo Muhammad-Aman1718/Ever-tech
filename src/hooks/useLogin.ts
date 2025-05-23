@@ -4,6 +4,7 @@ import { admin } from "@/store/slices/admin";
 import { useAppDispatch } from "@/store/store";
 import { showToast } from "@/utils/showToast";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const useLogin = () => {
   const [email, setEmail] = useState("");
@@ -31,10 +32,12 @@ const useLogin = () => {
         console.log("Admin login successful!");
         setEmail("");
         setPassword("");
-        // if (resultAction?.token) {
-        //   localStorage.setItem("adminToken", resultAction.token);
-        //   router.push("/admin/dashboard"); // Redirect to dashboard
-        // }
+        if (resultAction?.token) {
+          console.log("this is resultAction?.token =====> ");
+
+          Cookies.set("adminToken", resultAction.token);
+          router.push("/admin/dashboard"); // Redirect to dashboard
+        }
       }
     } catch (error) {
       // Catch any unexpected errors

@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["res.cloudinary.com"],
   },
+  // matcher: ["/admin/dashboard/:path*"],
 };
 
 export default nextConfig;

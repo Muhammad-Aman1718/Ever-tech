@@ -3,6 +3,7 @@ import { DM_Sans, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./providers/storeProvide";
 import { ToastContainer } from "react-toastify";
+import Navbar from "@/components/navbar/Navbar";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -37,7 +38,9 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <ToastContainer />
-        <StoreProvider> {children}</StoreProvider>
+        <StoreProvider>
+       {children}
+        </StoreProvider>
       </body>
     </html>
   );
