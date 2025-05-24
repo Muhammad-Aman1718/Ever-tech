@@ -23,12 +23,17 @@ const Dashboard = () => {
           <div className="flex items-center gap-x-[20px]   ">
             <Button
               className=" "
-              // onClick={handleLogout}
+              onClick={handleLogout}
+              title="New Students"
+            />
+            <Button
+              className=" "
+              onClick={handleLogout}
               title="Accepted Students"
             />
             <Button
               className=" "
-              // onClick={handleLogout}
+              onClick={handleLogout}
               title="Declined Students"
             />
           </div>

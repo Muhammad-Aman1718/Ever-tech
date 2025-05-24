@@ -125,18 +125,18 @@ const useApplyCourse = () => {
         toast.success("Application submitted successfully!");
         dispatch(resetFormState());
 
-        setFullName("");
-        setFatherName("");
-        setEmail("");
-        setPhoneNumber("");
-        setCity("");
-        setProvince("");
-        setEducation("");
-        setCourse("");
-        setMessage("");
-        setProfilePic(null);
-        setCnicFront(null);
-        setCnicBack(null);
+        // setFullName("");
+        // setFatherName("");
+        // setEmail("");
+        // setPhoneNumber("");
+        // setCity("");
+        // setProvince("");
+        // setEducation("");
+        // setCourse("");
+        // setMessage("");
+        // setProfilePic(null);
+        // setCnicFront(null);
+        // setCnicBack(null);
       }
       if (courseForm.rejected.match(result)) {
         const errorMessage =

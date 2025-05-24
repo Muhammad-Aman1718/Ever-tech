@@ -27,14 +27,14 @@ const StudentTable: React.FC<Props> = ({
   const userData = useAppSelector((state) => state.userDataReducer.userData);
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto my-8 ">
       <table className="min-w-full border border-gray-300 text-sm text-left bg-white">
         <thead className="bg-[#2A75BB] text-white">
           <tr>
             <th className="px-4 py-2 border">#</th>
             <th className="px-4 py-2 border">Full Name</th>
             <th className="px-4 py-2 border">Email</th>
-            {/* <th className="px-4 py-2 border">Phone</th> */}
+            <th className="px-4 py-2 border">status</th>
             <th className="px-4 py-2 border">City</th>
             <th className="px-4 py-2 border">Course</th>
             <th className="px-4 py-2 border">Actions</th>
@@ -46,7 +46,7 @@ const StudentTable: React.FC<Props> = ({
               <td className="px-4 py-2 border">{index + 1}</td>
               <td className="px-4 py-2 border">{student.fullName}</td>
               <td className="px-4 py-2 border">{student.email}</td>
-              {/* <td className="px-4 py-2 border">{student.phoneNumber}</td> */}
+              <td className="px-4 py-2 border">{student.status}</td>
               <td className="px-4 py-2 border">{student.city}</td>
               <td className="px-4 py-2 border">{student.course}</td>
               <td className="px-4 py-2 border space-x-2">
