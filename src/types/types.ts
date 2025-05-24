@@ -8,6 +8,7 @@ export interface userData {
   education?: string;
   course?: string;
   message?: string;
+  status?: string | null;
   profilePic?: string;
   cnicFront?: string;
   cnicBack?: string;

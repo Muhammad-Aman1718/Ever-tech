@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { createWrapper } from "next-redux-wrapper";
-import courseFormSlice from "./slices/courseForm";
+import userDataSlice from "./slices/userData";
 import adminLoginSlice from "./slices/admin";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      courseFormReducer: courseFormSlice,
+      userDataReducer: userDataSlice,
       adminLoginReducer: adminLoginSlice,
     },
   });

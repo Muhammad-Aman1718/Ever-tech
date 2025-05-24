@@ -162,3 +162,40 @@ export const GET = async (req: NextRequest) => {
     await prisma.$disconnect(); // Graceful disconnect (safe in API routes)
   }
 };
+
+export const PUT = async (
+  req: NextRequest
+  // { params }: { params: { id: string } }
+) => {
+  try {
+    // const { id } = params;
+    const body = await req.json();
+
+    console.log("this is put api id and status ======>", body);
+
+    const { id, status } = body;
+
+    if (!id || !status) {
+      return NextResponse.json(
+        { message: "Id and Status is required" },
+        { status: 400 }
+      );
+    }
+
+    const updatedUser = await prisma.userData.update({
+      where: { id },
+      data: { status },
+    });
+    console.log("this is put api updated user ======>", updatedUser);
+    return NextResponse.json(
+      { message: "Status updated", data: updatedUser },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Status update error:", error);
+    return NextResponse.json(
+      { message: "Something went wrong", error },
+      { status: 500 }
+    );
+  }
+};

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "@/store/store";
-import { courseForm, resetFormState } from "@/store/slices/courseForm";
+import { courseForm, resetFormState } from "@/store/slices/userData";
 import { showToast } from "@/utils/showToast";
 
 const useApplyCourse = () => {
