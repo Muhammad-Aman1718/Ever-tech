@@ -25,6 +25,7 @@ model UserData {
   education   String
   course      String
   message     String
+  status      String?
   profilePic  String
   cnicFront   String
   cnicBack    String

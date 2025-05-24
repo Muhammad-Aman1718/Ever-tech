@@ -39,6 +39,7 @@ export const POST = async (req: NextRequest) => {
     const education = formData.get("education") as string;
     const course = formData.get("course") as string;
     const message = formData.get("message") as string;
+    const status = formData.get("status") as string | null
 
     // Extract files
     const profilePicFile = formData.get("profilePic") as File;
@@ -104,6 +105,7 @@ export const POST = async (req: NextRequest) => {
         education,
         course,
         message,
+        status,
         profilePic,
         cnicFront,
         cnicBack,

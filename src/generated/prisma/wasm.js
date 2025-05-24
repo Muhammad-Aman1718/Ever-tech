@@ -124,6 +124,7 @@ exports.Prisma.UserDataScalarFieldEnum = {
   education: 'education',
   course: 'course',
   message: 'message',
+  status: 'status',
   profilePic: 'profilePic',
   cnicFront: 'cnicFront',
   cnicBack: 'cnicBack',

@@ -935,6 +935,7 @@ export namespace Prisma {
     education: string | null
     course: string | null
     message: string | null
+    status: string | null
     profilePic: string | null
     cnicFront: string | null
     cnicBack: string | null
@@ -953,6 +954,7 @@ export namespace Prisma {
     education: string | null
     course: string | null
     message: string | null
+    status: string | null
     profilePic: string | null
     cnicFront: string | null
     cnicBack: string | null
@@ -971,6 +973,7 @@ export namespace Prisma {
     education: number
     course: number
     message: number
+    status: number
     profilePic: number
     cnicFront: number
     cnicBack: number
@@ -991,6 +994,7 @@ export namespace Prisma {
     education?: true
     course?: true
     message?: true
+    status?: true
     profilePic?: true
     cnicFront?: true
     cnicBack?: true
@@ -1009,6 +1013,7 @@ export namespace Prisma {
     education?: true
     course?: true
     message?: true
+    status?: true
     profilePic?: true
     cnicFront?: true
     cnicBack?: true
@@ -1027,6 +1032,7 @@ export namespace Prisma {
     education?: true
     course?: true
     message?: true
+    status?: true
     profilePic?: true
     cnicFront?: true
     cnicBack?: true
@@ -1118,6 +1124,7 @@ export namespace Prisma {
     education: string
     course: string
     message: string
+    status: string | null
     profilePic: string
     cnicFront: string
     cnicBack: string
@@ -1153,6 +1160,7 @@ export namespace Prisma {
     education?: boolean
     course?: boolean
     message?: boolean
+    status?: boolean
     profilePic?: boolean
     cnicFront?: boolean
     cnicBack?: boolean
@@ -1173,6 +1181,7 @@ export namespace Prisma {
     education?: boolean
     course?: boolean
     message?: boolean
+    status?: boolean
     profilePic?: boolean
     cnicFront?: boolean
     cnicBack?: boolean
@@ -1180,7 +1189,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "fatherName" | "email" | "phoneNumber" | "city" | "province" | "education" | "course" | "message" | "profilePic" | "cnicFront" | "cnicBack" | "createdAt" | "updatedAt", ExtArgs["result"]["userData"]>
+  export type UserDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "fatherName" | "email" | "phoneNumber" | "city" | "province" | "education" | "course" | "message" | "status" | "profilePic" | "cnicFront" | "cnicBack" | "createdAt" | "updatedAt", ExtArgs["result"]["userData"]>
 
   export type $UserDataPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "UserData"
@@ -1196,6 +1205,7 @@ export namespace Prisma {
       education: string
       course: string
       message: string
+      status: string | null
       profilePic: string
       cnicFront: string
       cnicBack: string
@@ -1603,6 +1613,7 @@ export namespace Prisma {
     readonly education: FieldRef<"UserData", 'String'>
     readonly course: FieldRef<"UserData", 'String'>
     readonly message: FieldRef<"UserData", 'String'>
+    readonly status: FieldRef<"UserData", 'String'>
     readonly profilePic: FieldRef<"UserData", 'String'>
     readonly cnicFront: FieldRef<"UserData", 'String'>
     readonly cnicBack: FieldRef<"UserData", 'String'>
@@ -2892,6 +2903,7 @@ export namespace Prisma {
     education: 'education',
     course: 'course',
     message: 'message',
+    status: 'status',
     profilePic: 'profilePic',
     cnicFront: 'cnicFront',
     cnicBack: 'cnicBack',
@@ -2992,6 +3004,7 @@ export namespace Prisma {
     education?: StringFilter<"UserData"> | string
     course?: StringFilter<"UserData"> | string
     message?: StringFilter<"UserData"> | string
+    status?: StringNullableFilter<"UserData"> | string | null
     profilePic?: StringFilter<"UserData"> | string
     cnicFront?: StringFilter<"UserData"> | string
     cnicBack?: StringFilter<"UserData"> | string
@@ -3010,6 +3023,7 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    status?: SortOrder
     profilePic?: SortOrder
     cnicFront?: SortOrder
     cnicBack?: SortOrder
@@ -3031,6 +3045,7 @@ export namespace Prisma {
     education?: StringFilter<"UserData"> | string
     course?: StringFilter<"UserData"> | string
     message?: StringFilter<"UserData"> | string
+    status?: StringNullableFilter<"UserData"> | string | null
     profilePic?: StringFilter<"UserData"> | string
     cnicFront?: StringFilter<"UserData"> | string
     cnicBack?: StringFilter<"UserData"> | string
@@ -3049,6 +3064,7 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    status?: SortOrder
     profilePic?: SortOrder
     cnicFront?: SortOrder
     cnicBack?: SortOrder
@@ -3073,6 +3089,7 @@ export namespace Prisma {
     education?: StringWithAggregatesFilter<"UserData"> | string
     course?: StringWithAggregatesFilter<"UserData"> | string
     message?: StringWithAggregatesFilter<"UserData"> | string
+    status?: StringNullableWithAggregatesFilter<"UserData"> | string | null
     profilePic?: StringWithAggregatesFilter<"UserData"> | string
     cnicFront?: StringWithAggregatesFilter<"UserData"> | string
     cnicBack?: StringWithAggregatesFilter<"UserData"> | string
@@ -3138,6 +3155,7 @@ export namespace Prisma {
     education: string
     course: string
     message: string
+    status?: string | null
     profilePic: string
     cnicFront: string
     cnicBack: string
@@ -3156,6 +3174,7 @@ export namespace Prisma {
     education: string
     course: string
     message: string
+    status?: string | null
     profilePic: string
     cnicFront: string
     cnicBack: string
@@ -3173,6 +3192,7 @@ export namespace Prisma {
     education?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: StringFieldUpdateOperationsInput | string
     cnicFront?: StringFieldUpdateOperationsInput | string
     cnicBack?: StringFieldUpdateOperationsInput | string
@@ -3190,6 +3210,7 @@ export namespace Prisma {
     education?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: StringFieldUpdateOperationsInput | string
     cnicFront?: StringFieldUpdateOperationsInput | string
     cnicBack?: StringFieldUpdateOperationsInput | string
@@ -3208,6 +3229,7 @@ export namespace Prisma {
     education: string
     course: string
     message: string
+    status?: string | null
     profilePic: string
     cnicFront: string
     cnicBack: string
@@ -3225,6 +3247,7 @@ export namespace Prisma {
     education?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: StringFieldUpdateOperationsInput | string
     cnicFront?: StringFieldUpdateOperationsInput | string
     cnicBack?: StringFieldUpdateOperationsInput | string
@@ -3242,6 +3265,7 @@ export namespace Prisma {
     education?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     message?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: StringFieldUpdateOperationsInput | string
     cnicFront?: StringFieldUpdateOperationsInput | string
     cnicBack?: StringFieldUpdateOperationsInput | string
@@ -3309,6 +3333,22 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    isSet?: boolean
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3331,6 +3371,7 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    status?: SortOrder
     profilePic?: SortOrder
     cnicFront?: SortOrder
     cnicBack?: SortOrder
@@ -3349,6 +3390,7 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    status?: SortOrder
     profilePic?: SortOrder
     cnicFront?: SortOrder
     cnicBack?: SortOrder
@@ -3367,6 +3409,7 @@ export namespace Prisma {
     education?: SortOrder
     course?: SortOrder
     message?: SortOrder
+    status?: SortOrder
     profilePic?: SortOrder
     cnicFront?: SortOrder
     cnicBack?: SortOrder
@@ -3390,6 +3433,25 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+    isSet?: boolean
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -3431,6 +3493,11 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+    unset?: boolean
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -3447,6 +3514,21 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    isSet?: boolean
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -3486,6 +3568,36 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
