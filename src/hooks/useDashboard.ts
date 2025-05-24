@@ -3,11 +3,13 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { getUserData, updateUserStatus } from "@/store/slices/userData";
+import { userData } from "@/types/types";
 
 const useDashboard = () => {
-  const [acceptStudent, setAcceptStudent] = useState(false);
-  const [declineStudent, setDeclineStudent] = useState(false);
-  const [newStudent, setNewStudent] = useState(true);
+  const [filterStatus, setFilterStatus] = useState<
+    null | "Accepted" | "Declined"
+  >(null);
+  const [selectedStudent, setSelectedStudent] = useState<userData | null>(null);
 
   const router = useRouter();
 
@@ -16,36 +18,22 @@ const useDashboard = () => {
   const loading = useAppSelector((state) => state.userDataReducer.loading);
   console.log("this is selector hook user data ", userData);
 
-  const acceptedStudents = userData.filter(
-    (user) => user.status === "Accepted"
-  );
-  console.log("this is accepted students ======> ", acceptedStudents);
-  const declinedStudents = userData.filter(
-    (user) => user.status === "Declined"
-  );
-  console.log("this is Declined students ======> ", declinedStudents);
-  const newStudents = userData.filter((user) => user.status === null);
-  console.log("this is new students =====> ", newStudents);
+  const filteredStudents = userData.filter((student) => {
+    if (filterStatus === "Accepted") return student.status === "Accepted";
+    if (filterStatus === "Declined") return student.status === "Declined";
+    if (filterStatus === null) return student.status === null;
+  });
 
   useEffect(() => {
     const result = dispatch(getUserData());
     console.log("this is result =======> ", result);
   }, []);
 
-  const handleAcceptedStudents = () => {
-    setAcceptStudent(true);
-    setDeclineStudent(false);
-    setNewStudent(false);
-  };
-  const handleDeclinedStudents = () => {
-    setAcceptStudent(false);
-    setDeclineStudent(true);
-    setNewStudent(false);
-  };
+  const handleAcceptedStudents = () => setFilterStatus("Accepted");
+  const handleDeclinedStudents = () => setFilterStatus("Declined");
   const handleNewStudents = () => {
-    setAcceptStudent(false);
-    setDeclineStudent(false);
-    setNewStudent(true);
+    console.log("handleNewStudents");
+    setFilterStatus(null);
   };
 
   const handleLogout = () => {
@@ -55,26 +43,39 @@ const useDashboard = () => {
     router.push("/admin/login");
   };
 
-  const handleAccept = (id: string) => {
+  const handleAccept = async (id: string) => {
     console.log("this is handleAccept clicked ");
 
-    dispatch(updateUserStatus({ id, status: "Accepted" }));
+    await dispatch(updateUserStatus({ id, status: "Accepted" }));
+    dispatch(getUserData());
   };
 
-  const handleDecline = (id: string) => {
+  const handleDecline = async (id: string) => {
     console.log("this is handleDecline clicked ");
-    dispatch(updateUserStatus({ id, status: "Declined" }));
+    await dispatch(updateUserStatus({ id, status: "Declined" }));
+    dispatch(getUserData());
+  };
+  const handleViewDetails = (id: string) => {
+    const student = userData.find((s) => s.id === id);
+
+    setSelectedStudent(student || null);
   };
 
   return {
     userData,
     loading,
-    acceptedStudents,
-    declinedStudents,
-    newStudents,
+    filteredStudents,
+    filterStatus,
+    selectedStudent,
+    setSelectedStudent,
+    setFilterStatus,
     handleLogout,
     handleAccept,
     handleDecline,
+    handleViewDetails,
+    handleAcceptedStudents,
+    handleDeclinedStudents,
+    handleNewStudents,
   };
 };
 export default useDashboard;

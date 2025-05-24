@@ -4,14 +4,23 @@ import useDashboard from "@/hooks/useDashboard";
 import MainContainer from "@/components/MainContainer";
 import Button from "@/components/button/Button";
 import StudentTable from "@/components/admin/studentTable/StudentTable";
+import StudentInformationForm from "@/components/admin/StudentInformationForm";
 
 const Dashboard = () => {
-  const { userData, loading, handleLogout, handleAccept, handleDecline } =
-    useDashboard();
-
-  const handleViewDetails = (id: string) => {
-    alert(`Viewing details of student ID: ${id}`);
-  };
+  const {
+    userData,
+    loading,
+    filteredStudents,
+    selectedStudent,
+    setSelectedStudent,
+    handleLogout,
+    handleAccept,
+    handleDecline,
+    handleViewDetails,
+    handleAcceptedStudents,
+    handleDeclinedStudents,
+    handleNewStudents,
+  } = useDashboard();
 
   return (
     <div>
@@ -23,17 +32,17 @@ const Dashboard = () => {
           <div className="flex items-center gap-x-[20px]   ">
             <Button
               className=" "
-              onClick={handleLogout}
+              onClick={handleNewStudents}
               title="New Students"
             />
             <Button
               className=" "
-              onClick={handleLogout}
+              onClick={handleAcceptedStudents}
               title="Accepted Students"
             />
             <Button
               className=" "
-              onClick={handleLogout}
+              onClick={handleDeclinedStudents}
               title="Declined Students"
             />
           </div>
@@ -41,11 +50,25 @@ const Dashboard = () => {
         </div>
 
         <StudentTable
-          students={userData}
+          students={filteredStudents}
           onAccept={handleAccept}
           onDecline={handleDecline}
           onViewDetails={handleViewDetails}
         />
+
+        {selectedStudent && (
+          <div className=" dark:bg-white bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-lg  ">
+              <button
+                onClick={() => setSelectedStudent(null)}
+                className="border  right-2 text-xl text-white hover:text-red-500"
+              >
+              </button>
+
+              <StudentInformationForm student={selectedStudent} />
+            </div>
+          </div>
+        )}
       </MainContainer>
     </div>
   );
