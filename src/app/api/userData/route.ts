@@ -39,7 +39,7 @@ export const POST = async (req: NextRequest) => {
     const education = formData.get("education") as string;
     const course = formData.get("course") as string;
     const message = formData.get("message") as string;
-    const status = formData.get("status") as string | null
+    const status = formData.get("status") as string | null;
 
     // Extract files
     const profilePicFile = formData.get("profilePic") as File;
@@ -130,5 +130,35 @@ export const POST = async (req: NextRequest) => {
     );
   } finally {
     await prisma.$disconnect();
+  }
+};
+
+export const GET = async (req: NextRequest) => {
+  try {
+    const users = await prisma.userData.findMany();
+    console.log("this is users of get api =======> ", users);
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Users fetched successfully",
+        data: users,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Failed to fetch user data",
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      },
+      { status: 500 }
+    );
+  } finally {
+    await prisma.$disconnect(); // Graceful disconnect (safe in API routes)
   }
 };
