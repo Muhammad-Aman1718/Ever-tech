@@ -155,7 +155,12 @@ const useApplyCourse = () => {
     type: "profile" | "front" | "back",
     file: File | null
   ) => {
-    if (!file) return;
+    if (file === null) {
+      if (type === "profile") setProfilePic(null);
+      else if (type === "front") setCnicFront(null);
+      else if (type === "back") setCnicBack(null);
+      return;
+    }
 
     switch (type) {
       case "profile":
