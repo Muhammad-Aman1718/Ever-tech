@@ -12,6 +12,8 @@ const Dashboard = () => {
     loading,
     filteredStudents,
     selectedStudent,
+    openStudentInformationFrom,
+    setOpenStudentInformationFrom,
     setSelectedStudent,
     handleLogout,
     handleAccept,
@@ -59,13 +61,10 @@ const Dashboard = () => {
         {selectedStudent && (
           <div className=" dark:bg-white bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg  ">
-              <button
+              <StudentInformationForm
                 onClick={() => setSelectedStudent(null)}
-                className="border  right-2 text-xl text-white hover:text-red-500"
-              >
-              </button>
-
-              <StudentInformationForm student={selectedStudent} />
+                student={selectedStudent}
+              />
             </div>
           </div>
         )}
