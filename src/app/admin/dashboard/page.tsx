@@ -10,10 +10,9 @@ const Dashboard = () => {
   const {
     userData,
     loading,
+    filterStatus,
     filteredStudents,
     selectedStudent,
-    openStudentInformationFrom,
-    setOpenStudentInformationFrom,
     setSelectedStudent,
     handleLogout,
     handleAccept,
@@ -27,28 +26,38 @@ const Dashboard = () => {
   return (
     <div>
       <MainContainer>
-        <h1 className="text-[#4D4D4D] text-[36px] font-semibold leading-[44px] text-center my-[50px] ">
+        <h1 className="text-[#4D4D4D] text-[36px] font-semibold leading-[44px] text-center my-[50px] max-sm:text-[25px] max-sm:my-[30px] ">
           Admin Dashboard
         </h1>
-        <div className="flex items-center justify-between my-3 ">
-          <div className="flex items-center gap-x-[20px]   ">
+        <div className="flex items-center justify-between gap-x-[20px] my-3 max-md:overflow-scroll ">
+          <div className="flex items-center gap-x-[10px]   ">
             <Button
-              className=" "
+              className={` ${
+                filterStatus === null ? "bg-red-400" : "bg-[#2A75BB]"
+              } `}
               onClick={handleNewStudents}
               title="New Students"
             />
             <Button
-              className=" "
+              className={` ${
+                filterStatus === "Accepted" ? "bg-red-400" : "bg-[#2A75BB]"
+              } `}
               onClick={handleAcceptedStudents}
               title="Accepted Students"
             />
             <Button
-              className=" "
+              className={` ${
+                filterStatus === "Declined" ? "bg-red-400" : "bg-[#2A75BB]"
+              } `}
               onClick={handleDeclinedStudents}
               title="Declined Students"
             />
           </div>
-          <Button className=" " onClick={handleLogout} title="Logout" />
+          <Button
+            className="bg-[#2A75BB] "
+            onClick={handleLogout}
+            title="Logout"
+          />
         </div>
 
         <StudentTable
@@ -59,14 +68,12 @@ const Dashboard = () => {
         />
 
         {selectedStudent && (
-          <div className=" dark:bg-white bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-6 rounded-lg  ">
-              <StudentInformationForm
-                onClick={() => setSelectedStudent(null)}
-                student={selectedStudent}
-              />
-            </div>
-          </div>
+          <>
+            <StudentInformationForm
+              onClick={() => setSelectedStudent(null)}
+              student={selectedStudent}
+            />
+          </>
         )}
       </MainContainer>
     </div>

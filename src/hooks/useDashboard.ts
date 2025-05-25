@@ -10,8 +10,6 @@ const useDashboard = () => {
     null | "Accepted" | "Declined"
   >(null);
   const [selectedStudent, setSelectedStudent] = useState<userData | null>(null);
-  const [openStudentInformationFrom, setOpenStudentInformationFrom] =
-    useState(false);
 
   const router = useRouter();
 
@@ -59,9 +57,7 @@ const useDashboard = () => {
   };
   const handleViewDetails = (id: string) => {
     const student = userData.find((s) => s.id === id);
-
     setSelectedStudent(student || null);
-    setOpenStudentInformationFrom(true);
   };
 
   return {
@@ -70,8 +66,6 @@ const useDashboard = () => {
     filteredStudents,
     filterStatus,
     selectedStudent,
-    openStudentInformationFrom,
-    setOpenStudentInformationFrom,
     setSelectedStudent,
     setFilterStatus,
     handleLogout,

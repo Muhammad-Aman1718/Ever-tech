@@ -22,7 +22,6 @@ const StudentTable: React.FC<Props> = ({
             <th className="px-4 py-2 border">#</th>
             <th className="px-4 py-2 border">Full Name</th>
             <th className="px-4 py-2 border">Email</th>
-            {/* <th className="px-4 py-2 border">status</th> */}
             <th className="px-4 py-2 border">City</th>
             <th className="px-4 py-2 border">Course</th>
             <th className="px-4 py-2 border">Actions</th>
@@ -34,10 +33,9 @@ const StudentTable: React.FC<Props> = ({
               <td className="px-4 py-2 border">{index + 1}</td>
               <td className="px-4 py-2 border">{student.fullName}</td>
               <td className="px-4 py-2 border">{student.email}</td>
-              {/* <td className="px-4 py-2 border">{student.status}</td> */}
               <td className="px-4 py-2 border">{student.city}</td>
-              <td className="px-4 py-2 border">{student.course}</td>
-              <td className="px-4 py-2 border space-x-2">
+              <td className="px-4 py-2 border">{student.course?.slice(0, 15) + "..." }</td>
+              <td className="px-4 py-2 border space-x-2 text-nowrap">
                 {(student.status === null || student.status === "Declined") && (
                   <button
                     className="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700"

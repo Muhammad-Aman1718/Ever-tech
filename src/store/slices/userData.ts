@@ -28,7 +28,7 @@ export const courseForm = createAsyncThunk(
 export const getUserData = createAsyncThunk("userData/get", async () => {
   try {
     const response = await axiosInstance.get("/api/userData", {
-      timeout: 20000,
+      timeout: 30000,
     });
     console.log(
       "this is response of userData get api thunk =====>",
