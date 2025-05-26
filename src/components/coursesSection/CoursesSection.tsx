@@ -59,7 +59,7 @@ const CoursesSection = () => {
               variants={cardVariants}
             >
               <CoursesCard
-                key={index}
+                // key={index}
                 courseHeading={course.courseHeading}
                 coursePoints={course.coursePoints}
               />

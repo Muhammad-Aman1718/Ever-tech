@@ -62,13 +62,13 @@ const CoursesCard: React.FC<CoursesCardPropsTypes> = ({
 
       {/* Course Content */}
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-800 mb-4">
+        <h3 className="text-xl font-semibold text-gray-800 mb-4 text-nowrap">
           {courseHeading}
         </h3>
 
         <ul className="text-gray-600 text-sm space-y-2 mb-6">
           {coursePoints?.map((point, index) => (
-            <li key={index} className="flex items-start">
+            <li key={index} className="flex items-start text-nowrap">
               <span className="text-blue-500 mr-2">•</span>
               {point}
             </li>
@@ -77,12 +77,18 @@ const CoursesCard: React.FC<CoursesCardPropsTypes> = ({
 
         {/* Buttons */}
         <div className="flex gap-3">
-          <button className="flex-1 border border-blue-500 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors duration-200 text-sm font-medium">
+          {/* <button className="flex-1 border border-blue-500 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors duration-200 text-sm font-medium">
             View Details
-          </button>
-          <button className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm font-medium">
-            Apply Now
-          </button>
+          </button> */}
+          <Link
+            href={`/applyCourse/form?course=${encodeURIComponent(
+              courseHeading ?? ""
+            )}`}
+          >
+            <button className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm font-medium cursor-pointer">
+              Apply Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>

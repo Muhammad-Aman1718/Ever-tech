@@ -1,6 +1,6 @@
 export const allCourses = [
   {
-    courseHeading: "Web Development (Mern Stack)",
+    courseHeading: "Web Development",
     coursePoints: [
       "Html5 / Css3",
       "Bootstrap / Tailwind",
@@ -24,7 +24,7 @@ export const allCourses = [
     coursePoints: [
       "Graphics Designing",
       "Social Media Marketing",
-      "Web Development (Wordpress/Shoppify)",
+      "Wordpress/Shoppify",
       "SEO (Search Engine Optimization)",
       "E-Commerce Store",
     ],
@@ -64,7 +64,7 @@ export const allCourses = [
     coursePoints: [
       "Graphics Designing",
       "Social Media Marketing",
-      "Web Development (Wordpress/Shoppify)",
+      "Wordpress/Shoppify",
       "SEO (Search Engine Optimization)",
       "E-Commerce Store",
     ],
@@ -80,7 +80,7 @@ export const allCourses = [
     ],
   },
   {
-    courseHeading: "Wordpress Web Development",
+    courseHeading: "Wordpress",
     coursePoints: [
       "Front-End Designing",
       "Backend Query Processing",
