@@ -1,7 +1,4 @@
-import { Users, Code, Star, BookOpen } from "lucide-react";
-// import { Code, Users, BookOpen, Star } from "lucide-react";
-
-import { LucideIcon } from "lucide-react";
+import { Users, Code, Star, BookOpen, Settings, Mail } from "lucide-react";
 
 export const allCourses = [
   {
@@ -145,13 +142,13 @@ export const clientsName = [
   "SmartSoft",
 ];
 
-export interface ProgressItem {
-  value: string;
-  label: string;
-  icon: LucideIcon;
-}
+// export interface ProgressItem {
+//   value: string;
+//   label: string;
+//   icon: LucideIcon;
+// }
 
-export const progress: ProgressItem[] = [
+export const progress = [
   {
     value: "50+",
     label: "Happy Clients",
@@ -256,5 +253,38 @@ export const ourCoursesDetials = [
     students: "150+",
     level: "Beginner",
     tags: ["Ethical Hacking", "Network Security", "Encryption"],
+  },
+];
+
+export const ourServices = [
+  {
+    icon: Code,
+    title: "Custom Software Development",
+    desc: "Tailored software solutions built with cutting-edge technologies",
+  },
+  {
+    icon: Settings,
+    title: "Web Application Development",
+    desc: "Responsive and scalable web applications for all platforms",
+  },
+  {
+    icon: Users,
+    title: "Mobile App Development",
+    desc: "Native and cross-platform mobile applications",
+  },
+  {
+    icon: BookOpen,
+    title: "E-commerce Solutions",
+    desc: "Complete online store development with payment integration",
+  },
+  {
+    icon: Star,
+    title: "Digital Marketing",
+    desc: "SEO, social media marketing, and digital brand building",
+  },
+  {
+    icon: Mail,
+    title: "IT Consulting",
+    desc: "Strategic technology consulting for business growth",
   },
 ];

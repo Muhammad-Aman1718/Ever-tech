@@ -14,7 +14,11 @@ const Button: React.FC<buttonTypesProps> = ({
   children,
 }) => {
   return (
-    <button className={`${className} cursor-pointer `} onClick={onClick}>
+    <button
+      type="button"
+      className={`${className} cursor-pointer `}
+      onClick={onClick}
+    >
       {title}
       {children}
     </button>

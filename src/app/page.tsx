@@ -18,11 +18,8 @@ const Home = () => {
       <OurClients />
       <OurCommunity />
       <CoursesSection />
-      <div className=" bg-[#F5F7FA] py-10 ">
-        <MainContainer>
-          <OurServicesSection />
-        </MainContainer>
-      </div>
+      <OurServicesSection />
+
       <MainContainer>
         <AboutUsSection />
       </MainContainer>
