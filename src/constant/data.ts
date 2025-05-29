@@ -1,4 +1,6 @@
-import { Users, Code, Star } from "lucide-react";
+import { Users, Code, Star, BookOpen } from "lucide-react";
+// import { Code, Users, BookOpen, Star } from "lucide-react";
+
 import { LucideIcon } from "lucide-react";
 
 export const allCourses = [
@@ -166,3 +168,48 @@ export const progress: ProgressItem[] = [
     icon: Star,
   },
 ];
+ 
+export const ourCommunityProgress = [
+  {
+    value: "5000+",
+    label: "Active Members",
+    icon: Users,
+    color: "from-[#2A75BB] to-[#3498db]",
+  },
+  {
+    value: "1200+",
+    label: "Course Graduates",
+    icon: BookOpen,
+    color: "from-[#2A75BB] to-[#1e3c72]",
+  },
+  {
+    value: "4.9/5",
+    label: "Average Rating",
+    icon: Star,
+    color: "from-[#f39c12] to-[#e67e22]",
+  },
+  {
+    value: "100+",
+    label: "Expert Mentors",
+    icon: Code,
+    color: "from-[#2A75BB] to-[#16a085]",
+  },
+];
+
+export const ourCommunityMembers = [
+              {
+                name: "Ahmed Ali",
+                role: "Full Stack Developer",
+                text: "This community helped me land my dream job. The support and resources are incredible!",
+              },
+              {
+                name: "Sara Khan",
+                role: "UI/UX Designer",
+                text: "Amazing learning environment with practical projects and expert guidance.",
+              },
+              {
+                name: "Muhammad Hassan",
+                role: "Mobile Developer",
+                text: "Best investment in my career. The courses are top-notch and mentors are very supportive.",
+              },
+            ]
