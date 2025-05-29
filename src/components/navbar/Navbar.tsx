@@ -1,133 +1,113 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
-import Logo from "../../../public/assets/logo.png";
-import { RxCross1 } from "react-icons/rx";
-import { FiMenu } from "react-icons/fi";
+import React, { useEffect, useRef, useState } from "react";
+import { Code, Menu, X } from "lucide-react";
+import { navItems } from "@/constant/data";
+import useNavbar from "@/hooks/useNavbar";
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen, activeSection, setActiveSection } =
+    useNavbar();
 
-  const navItems = ["Home", "Courses", "Services", "About Us", "Contact Us"];
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const current = navItems.find((section) => {
+  //       const element = document.getElementById(section);
+  //       if (element) {
+  //         const rect = element.getBoundingClientRect();
+  //         return rect.top <= 100 && rect.bottom >= 100;
+  //       }
+  //       return false;
+  //     });
+  //     if (current) setActiveSection(current);
+
+  //     // Animation trigger
+  //     // if (heroRef.current) {
+  //     //   const rect = heroRef.current.getBoundingClientRect();
+  //     //   setIsVisible(rect.top <= window.innerHeight / 2);
+  //     // }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+
+  // const scrollToSection = (sectionId) => {
+  //   document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+  //   setIsMenuOpen(false);
+  // };
 
   return (
-    // <div className=" flex items-center justify-around py-[22px] ">
-    //   <div className=" flex-[2]  flex items-center ">
-    //     <Image
-    //       src={Logo}
-    //       alt="logo does not show"
-    //       className="w-[110px] h-[110px] "
-    //     />
-    //     <div className=" flex flex-col justify-center ">
-    //       <h3 className=" text-[#2A75BB] text-[28px] leading-[15px] ">
-    //         EVERTECH
-    //       </h3>
-    //       <h3 className=" text-[27px] leading-[40px] ">SOLUTIONS</h3>
-    //       <p className=" text-[9px] font-bold leading-0 ">
-    //         Skill Development & Software House
-    //       </p>
-    //       {/* </div> */}
-    //     </div>
-    //   </div>
-    //   <div className=" flex-[3]">
-    //     <ul className=" flex items-center justify-around ">
-    //       <ul className="flex items-center justify-evenly gap-4">
-    //         {["Home", "Courses", "Services", "About Us", "Contact Us"].map(
-    //           (item, idx) => (
-    //             <li
-    //               key={idx}
-    //               className="px-4 py-2 rounded-md text-nowrap text-[#18191F] text-[16px] font-medium transition-all duration-300 ease-in-out hover:bg-[#2A75BB] hover:text-white hover:cursor-pointer "
-    //             >
-    //               {item}
-    //             </li>
-    //           )
-    //         )}
-    //       </ul>
-    //     </ul>
-    //   </div>
-    // </div>
-
-    <>
-      <div className="w-full  relative z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4">
-            <div className=" flex-[2]  flex items-center ">
-              <Image
-                src={Logo}
-                alt="logo does not show"
-                className="w-[90px] h-[90px] "
-              />
-              <div className=" flex flex-col justify-center ">
-                <h3 className=" text-[#2A75BB] text-[24px] leading-[20px] ">
-                  EVERTECH
-                </h3>
-                <h3 className=" text-[22px] leading-[30px] ">SOLUTIONS</h3>
-              </div>
+    <nav className="fixed top-0 w-full bg-[#0a192f]/95 backdrop-blur-sm shadow-lg z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          <div className="flex items-center gap-3">
+            <div className="bg-gradient-to-r from-[#2A75BB] to-[#3498db] p-2 rounded-lg">
+              <Code className="h-6 w-6 text-white" />
             </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-[#2A75BB] to-[#3498db] bg-clip-text text-transparent">
+              TechSoft
+            </span>
+          </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              {navItems.map((item, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 cursor-pointer"
+          <div className="hidden md:block">
+            <div className="flex space-x-6">
+              {navItems?.map((item) => (
+                <button
+                  key={item}
+                  // onClick={() => scrollToSection(item.toLowerCase())}
+                  className={`px-3 py-2 font-medium transition-colors ${
+                    activeSection === item.toLowerCase()
+                      ? "text-[#2A75BB]"
+                      : "text-gray-300 hover:text-[#2A75BB]"
+                  } relative group`}
                 >
                   {item}
-                </a>
+                  <span
+                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-[#2A75BB] to-[#3498db] transition-all duration-300 ${
+                      activeSection === item.toLowerCase()
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  ></span>
+                </button>
               ))}
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors duration-200"
-            >
-              {isMobileMenuOpen ? (
-                <RxCross1 className="w-6 h-6 text-gray-700" />
-              ) : (
-                <FiMenu className="w-6 h-6 text-gray-700" />
-              )}
-            </button>
           </div>
+
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-gray-300"
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Background Overlay */}
-          <div
-            className="fixed inset-0 backdrop-blur-lg bg-opacity-50 z-30 lg:hidden"
-            onClick={() => setIsMobileMenuOpen(false)}
-          ></div>
-
-          {/* Mobile Menu */}
-          <div className="relative -top-10 bg-white rounded-lg shadow-xl z-40 lg:hidden">
-            <div className="py-4">
-              {navItems.map((item, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  className="block px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors duration-200 cursor-pointer"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-[#0d1b36] border-t border-gray-800">
+          <div className="px-2 pt-2 pb-4 space-y-1">
+            {navItems.map((item) => (
+              <button
+                key={item}
+                // onClick={() => scrollToSection(item.toLowerCase())}
+                className={`block px-4 py-3 text-base font-medium w-full text-left rounded-lg transition-colors ${
+                  activeSection === item.toLowerCase()
+                    ? "bg-[#2A75BB]/20 text-[#2A75BB]"
+                    : "text-gray-300 hover:bg-[#2A75BB]/10"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
           </div>
-        </>
+        </div>
       )}
-    </>
+    </nav>
   );
 };
-
-{
-  /* <div className="flex items-center justify-center flex-[1.5]  ">
-  <button className=" py-[10px] px-[40px] bg-[#2A75BB] rounded-[4px] text-white text-[14px]  hover:cursor-pointer hover:bg-[#4A90E2]  ">
-    Login
-  </button>
-</div> */
-}
 export default Navbar;

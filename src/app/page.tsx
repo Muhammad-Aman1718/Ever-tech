@@ -11,17 +11,14 @@ import OurServicesSection from "@/components/ourServicesSection/OurServicesSecti
 import React from "react";
 
 const Home = () => {
-
-
-  
   return (
-    <div className="h-[5000px] ">
-      <div className=" bg-[#F5F7FA] ">
-        <MainContainer className="  ">
-          <Navbar />
-          <HeroSection />
-        </MainContainer>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-[#0a192f] to-[#0d1b36] font-sans text-white overflow-x-hidden">
+      {/* <div className=" bg-[#F5F7FA] "> */}
+      {/* <MainContainer className="  "> */}
+      <Navbar />
+      <HeroSection />
+      {/* </MainContainer> */}
+      {/* </div> */}
       <MainContainer className="">
         <OurClients />
       </MainContainer>

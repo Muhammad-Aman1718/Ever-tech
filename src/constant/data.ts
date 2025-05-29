@@ -120,3 +120,13 @@ export const provinces = [
   "Gilgit-Baltistan",
   "Azad Jammu & Kashmir",
 ];
+
+export   const navItems = [
+    "Home",
+    "Clients",
+    "Community",
+    "Courses",
+    "Services",
+    "About",
+    "Contact",
+  ];
