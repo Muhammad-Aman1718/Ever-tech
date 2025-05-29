@@ -19,20 +19,9 @@ const Home = () => {
       <OurCommunity />
       <CoursesSection />
       <OurServicesSection />
-
-      <MainContainer>
-        <AboutUsSection />
-      </MainContainer>
-      <div className=" bg-[#F5F7FA] ">
-        <MainContainer>
-          <ContactUsSection />
-        </MainContainer>
-      </div>
-      <div className=" bg-[#112f4b] ">
-        <MainContainer>
-          <Footer />
-        </MainContainer>
-      </div>
+      <AboutUsSection />
+      <ContactUsSection />
+      <Footer />
     </div>
   );
 };

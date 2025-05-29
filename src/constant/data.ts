@@ -142,12 +142,6 @@ export const clientsName = [
   "SmartSoft",
 ];
 
-// export interface ProgressItem {
-//   value: string;
-//   label: string;
-//   icon: LucideIcon;
-// }
-
 export const progress = [
   {
     value: "50+",
@@ -287,4 +281,11 @@ export const ourServices = [
     title: "IT Consulting",
     desc: "Strategic technology consulting for business growth",
   },
+];
+
+export const aboutUs = [
+  "Expert team of 50+ professionals",
+  "200+ successful projects delivered",
+  "Global clients across 15+ countries",
+  "Industry-leading training programs",
 ];
