@@ -168,7 +168,7 @@ export const progress: ProgressItem[] = [
     icon: Star,
   },
 ];
- 
+
 export const ourCommunityProgress = [
   {
     value: "5000+",
@@ -197,19 +197,64 @@ export const ourCommunityProgress = [
 ];
 
 export const ourCommunityMembers = [
-              {
-                name: "Ahmed Ali",
-                role: "Full Stack Developer",
-                text: "This community helped me land my dream job. The support and resources are incredible!",
-              },
-              {
-                name: "Sara Khan",
-                role: "UI/UX Designer",
-                text: "Amazing learning environment with practical projects and expert guidance.",
-              },
-              {
-                name: "Muhammad Hassan",
-                role: "Mobile Developer",
-                text: "Best investment in my career. The courses are top-notch and mentors are very supportive.",
-              },
-            ]
+  {
+    name: "Ahmed Ali",
+    role: "Full Stack Developer",
+    text: "This community helped me land my dream job. The support and resources are incredible!",
+  },
+  {
+    name: "Sara Khan",
+    role: "UI/UX Designer",
+    text: "Amazing learning environment with practical projects and expert guidance.",
+  },
+  {
+    name: "Muhammad Hassan",
+    role: "Mobile Developer",
+    text: "Best investment in my career. The courses are top-notch and mentors are very supportive.",
+  },
+];
+
+export const ourCoursesDetials = [
+  {
+    title: "Full Stack Web Development",
+    duration: "6 months",
+    students: "500+",
+    level: "Beginner to Advanced",
+    tags: ["React", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Mobile App Development",
+    duration: "4 months",
+    students: "300+",
+    level: "Intermediate",
+    tags: ["Flutter", "React Native", "Firebase"],
+  },
+  {
+    title: "UI/UX Design Mastery",
+    duration: "3 months",
+    students: "400+",
+    level: "Beginner",
+    tags: ["Figma", "Adobe XD", "Prototyping"],
+  },
+  {
+    title: "Data Science & AI",
+    duration: "8 months",
+    students: "250+",
+    level: "Advanced",
+    tags: ["Python", "TensorFlow", "ML"],
+  },
+  {
+    title: "DevOps & Cloud Computing",
+    duration: "5 months",
+    students: "200+",
+    level: "Intermediate",
+    tags: ["AWS", "Docker", "Kubernetes"],
+  },
+  {
+    title: "Cybersecurity Fundamentals",
+    duration: "4 months",
+    students: "150+",
+    level: "Beginner",
+    tags: ["Ethical Hacking", "Network Security", "Encryption"],
+  },
+];

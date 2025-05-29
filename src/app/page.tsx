@@ -17,10 +17,7 @@ const Home = () => {
       <HeroSection />
       <OurClients />
       <OurCommunity />
-
-      <MainContainer className="py-10 ">
-        <CoursesSection />
-      </MainContainer>
+      <CoursesSection />
       <div className=" bg-[#F5F7FA] py-10 ">
         <MainContainer>
           <OurServicesSection />
