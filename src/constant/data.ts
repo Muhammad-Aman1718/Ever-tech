@@ -1,3 +1,6 @@
+import { Users, Code, Star } from "lucide-react";
+import { LucideIcon } from "lucide-react";
+
 export const allCourses = [
   {
     courseHeading: "Web Development",
@@ -121,12 +124,45 @@ export const provinces = [
   "Azad Jammu & Kashmir",
 ];
 
-export   const navItems = [
-    "Home",
-    "Clients",
-    "Community",
-    "Courses",
-    "Services",
-    "About",
-    "Contact",
-  ];
+export const navItems = [
+  "Home",
+  "Clients",
+  "Community",
+  "Courses",
+  "Services",
+  "About",
+  "Contact",
+];
+
+export const clientsName = [
+  "TechCorp",
+  "InnovateLab",
+  "DataFlow",
+  "CloudSync",
+  "DevPro",
+  "SmartSoft",
+];
+
+export interface ProgressItem {
+  value: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+export const progress: ProgressItem[] = [
+  {
+    value: "50+",
+    label: "Happy Clients",
+    icon: Users,
+  },
+  {
+    value: "200+",
+    label: "Projects Completed",
+    icon: Code,
+  },
+  {
+    value: "5+",
+    label: "Years Experience",
+    icon: Star,
+  },
+];

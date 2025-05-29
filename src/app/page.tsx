@@ -13,20 +13,11 @@ import React from "react";
 const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a192f] to-[#0d1b36] font-sans text-white overflow-x-hidden">
-      {/* <div className=" bg-[#F5F7FA] "> */}
-      {/* <MainContainer className="  "> */}
       <Navbar />
       <HeroSection />
-      {/* </MainContainer> */}
-      {/* </div> */}
-      <MainContainer className="">
-        <OurClients />
-      </MainContainer>
-      <div className=" bg-[#F5F7FA] ">
-        <MainContainer>
-          <OurCommunity />
-        </MainContainer>
-      </div>
+      <OurClients />
+      <OurCommunity />
+
       <MainContainer className="py-10 ">
         <CoursesSection />
       </MainContainer>

@@ -1,32 +1,40 @@
 import React from "react";
-import Image from "next/image";
-import ClientImg1 from "../../../public/assets/ourClients/Logo.svg";
-import ClientImg2 from "../../../public/assets/ourClients/Logo (1).svg";
-import ClientImg3 from "../../../public/assets/ourClients/Logo (2).svg";
-import ClientImg4 from "../../../public/assets/ourClients/Logo (3).svg";
-import ClientImg5 from "../../../public/assets/ourClients/Logo (4).svg";
-import ClientImg6 from "../../../public/assets/ourClients/Logo (5).svg";
+import OurClientsCard from "./ourClientsComponents/OurClientsCard";
+import ProgressCard from "./ourClientsComponents/ProgressCard";
+import { clientsName, progress } from "@/constant/data";
 
 const OurClients = () => {
   return (
-    <div className=" flex flex-col items-center justify-center gap-y-4 py-10  ">
-      <div className=" flex flex-col items-center justify-center gap-y-2 ">
-        <h1 className=" text-[#4D4D4D] text-[36px] font-semibold leading-[44px] ">
-          Our Clients
-        </h1>
-        <p className=" text-[#717171] text-[18px] leading-[32px]  ">
-          We have been working with some Fortune 500+ clients
-        </p>
+    <section id="clients" className="py-20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Trusted By Industry Leaders
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            We partner with innovative companies worldwide to deliver
+            exceptional digital solutions
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+          {clientsName.map((client, index) => (
+            <OurClientsCard key={index} clientsName={client} />
+          ))}
+        </div>
+
+        <div className="mt-20 grid md:grid-cols-3 gap-8">
+          {progress.map((stat, index) => (
+            <ProgressCard
+              key={index}
+              statLabel={stat.label}
+              statValue={stat.value}
+              statIcon={stat.icon}
+            />
+          ))}
+        </div>
       </div>
-      <div className=" flex items-center justify-around w-full ">
-        <Image src={ClientImg1} alt="logo does not show " />
-        <Image src={ClientImg2} alt="logo does not show " />
-        <Image src={ClientImg3} alt="logo does not show " />
-        <Image src={ClientImg4} alt="logo does not show " />
-        <Image src={ClientImg5} alt="logo does not show " />
-        <Image src={ClientImg6} alt="logo does not show " />
-      </div>
-    </div>
+    </section>
   );
 };
 
