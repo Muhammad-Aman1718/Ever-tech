@@ -1,4 +1,13 @@
-import { Users, Code, Star, BookOpen, Settings, Mail } from "lucide-react";
+import {
+  Users,
+  Code,
+  Star,
+  BookOpen,
+  Settings,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 
 export const allCourses = [
   {
@@ -288,4 +297,45 @@ export const aboutUs = [
   "200+ successful projects delivered",
   "Global clients across 15+ countries",
   "Industry-leading training programs",
+];
+
+export const companyInformation = [
+  {
+    icon: MapPin,
+    heading: "Office Address",
+    txt1: "123 Tech Street, Innovation District",
+    txt2: "Karachi, Pakistan 75000",
+  },
+  {
+    icon: Phone,
+    heading: "Phone Number",
+    txt1: "+92 300 1234567",
+    txt2: "+92 21 12345678",
+  },
+  {
+    icon: Mail,
+    heading: "Office Address",
+    txt1: "123 Tech Street, Innovation District",
+    txt2: "Karachi, Pakistan 75000",
+  },
+];
+
+export const footerSocialLinks = ["twitter", "linkedin", "github", "dribbble"];
+
+export const footerCourses = [
+  "Full Stack Development",
+  "Mobile Development",
+  "UI/UX Design",
+  "Data Science & AI",
+  "DevOps & Cloud",
+  "Cybersecurity",
+];
+
+export const footerServices = [
+  "Custom Development",
+  "Web Applications",
+  "Mobile Apps",
+  "E-commerce",
+  "Digital Marketing",
+  "IT Consulting",
 ];

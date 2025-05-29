@@ -1,14 +1,13 @@
+import React from "react";
 import AboutUsSection from "@/components/aboutUsSection/AboutUsSection";
 import ContactUsSection from "@/components/contactUsSection/ContactUsSection";
 import CoursesSection from "@/components/coursesSection/CoursesSection";
 import Footer from "@/components/footer/Footer";
 import HeroSection from "@/components/heroSection/HeroSection";
-import MainContainer from "@/components/MainContainer";
 import Navbar from "@/components/navbar/Navbar";
 import OurClients from "@/components/ourClients/OurClients";
 import OurCommunity from "@/components/ourCommunity/OurCommunity";
 import OurServicesSection from "@/components/ourServicesSection/OurServicesSection";
-import React from "react";
 
 const Home = () => {
   return (

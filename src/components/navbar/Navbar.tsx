@@ -8,33 +8,28 @@ const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, activeSection, setActiveSection } =
     useNavbar();
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const current = navItems.find((section) => {
-  //       const element = document.getElementById(section);
-  //       if (element) {
-  //         const rect = element.getBoundingClientRect();
-  //         return rect.top <= 100 && rect.bottom >= 100;
-  //       }
-  //       return false;
-  //     });
-  //     if (current) setActiveSection(current);
+  useEffect(() => {
+    const handleScroll = () => {
+      const current = navItems.find((section) => {
+        const element = document.getElementById(section.toLowerCase());
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
 
-  //     // Animation trigger
-  //     // if (heroRef.current) {
-  //     //   const rect = heroRef.current.getBoundingClientRect();
-  //     //   setIsVisible(rect.top <= window.innerHeight / 2);
-  //     // }
-  //   };
+      if (current) setActiveSection(current.toLowerCase());
+    };
 
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  // const scrollToSection = (sectionId) => {
-  //   document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-  //   setIsMenuOpen(false);
-  // };
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-[#0a192f]/95 backdrop-blur-sm shadow-lg z-50">
@@ -54,7 +49,7 @@ const Navbar = () => {
               {navItems?.map((item) => (
                 <button
                   key={item}
-                  // onClick={() => scrollToSection(item.toLowerCase())}
+                  onClick={() => scrollToSection(item.toLowerCase())}
                   className={`px-3 py-2 font-medium transition-colors ${
                     activeSection === item.toLowerCase()
                       ? "text-[#2A75BB]"
@@ -94,7 +89,7 @@ const Navbar = () => {
             {navItems.map((item) => (
               <button
                 key={item}
-                // onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => scrollToSection(item.toLowerCase())}
                 className={`block px-4 py-3 text-base font-medium w-full text-left rounded-lg transition-colors ${
                   activeSection === item.toLowerCase()
                     ? "bg-[#2A75BB]/20 text-[#2A75BB]"

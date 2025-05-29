@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import Button from "../buttons/Button";
 import InformationCard from "./contactUsComponents/InformationCard";
 import ContactUsInputField from "../inputs/ContactUsInputField";
+import { companyInformation } from "@/constant/data";
 
 const ContactUsSection = () => {
   // const [formData, setFormData] = useState({
@@ -28,26 +29,7 @@ const ContactUsSection = () => {
   //   });
   // };
 
-  const companyInformation = [
-    {
-      icon: MapPin,
-      heading: "Office Address",
-      txt1: "123 Tech Street, Innovation District",
-      txt2: "Karachi, Pakistan 75000",
-    },
-    {
-      icon: Phone,
-      heading: "Phone Number",
-      txt1: "+92 300 1234567",
-      txt2: "+92 21 12345678",
-    },
-    {
-      icon: Mail,
-      heading: "Office Address",
-      txt1: "123 Tech Street, Innovation District",
-      txt2: "Karachi, Pakistan 75000",
-    },
-  ];
+
 
   return (
     <section
