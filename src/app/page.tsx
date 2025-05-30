@@ -11,7 +11,7 @@ import OurServicesSection from "@/components/ourServicesSection/OurServicesSecti
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a192f] to-[#0d1b36] font-sans text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9] dark:bg-gradient-to-b dark:from-[#0a192f] dark:to-[#0d1b36] font-sans  dark:text-white text-gray-800 overflow-x-hidden">
       <Navbar />
       <HeroSection />
       <OurClients />

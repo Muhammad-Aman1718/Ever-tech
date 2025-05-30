@@ -1233,8 +1233,8 @@ const SoftwareHouseWebsite = () => {
                   ))}
                 </div>
                 <p className="text-gray-600">
-                  <span className="font-semibold text-gray-900">50+</span> Experts
-                  Team
+                  <span className="font-semibold text-gray-900">50+</span>{" "}
+                  Experts Team
                 </p>
               </div>
             </div>
@@ -1973,7 +1973,9 @@ const SoftwareHouseWebsite = () => {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-6">Courses</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Courses
+              </h3>
               <ul className="space-y-3 text-gray-600">
                 {[
                   "Full Stack Development",
