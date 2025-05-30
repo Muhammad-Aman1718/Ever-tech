@@ -13,6 +13,7 @@ interface InputFieldPropsTypes {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => void;
+  darkMode?: boolean;
 }
 
 const InputField: React.FC<InputFieldPropsTypes> = ({
@@ -24,6 +25,7 @@ const InputField: React.FC<InputFieldPropsTypes> = ({
   value,
   required,
   onChange,
+  darkMode = false,
 }) => {
   return (
     // <div>
@@ -39,22 +41,25 @@ const InputField: React.FC<InputFieldPropsTypes> = ({
     //   />
     // </div>
 
-    <div>
+    <div className="space-y-2">
       <label
-        className={` ${labelClassName} block text-sm font-medium text-gray-700 mb-2`}
+        className={`block text-sm font-medium ${
+          darkMode ? "text-[#cbd5e1]" : "text-gray-700"
+        }`}
       >
-        {label}
+        {label} {required && <span className="text-red-500">*</span>}
       </label>
       <input
         type={inputType}
-        placeholder={placeholder}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
+        className={`w-full px-4 py-3 rounded-xl ${
+          darkMode
+            ? "bg-[#1e293b] border border-[#2a3b5c] text-[#cbd5e1] placeholder-[#64748b] focus:ring-[#2A75BB] focus:border-[#2A75BB]"
+            : "bg-white border border-gray-200 text-gray-700 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
+        } focus:outline-none focus:ring-2 transition-colors`}
         required={required}
-        className={` ${inputClassName} w-full px-4 py-3 border border-gray-200 rounded-lg 
-                   placeholder:text-gray-400 text-gray-700
-                   focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                   transition-colors`}
       />
     </div>
   );

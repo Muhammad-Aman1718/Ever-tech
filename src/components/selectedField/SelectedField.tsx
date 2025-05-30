@@ -29,13 +29,10 @@ const SelectField: React.FC<SelectFieldPropsTypes> = ({
       <select
         value={value}
         onChange={onChange}
-        className="w-full px-4 py-3 border border-gray-200 rounded-lg 
-                   text-gray-700 bg-white
-                   focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                   transition-colors"
+        className="w-full px-4 py-3 text-white bg-[#0d1b36] border border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-[#2A75BB] focus:border-[#2A75BB] outline-none transition-colors placeholder:text-gray-600"
         required={required}
       >
-        <option value="" hidden>
+        <option value="" hidden className="placeholder:text-gray-600">
           {placeholder}
         </option>
         {options?.map((option) => (
