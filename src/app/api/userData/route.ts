@@ -165,10 +165,9 @@ export const GET = async (req: NextRequest) => {
 
 export const PUT = async (
   req: NextRequest
-  // { params }: { params: { id: string } }
 ) => {
   try {
-    // const { id } = params;
+
     const body = await req.json();
 
     console.log("this is put api id and status ======>", body);

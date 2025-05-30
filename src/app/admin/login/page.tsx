@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import InputField from "@/components/inputs/InputField";
 import MainContainer from "@/components/MainContainer";
 import useLogin from "@/hooks/useLogin";
 import { CgEye } from "react-icons/cg";
 import { FaRegEyeSlash } from "react-icons/fa";
+import ContactUsInputField from "@/components/inputs/ContactUsInputField";
 
 const Login = () => {
   const {
@@ -78,12 +78,18 @@ const Login = () => {
 
           {/* Form */}
           <div className="space-y-4">
-            <InputField
-              label="Email"
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Email
+            </label>
+            <input
+              type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              inputType="email"
+              className="w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg 
+                           placeholder:text-gray-400 text-gray-700
+                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                           transition-colors"
             />
 
             <div>
@@ -117,6 +123,7 @@ const Login = () => {
           </div>
 
           {/* Login button */}
+
           <button
             onClick={handleSubmit}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg 

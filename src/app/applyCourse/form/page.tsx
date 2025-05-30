@@ -394,7 +394,6 @@
 
 "use client";
 import React from "react";
-import InputField from "@/components/inputs/InputField";
 import MainContainer from "@/components/MainContainer";
 import useApplyCourse from "@/hooks/useApplyCourse";
 import Loader from "@/components/Loader";

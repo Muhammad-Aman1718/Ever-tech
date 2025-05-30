@@ -3,7 +3,7 @@ import React from "react";
 import { Code, Menu, X } from "lucide-react";
 import { navItems } from "@/constant/data";
 import useNavbar from "@/hooks/useNavbar";
-import ThemeToggleBtn from "../buttons/ThemeToggleBtn";
+// import ThemeToggleBtn from "../buttons/ThemeToggleBtn";
 
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, activeSection, scrollToSection } =
@@ -57,7 +57,7 @@ const Navbar = () => {
               <Menu className="h-6 w-6" />
             )}
           </button>
-          <ThemeToggleBtn />
+          {/* <ThemeToggleBtn /> */}
         </div>
       </div>
 

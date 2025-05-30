@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
+import React from "react";
+// import { Mail, Phone, MapPin } from "lucide-react";
 import Button from "../buttons/Button";
 import InformationCard from "./contactUsComponents/InformationCard";
 import ContactUsInputField from "../inputs/ContactUsInputField";

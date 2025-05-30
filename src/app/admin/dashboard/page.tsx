@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import useDashboard from "@/hooks/useDashboard";
 import MainContainer from "@/components/MainContainer";
-import Button from "@/components/button/Button";
+import Button from "@/components/buttons/Button";
 import StudentTable from "@/components/admin/studentTable/StudentTable";
 import StudentInformationForm from "@/components/admin/StudentInformationForm";
 
