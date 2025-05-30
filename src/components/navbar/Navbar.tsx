@@ -5,31 +5,8 @@ import { navItems } from "@/constant/data";
 import useNavbar from "@/hooks/useNavbar";
 
 const Navbar = () => {
-  const { isMenuOpen, setIsMenuOpen, activeSection, setActiveSection } =
+  const { isMenuOpen, setIsMenuOpen, activeSection, scrollToSection } =
     useNavbar();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const current = navItems.find((section) => {
-        const element = document.getElementById(section.toLowerCase());
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-
-      if (current) setActiveSection(current.toLowerCase());
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-    setIsMenuOpen(false);
-  };
 
   return (
     <nav className="fixed top-0 w-full bg-[#0a192f]/95 backdrop-blur-sm shadow-lg z-50">

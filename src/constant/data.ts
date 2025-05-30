@@ -9,98 +9,98 @@ import {
   Phone,
 } from "lucide-react";
 
-export const allCourses = [
-  {
-    courseHeading: "Web Development",
-    coursePoints: [
-      "Html5 / Css3",
-      "Bootstrap / Tailwind",
-      "Javascript",
-      "React.js",
-      "Node.js",
-    ],
-  },
-  {
-    courseHeading: "Graphic Designing Pro",
-    coursePoints: [
-      "Canva Pro",
-      "Adobe Products Family",
-      "Coral Draw",
-      "Filmora (UI/UX)",
-      "AI Video Creations Tools Creations",
-    ],
-  },
-  {
-    courseHeading: "Digital Marketing Pro",
-    coursePoints: [
-      "Graphics Designing",
-      "Social Media Marketing",
-      "Wordpress/Shoppify",
-      "SEO (Search Engine Optimization)",
-      "E-Commerce Store",
-    ],
-  },
-  {
-    courseHeading: "E-Commerce",
-    coursePoints: [
-      "Shoppify",
-      "eBay",
-      "Meta Platform (Facebook/Instagram)",
-      "Social Media Marketing",
-      "Product Hunting and listing",
-    ],
-  },
-  {
-    courseHeading: "Mobile App Development",
-    coursePoints: [
-      "Android based App Development",
-      "XML (Front-End)",
-      "UI/UX",
-      "Firebase Database",
-      "Internship",
-    ],
-  },
-  {
-    courseHeading: "Python Programming",
-    coursePoints: [
-      "Basic Programming",
-      "Object Oriented Programming (OOP)",
-      "Data Analytics",
-      "Python Libraries",
-      "Machine Learning Concepts",
-    ],
-  },
-  {
-    courseHeading: "Digital Business Booster",
-    coursePoints: [
-      "Graphics Designing",
-      "Social Media Marketing",
-      "Wordpress/Shoppify",
-      "SEO (Search Engine Optimization)",
-      "E-Commerce Store",
-    ],
-  },
-  {
-    courseHeading: "AI Media Production",
-    coursePoints: [
-      "Video and Audio ads Creation",
-      "Educational Contents",
-      "Apps Designing",
-      "Web Designing",
-      "E-Commerce Store",
-    ],
-  },
-  {
-    courseHeading: "Wordpress",
-    coursePoints: [
-      "Front-End Designing",
-      "Backend Query Processing",
-      "E-Commerce Store",
-      "Customized Websites",
-      "User Friendly Interface",
-    ],
-  },
-];
+// export const allCourses = [
+//   {
+//     courseHeading: "Web Development",
+//     coursePoints: [
+//       "Html5 / Css3",
+//       "Bootstrap / Tailwind",
+//       "Javascript",
+//       "React.js",
+//       "Node.js",
+//     ],
+//   },
+//   {
+//     courseHeading: "Graphic Designing Pro",
+//     coursePoints: [
+//       "Canva Pro",
+//       "Adobe Products Family",
+//       "Coral Draw",
+//       "Filmora (UI/UX)",
+//       "AI Video Creations Tools Creations",
+//     ],
+//   },
+//   {
+//     courseHeading: "Digital Marketing Pro",
+//     coursePoints: [
+//       "Graphics Designing",
+//       "Social Media Marketing",
+//       "Wordpress/Shoppify",
+//       "SEO (Search Engine Optimization)",
+//       "E-Commerce Store",
+//     ],
+//   },
+//   {
+//     courseHeading: "E-Commerce",
+//     coursePoints: [
+//       "Shoppify",
+//       "eBay",
+//       "Meta Platform (Facebook/Instagram)",
+//       "Social Media Marketing",
+//       "Product Hunting and listing",
+//     ],
+//   },
+//   {
+//     courseHeading: "Mobile App Development",
+//     coursePoints: [
+//       "Android based App Development",
+//       "XML (Front-End)",
+//       "UI/UX",
+//       "Firebase Database",
+//       "Internship",
+//     ],
+//   },
+//   {
+//     courseHeading: "Python Programming",
+//     coursePoints: [
+//       "Basic Programming",
+//       "Object Oriented Programming (OOP)",
+//       "Data Analytics",
+//       "Python Libraries",
+//       "Machine Learning Concepts",
+//     ],
+//   },
+//   {
+//     courseHeading: "Digital Business Booster",
+//     coursePoints: [
+//       "Graphics Designing",
+//       "Social Media Marketing",
+//       "Wordpress/Shoppify",
+//       "SEO (Search Engine Optimization)",
+//       "E-Commerce Store",
+//     ],
+//   },
+//   {
+//     courseHeading: "AI Media Production",
+//     coursePoints: [
+//       "Video and Audio ads Creation",
+//       "Educational Contents",
+//       "Apps Designing",
+//       "Web Designing",
+//       "E-Commerce Store",
+//     ],
+//   },
+//   {
+//     courseHeading: "Wordpress",
+//     coursePoints: [
+//       "Front-End Designing",
+//       "Backend Query Processing",
+//       "E-Commerce Store",
+//       "Customized Websites",
+//       "User Friendly Interface",
+//     ],
+//   },
+// ];
 
 export const courseOptions = [
   "Web Development (Mern Stack)",
@@ -216,42 +216,63 @@ export const ourCommunityMembers = [
 
 export const ourCoursesDetials = [
   {
-    title: "Full Stack Web Development",
+    title: "Web Development (Mern Stack)",
     duration: "6 months",
     students: "500+",
     level: "Beginner to Advanced",
     tags: ["React", "Node.js", "MongoDB"],
   },
   {
-    title: "Mobile App Development",
+    title: "Graphic Designing Pro",
     duration: "4 months",
     students: "300+",
     level: "Intermediate",
     tags: ["Flutter", "React Native", "Firebase"],
   },
   {
-    title: "UI/UX Design Mastery",
+    title: "Digital Marketing Pro",
     duration: "3 months",
     students: "400+",
     level: "Beginner",
     tags: ["Figma", "Adobe XD", "Prototyping"],
   },
   {
-    title: "Data Science & AI",
+    title: "E-Commerce",
     duration: "8 months",
     students: "250+",
     level: "Advanced",
     tags: ["Python", "TensorFlow", "ML"],
   },
   {
-    title: "DevOps & Cloud Computing",
+    title: "Mobile App Development",
     duration: "5 months",
     students: "200+",
     level: "Intermediate",
     tags: ["AWS", "Docker", "Kubernetes"],
   },
   {
-    title: "Cybersecurity Fundamentals",
+    title: "Python Programming",
+    duration: "4 months",
+    students: "150+",
+    level: "Beginner",
+    tags: ["Ethical Hacking", "Network Security", "Encryption"],
+  },
+  {
+    title: "Digital Business Booster",
+    duration: "8 months",
+    students: "250+",
+    level: "Advanced",
+    tags: ["Python", "TensorFlow", "ML"],
+  },
+  {
+    title: "AI Media Production",
+    duration: "5 months",
+    students: "200+",
+    level: "Intermediate",
+    tags: ["AWS", "Docker", "Kubernetes"],
+  },
+  {
+    title: "WordPress Web-Development",
     duration: "4 months",
     students: "150+",
     level: "Beginner",

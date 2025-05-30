@@ -1,14 +1,16 @@
+import { ourCoursesDetials } from "@/constant/data";
 import { useState } from "react";
-import { allCourses } from "@/constant/data";
 
 const useCourseSection = () => {
   const [visibleCount, setVisibleCount] = useState(3);
 
   const handleToggle = () => {
-    setVisibleCount((prev) => (prev >= allCourses.length ? 3 : prev + 3));
+    setVisibleCount((prev) =>
+      prev >= ourCoursesDetials.length ? 3 : prev + 3
+    );
   };
 
-  const visibleCourses = allCourses.slice(0, visibleCount);
+  const visibleCourses = ourCoursesDetials.slice(0, visibleCount);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
