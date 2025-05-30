@@ -1,8 +1,5 @@
 import React from "react";
-import { FiCheckCircle } from "react-icons/fi";
-import { RxUpload } from "react-icons/rx";
-import { RxCross2 } from "react-icons/rx";
-
+import { CheckCircle, Upload, X } from "lucide-react";
 interface FileUploadPropsTypes {
   label: string;
   acceptedFiles?: string;
@@ -64,7 +61,7 @@ const FileUpload: React.FC<FileUploadPropsTypes> = ({
             htmlFor={`file-${label.replace(/\s+/g, "-").toLowerCase()}`}
             className="cursor-pointer"
           >
-            <RxUpload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+            <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
             <p className="text-sm text-gray-600">
               Click to upload or drag and drop
             </p>
@@ -78,7 +75,7 @@ const FileUpload: React.FC<FileUploadPropsTypes> = ({
           {/* bg-green-50 */}
           {/* #2A75BB */}
           <div className="flex items-center space-x-2">
-            <FiCheckCircle className="w-5 h-5 text-green-600" />
+            <CheckCircle className="w-5 h-5 text-green-600" />
             <span className="text-sm text-green-800">{file.name}</span>
           </div>
           <button
@@ -86,7 +83,7 @@ const FileUpload: React.FC<FileUploadPropsTypes> = ({
             onClick={removeFile}
             className="text-red-500 hover:text-red-700 transition-colors"
           >
-            <RxCross2 className="w-4 h-4" />
+            <X className="w-4 h-4" />
           </button>
         </div>
       )}

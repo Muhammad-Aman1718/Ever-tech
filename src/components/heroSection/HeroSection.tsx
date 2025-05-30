@@ -60,23 +60,6 @@ const HeroSection = () => {
                 className="bg-transparent border-2 border-[#3b82f6] text-[#3b82f6] dark:border-[#2A75BB] dark:text-[#2A75BB] px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-[#2A75BB]/10 transition-colors duration-300"
               />
             </div>
-
-            <div className="flex items-center pt-4 gap-4">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full border-2 border-white overflow-hidden"
-                  >
-                    <div className="w-full h-full bg-gray-700 border-2 border-dashed rounded-xl" />
-                  </div>
-                ))}
-              </div>
-              <p className="text-gray-300">
-                <span className="font-semibold text-white">50+</span> Experts
-                Team
-              </p>
-            </div>
           </div>
 
           <div

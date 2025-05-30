@@ -1,5 +1,4 @@
 import React from "react";
-import { BsArrowRight } from "react-icons/bs";
 import Button from "../buttons/Button";
 import { ArrowRight, LucideIcon } from "lucide-react";
 

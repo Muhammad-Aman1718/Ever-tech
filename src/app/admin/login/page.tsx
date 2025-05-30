@@ -2,10 +2,7 @@
 import React from "react";
 import MainContainer from "@/components/MainContainer";
 import useLogin from "@/hooks/useLogin";
-import { CgEye } from "react-icons/cg";
-import { FaRegEyeSlash } from "react-icons/fa";
-import ContactUsInputField from "@/components/inputs/ContactUsInputField";
-import Loader from "@/components/Loader";
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
   const {
@@ -20,51 +17,6 @@ const Login = () => {
   } = useLogin();
 
   return (
-    // <div className="border flex items-center justify-center h-screen w-full ">
-    //   <MainContainer className=" border ">
-    //     <div className=" border w-[450px] mx-auto flex flex-col gap-y-[30px] max-sm:w-[300px] ">
-    //       <h1 className="text-center text-[#4D4D4D] text-3xl font-semibold  ">
-    //         Login as Admin
-    //       </h1>
-    //       <InputField
-    //         label="Email"
-    //         placeholder="Enter your email"
-    //         value={email}
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         inputType="email"
-    //       />
-    //       <div className=" flex items-center ">
-    //         <div>
-    //           <label className={` block mb-1  text-gray-700 `}>Password</label>
-    //           <input
-    //             value={password}
-    //             onChange={(e) => setPassword(e.target.value)}
-    //             type={showPassword ? "text" : "password"}
-    //             placeholder="Enter your password"
-    //             className={` placeholder:text-[#504f4f] w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2A75BB] transition`}
-    //           />
-    //         </div>
-    //         <button
-    //           type="button"
-    //           onClick={() => setShowPassword(!showPassword)}
-    //         >
-    //           {showPassword ? (
-    //             <CgEye className=" w-5 h-4 text-[#777E90] " />
-    //           ) : (
-    //             <FaRegEyeSlash className=" w-5 h-4 text-[#777E90] " />
-    //           )}
-    //         </button>
-    //       </div>
-    //     </div>
-    //     <button
-    //       onClick={handleSubmit}
-    //       className="border rounded-[10px] mt-[60px] py-[10px] w-[150px] cursor-pointer "
-    //     >
-    //       Login
-    //     </button>
-    //   </MainContainer>
-    // </div>
-
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <MainContainer className="w-full max-w-md">
         <div className="bg-white rounded-lg shadow-lg p-8 space-y-6">
@@ -115,9 +67,9 @@ const Login = () => {
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   {showPassword ? (
-                    <CgEye className="w-5 h-5" />
+                    <Eye className="w-5 h-5" />
                   ) : (
-                    <FaRegEyeSlash className="w-5 h-5" />
+                    <EyeOff className="w-5 h-5" />
                   )}
                 </button>
               </div>
