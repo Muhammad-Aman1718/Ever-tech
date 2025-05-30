@@ -17,10 +17,10 @@ const CoursesSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center ">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Transform Your Career
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Master the latest technologies with industry experts
           </p>
         </div>
@@ -47,7 +47,7 @@ const CoursesSection = () => {
         </div>
         <button
           onClick={handleToggle}
-          className=" bg-gradient-to-r from-[#2A75BB] to-[#3498db] text-white text-center mt-8 px-7 py-3 rounded-lg font-medium hover:from-[#2A75BB]/90 hover:to-[#3498db]/90 transition-all duration-300 shadow-md shadow-[#2A75BB]/30"
+          className=" bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] dark:from-[#2A75BB] dark:to-[#3498db] text-white text-center mt-8 px-7 py-3 rounded-lg font-medium hover:from-[#3b82f6]/90 hover:to-[#60a5fa]/90 dark:hover:from-[#2A75BB]/90 dark:hover:to-[#3498db]/90 transition-all duration-300 shadow-md shadow-[#2A75BB]/30"
         >
           {visibleCount >= ourCoursesDetials.length ? "Show Less" : "View More"}
         </button>
