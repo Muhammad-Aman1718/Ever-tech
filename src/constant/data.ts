@@ -174,25 +174,25 @@ export const ourCommunityProgress = [
     value: "5000+",
     label: "Active Members",
     icon: Users,
-    color: "from-[#2A75BB] to-[#3498db]",
+    color: "from-[#3b82f6] to-[#60a5fa] dark:from-[#2A75BB] dark:to-[#3498db]",
   },
   {
     value: "1200+",
     label: "Course Graduates",
     icon: BookOpen,
-    color: "from-[#2A75BB] to-[#1e3c72]",
+    color: "from-[#3b82f6] to-[#1d4ed8] dark:from-[#2A75BB] dark:to-[#1e3c72]",
   },
   {
     value: "4.9/5",
     label: "Average Rating",
     icon: Star,
-    color: "from-[#f39c12] to-[#e67e22]",
+    color: "from-[#f59e0b] to-[#f97316] dark:from-[#f39c12] dark:to-[#e67e22]",
   },
   {
     value: "100+",
     label: "Expert Mentors",
     icon: Code,
-    color: "from-[#2A75BB] to-[#16a085]",
+    color: "from-[#3b82f6] to-[#0ea5e9] dark:from-[#2A75BB] dark:to-[#16a085]",
   },
 ];
 

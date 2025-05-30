@@ -5,13 +5,13 @@ import { clientsName, progress } from "@/constant/data";
 
 const OurClients = () => {
   return (
-    <section id="clients" className="py-20 relative">
+    <section id="clients" className="py-20 relative bg-white dark:bg-gradient-to-b dark:from-[#0a192f] dark:to-[#0d1b36] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Trusted By Industry Leaders
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             We partner with innovative companies worldwide to deliver
             exceptional digital solutions
           </p>

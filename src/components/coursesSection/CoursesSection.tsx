@@ -10,7 +10,7 @@ const CoursesSection = () => {
     useCourseSection();
 
   return (
-    <section id="courses" className="py-20 relative overflow-hidden">
+    <section id="courses" className="py-20 relative overflow-hidden bg-white dark:bg-gradient-to-b dark:from-[#0a192f] dark:to-[#0d1b36] ">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#3498db]/5 rounded-full mix-blend-soft-light filter blur-3xl animate-pulse-slow"></div>
       </div>

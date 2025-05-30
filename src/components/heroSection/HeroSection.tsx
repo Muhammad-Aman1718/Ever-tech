@@ -33,7 +33,7 @@ const HeroSection = () => {
             <div className="inline-block  text-white bg-gradient-to-r from-[#3b82f6] dark:from-[#2A75BB] to-[#93c5fd] dark:to-[#3498db] px-4 py-1.5 rounded-full text-sm font-medium mb-4">
               <span className="mr-2">🚀</span> Leading software solutions
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 dark:text-gray-800">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 dark:text-white ">
               Building Digital
               <span className="block mt-2 bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] dark:from-[#2A75BB] dark:to-[#3498db] bg-clip-text text-transparent">
                 Excellence
@@ -86,9 +86,12 @@ const HeroSection = () => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <div className=" bg-white dark:bg-gradient-to-br dark:from-[#2A75BB]/10 dark:to-[#3498db]/10 backdrop-blur-lg rounded-3xl p-8 space-y-6 border border-gray-200 dark:border-[#2A75BB]/30 shadow-xl relative overflow-hidden">
+            <div
+              className="  bg-white dark:bg-transparent bg-gradient-to-br dark:from-[#2A75BB]/10 dark:to-[#3498db]/10 backdrop-blur-lg rounded-3xl p-8 space-y-6 border border-gray-200 dark:border-[#2A75BB]/30 shadow-xl relative overflow-hidden
+"
+            >
               {/* Animated background */}
-              {/* <div className="absolute -top-20 -right-20 w-80 h-80 bg-[#2A75BB]/10 rounded-full z-0 animate-pulse-slow"></div> */}
+              <div className="absolute -top-20 -right-20 w-80 h-80 dark:bg-[#2A75BB]/10 rounded-full z-0 animate-pulse-slow"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center space-x-4">

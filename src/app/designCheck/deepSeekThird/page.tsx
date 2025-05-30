@@ -1193,6 +1193,7 @@ const SoftwareHouseWebsite = () => {
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+                {/* text-4xl md:text-5xl lg:text-6xl font-bold leading-tight */}
                 Building Digital
                 <span className="block mt-2 bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] bg-clip-text text-transparent">
                   Excellence
