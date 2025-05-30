@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { admin } from "@/store/slices/admin";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { showToast } from "@/utils/showToast";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
@@ -12,6 +12,9 @@ const useLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useAppDispatch();
+  const loginLoading = useAppSelector(
+    (state) => state.adminLoginReducer.loading
+  );
   const router = useRouter();
 
   const handleSubmit = async () => {
@@ -50,6 +53,7 @@ const useLogin = () => {
     email,
     password,
     showPassword,
+    loginLoading,
     setEmail,
     setPassword,
     setShowPassword,

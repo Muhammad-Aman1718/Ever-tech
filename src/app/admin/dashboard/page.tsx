@@ -5,10 +5,10 @@ import MainContainer from "@/components/MainContainer";
 import Button from "@/components/buttons/Button";
 import StudentTable from "@/components/admin/studentTable/StudentTable";
 import StudentInformationForm from "@/components/admin/StudentInformationForm";
+import Loader from "@/components/Loader";
 
 const Dashboard = () => {
   const {
-    userData,
     loading,
     filterStatus,
     filteredStudents,
@@ -138,7 +138,7 @@ const Dashboard = () => {
             flex items-center gap-2
           "
               onClick={handleLogout}
-              title="Logout"
+              title={loading ? "Logging out..." : "Logout"}
             />
           </div>
         </div>

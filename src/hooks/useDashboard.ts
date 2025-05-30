@@ -10,12 +10,12 @@ const useDashboard = () => {
     null | "Accepted" | "Declined"
   >(null);
   const [selectedStudent, setSelectedStudent] = useState<userData | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
   const dispatch = useAppDispatch();
   const userData = useAppSelector((state) => state.userDataReducer.userData);
-  const loading = useAppSelector((state) => state.userDataReducer.loading);
   console.log("this is selector hook user data ", userData);
 
   const filteredStudents = userData.filter((student) => {
@@ -38,9 +38,10 @@ const useDashboard = () => {
 
   const handleLogout = () => {
     console.log("this is handleLogout ====> clicked");
-
+    setLoading(true);
     Cookies.remove("adminToken");
     router.push("/admin/login");
+    setLoading(false);
   };
 
   const handleAccept = async (id: string) => {
@@ -61,7 +62,6 @@ const useDashboard = () => {
   };
 
   return {
-    userData,
     loading,
     filteredStudents,
     filterStatus,

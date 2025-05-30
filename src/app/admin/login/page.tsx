@@ -5,12 +5,14 @@ import useLogin from "@/hooks/useLogin";
 import { CgEye } from "react-icons/cg";
 import { FaRegEyeSlash } from "react-icons/fa";
 import ContactUsInputField from "@/components/inputs/ContactUsInputField";
+import Loader from "@/components/Loader";
 
 const Login = () => {
   const {
     email,
     password,
     showPassword,
+    loginLoading,
     setEmail,
     setPassword,
     setShowPassword,
@@ -126,10 +128,10 @@ const Login = () => {
 
           <button
             onClick={handleSubmit}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg 
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg cursor-pointer
                      transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-            Login
+            {loginLoading ? "Logging in..." : "Login"}
           </button>
         </div>
       </MainContainer>

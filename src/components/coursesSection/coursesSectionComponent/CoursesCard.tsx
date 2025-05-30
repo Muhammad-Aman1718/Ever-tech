@@ -53,7 +53,12 @@ const CoursesCard: React.FC<CoursesCardPropsTypes> = ({
             <span>👥 {students} students</span>
           </div>
 
-          <Link href="/applyCourse/form">
+          <Link
+            href={{
+              pathname: "/applyCourse/form",
+              query: { course: title },
+            }}
+          >
             <Button
               title="Enroll Now"
               className="w-full bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] dark:from-[#2A75BB] dark:to-[#3498db] text-white py-3 rounded-lg font-medium hover:from-[#3b82f6]/90 hover:to-[#60a5fa]/90 dark:hover:from-[#2A75BB]/90 dark:hover:to-[#3498db]/90 transition-all duration-300 shadow-md shadow-[#2A75BB]/30"
