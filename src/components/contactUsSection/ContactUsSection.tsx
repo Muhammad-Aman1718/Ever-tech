@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import InputField from "../inputs/InputField";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Button from "../buttons/Button";
 import InformationCard from "./contactUsComponents/InformationCard";
@@ -8,33 +7,10 @@ import ContactUsInputField from "../inputs/ContactUsInputField";
 import { companyInformation } from "@/constant/data";
 
 const ContactUsSection = () => {
-  // const [formData, setFormData] = useState({
-  //   name: '',
-  //   email: '',
-  //   phone: '',
-  //   subject: '',
-  //   message: ''
-  // });
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log('Form submitted:', formData);
-  //   // Handle form submission here
-  // };
-
-  // const handleChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value
-  //   });
-  // };
-
-
-
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-[#0a192f] to-[#0d1b36] relative overflow-hidden"
+      className="py-20 bg-gradient-to-br bg-gray-50 dark:from-[#0a192f] dark:to-[#0d1b36] relative overflow-hidden"
     >
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#3498db]/5 rounded-full mix-blend-soft-light filter blur-3xl animate-pulse-slow"></div>
@@ -42,10 +18,10 @@ const ContactUsSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Let's Build Together
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Ready to start your project? Get in touch with our team
           </p>
         </div>
@@ -111,10 +87,10 @@ const ContactUsSection = () => {
             ))}
 
             <div className="pt-6">
-              <h3 className="text-xl font-semibold text-white mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Business Hours
               </h3>
-              <div className="space-y-2 text-gray-400">
+              <div className="space-y-2 text-gray-600 dark:text-gray-400">
                 <p className="flex justify-between">
                   <span>Monday - Friday</span> <span>9:00 AM - 6:00 PM</span>
                 </p>
@@ -128,8 +104,8 @@ const ContactUsSection = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-[#0d1b36] to-[#0a192f] p-8 rounded-2xl border border-[#2A75BB]/20 shadow-xl">
-            <h3 className="text-2xl font-bold text-white mb-8">
+          <div className="bg-gradient-to-br bg-white dark:from-[#0d1b36] dark:to-[#0a192f] p-8 rounded-2xl border border-gray-200 dark:border-[#2A75BB]/20 shadow-sm dark:shadow-xl">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
               Send us a message
             </h3>
 
@@ -216,7 +192,7 @@ const ContactUsSection = () => {
               </div> */}
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
                   Message
                 </label>
                 <textarea
@@ -224,7 +200,7 @@ const ContactUsSection = () => {
                   name="message"
                   // value={formData.message}
                   // onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-[#0d1b36] border border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-[#2A75BB] focus:border-[#2A75BB] outline-none transition-colors resize-none placeholder:text-gray-600"
+                  className="w-full px-4 py-3 bg-gray-50  dark:bg-[#0d1b36] border  border-gray-300 dark:border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-[#2A75BB] dark:focus:border-[#2A75BB] outline-none transition-colors resize-none placeholder:text-gray-600"
                   placeholder="Tell us about your project or inquiry..."
                 ></textarea>
               </div>
@@ -234,7 +210,6 @@ const ContactUsSection = () => {
                 title="Send Message"
                 className="w-full bg-gradient-to-r from-[#2A75BB] to-[#3498db] text-white py-4 px-6 rounded-lg font-semibold hover:from-[#2A75BB]/90 hover:to-[#3498db]/90 transition-all duration-300 shadow-lg shadow-[#2A75BB]/30"
               />
-
             </form>
           </div>
         </div>

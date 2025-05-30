@@ -432,22 +432,22 @@ const Form = () => {
   } = useApplyCourse();
 
   return (
-    <div className="min-h-screen bg-[#0c1625] py-8 font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#0c1625] py-8 font-sans">
       <MainContainer className="py-10">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3">
+          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Apply for Course
           </h1>
-          <p className="text-[#94a3b8] max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-[#94a3b8] max-w-2xl mx-auto">
             Fill out the form below to apply for your desired course
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#0d1b36] to-[#0a192f] p-8 rounded-2xl border border-[#2A75BB]/20 shadow-xl">
+        <div className="bg-gradient-to-br dark:from-[#0d1b36] dark:to-[#0a192f] p-8 rounded-2xl border border-[#2A75BB]/20 shadow-xl">
           {/* Personal Information Section */}
           <div className="mb-10">
-            <h2 className="text-xl font-semibold text-white mb-6 pb-3 border-b border-[#2a3b5c]">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 pb-3 border-b border-[#2a3b5c]">
               Personal Information
             </h2>
 
@@ -507,7 +507,7 @@ const Form = () => {
 
           {/* Academic Information Section */}
           <div className="mb-10">
-            <h2 className="text-xl font-semibold text-white mb-6 pb-3 border-b border-[#2a3b5c]">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 pb-3 border-b border-[#2a3b5c]">
               Academic Information
             </h2>
 
@@ -532,14 +532,14 @@ const Form = () => {
             </div>
 
             <div className="mt-6">
-              <label className="block text-sm font-medium text-[#cbd5e1] mb-3">
+              <label className="block text-sm font-medium text-gray-700 dark:text-[#cbd5e1] mb-3">
                 Message (Optional)
               </label>
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Tell us about your goals and why you want to take this course..."
-                className="w-full px-4 py-3 bg-[#0d1b36] border border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-[#2A75BB] focus:border-[#2A75BB] outline-none placeholder:text-gray-600 text-white
+                className="w-full px-4 py-3 bg-gray-50 dark:text-white dark:bg-[#0d1b36] border border-gray-300 dark:border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-[#2A75BB] dark:focus:border-[#2A75BB] outline-none placeholder:text-gray-600 
                          transition-colors h-40 resize-none"
               />
             </div>

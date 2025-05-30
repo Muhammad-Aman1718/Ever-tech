@@ -13,7 +13,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0a192f] border-t border-[#2A75BB]/20 pt-16 pb-10">
+    <footer className="bg-white dark:bg-[#0a192f] border-t  border-gray-200 dark:border-[#2A75BB]/20 pt-16 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
@@ -25,7 +25,7 @@ const Footer = () => {
                 TechSoft
               </span>
             </div>
-            <p className="text-gray-400 leading-relaxed mb-6">
+            <p className=" text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
               Building digital excellence through innovative software solutions
               and comprehensive training programs.
             </p>
@@ -43,13 +43,13 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-white mb-6">Services</h3>
-            <ul className="space-y-3 text-gray-400">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Services</h3>
+            <ul className="space-y-3 text-gray-600 dark:text-gray-400">
               {footerServices.map((service, index) => (
                 <li key={index}>
                   <Link
                     href="#"
-                    className="hover:text-[#2A75BB] transition-colors"
+                    className="hover:text-blue-600 dark:hover:text-[#2A75BB] transition-colors"
                   >
                     {service}
                   </Link>
@@ -59,13 +59,13 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-white mb-6">Courses</h3>
-            <ul className="space-y-3 text-gray-400">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Courses</h3>
+            <ul className="space-y-3 text-gray-600 dark:text-gray-400">
               {footerCourses.map((course, index) => (
                 <li key={index}>
                   <Link
                     href="#"
-                    className="hover:text-[#2A75BB] transition-colors "
+                    className="hover:text-blue-600 dark:hover:text-[#2A75BB] transition-colors  "
                   >
                     {course}
                   </Link>
@@ -75,19 +75,19 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-white mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
               Newsletter
             </h3>
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
               Subscribe to our newsletter for the latest updates and offers.
             </p>
             <form className="flex">
               <input
                 type="email"
                 placeholder="Your email"
-                className="px-4 py-3 bg-[#0d1b36] rounded-l-lg focus:outline-none focus:ring-1 focus:ring-[#2A75BB] w-full placeholder:text-gray-600"
+                className="px-4 py-3 bg-gray-50 dark:bg-[#0d1b36] rounded-l-lg focus:outline-none focus:ring-1 focus:ring-blue-500 dark:focus:ring-[#2A75BB] w-full dark:placeholder:text-gray-600"
               />
-              <button className="bg-gradient-to-r from-[#2A75BB] to-[#3498db] px-4 rounded-r-lg font-medium hover:opacity-90 transition-opacity">
+              <button className="bg-gradient-to-r from-[#3b82f6] to-[#93c5fd] dark:from-[#2A75BB] dark:to-[#3498db] dark:text-gray-900 text-white px-4 rounded-r-lg font-medium hover:opacity-90 transition-opacity">
                 Join
               </button>
             </form>

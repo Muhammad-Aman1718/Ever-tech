@@ -72,7 +72,7 @@ const AboutUsSection = () => {
               {aboutUs.map((item, index) => (
                 <div key={index} className="flex items-center">
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2A75BB]/20 flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-[#2A75BB]"></div>
+                    <div className="w-2 h-2 rounded-full bg-blue-600  dark:bg-[#2A75BB]"></div>
                   </div>
                   <span className="text-gray-600 dark:text-gray-300">{item}</span>
                 </div>

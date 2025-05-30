@@ -25,7 +25,7 @@ const ContactUsInputField: React.FC<contactUsInputFieldPropsTypes> = ({
 }) => {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-400 mb-2">
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
         {/* First Name */}
         {label}
       </label>
@@ -34,7 +34,7 @@ const ContactUsInputField: React.FC<contactUsInputFieldPropsTypes> = ({
         name={name}
         value={value}
         onChange={onChange}
-        className="w-full px-4 py-3 bg-[#0d1b36] border border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-[#2A75BB] focus:border-[#2A75BB] outline-none transition-colors placeholder:text-gray-600 text-white"
+        className="w-full px-4 py-3 bg-gray-50  dark:bg-[#0d1b36] border  border-gray-300 dark:border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-[#2A75BB] dark:focus:border-[#2A75BB] outline-none transition-colors placeholder:text-gray-600 dark:text-white"
         placeholder={placeholder}
         required={required}
       />
