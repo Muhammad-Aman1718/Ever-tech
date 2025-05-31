@@ -394,13 +394,13 @@
 
 "use client";
 import React from "react";
-import MainContainer from "@/components/MainContainer";
 import useApplyCourse from "@/hooks/useApplyCourse";
-import Loader from "@/components/Loader";
 import { courseOptions, educationOptions, provinces } from "@/constant/data";
-import FileUpload from "@/components/fileUpload/FileUpload";
-import SelectField from "@/components/selectedField/SelectedField";
 import ContactUsInputField from "@/components/inputs/ContactUsInputField";
+import SelectField from "@/components/selectedField/SelectedField";
+import FileUpload from "@/components/fileUpload/FileUpload";
+import MainContainer from "@/components/MainContainer";
+import Loader from "@/components/Loader";
 
 const Form = () => {
   const {

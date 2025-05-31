@@ -139,6 +139,16 @@ exports.Prisma.AdminScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.ContactScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  subject: 'subject',
+  message: 'message',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -152,7 +162,8 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   UserData: 'UserData',
-  Admin: 'Admin'
+  Admin: 'Admin',
+  Contact: 'Contact'
 };
 
 /**
