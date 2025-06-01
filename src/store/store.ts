@@ -3,12 +3,14 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import { createWrapper } from "next-redux-wrapper";
 import userDataSlice from "./slices/userData";
 import adminLoginSlice from "./slices/admin";
+import contactSlice from "./slices/contact";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       userDataReducer: userDataSlice,
       adminLoginReducer: adminLoginSlice,
+      contactReducer: contactSlice,
     },
   });
 };

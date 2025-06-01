@@ -5,8 +5,24 @@ import Button from "../buttons/Button";
 import InformationCard from "./contactUsComponents/InformationCard";
 import ContactUsInputField from "../inputs/ContactUsInputField";
 import { companyInformation } from "@/constant/data";
+import useContactUs from "@/hooks/useContactUs";
+import Loader from "../Loader";
 
 const ContactUsSection = () => {
+  const {
+    firstName,
+    lastName,
+    email,
+    subject,
+    message,
+    loading,
+    setFirstName,
+    setLastName,
+    setEmail,
+    setSubject,
+    setMessage,
+    handleSubmit,
+  } = useContactUs();
   return (
     <section
       id="contact"
@@ -116,12 +132,16 @@ const ContactUsSection = () => {
                   inputType="text"
                   name="firstName"
                   placeholder="Your first name"
+                  onChange={(e) => setFirstName(e.target.value)}
+                  value={firstName}
                 />
                 <ContactUsInputField
                   label="Last Name"
                   inputType="text"
                   name="lastName"
                   placeholder="Your last name"
+                  onChange={(e) => setLastName(e.target.value)}
+                  value={lastName}
                 />
                 {/* <div>
                   <label className="block text-sm font-medium text-gray-400 mb-2">
@@ -156,6 +176,8 @@ const ContactUsSection = () => {
                 inputType="email"
                 name="email"
                 placeholder="your.email@example.com"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
               {/* <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2">
@@ -176,6 +198,8 @@ const ContactUsSection = () => {
                 inputType="text"
                 name="subject"
                 placeholder="What's this about?"
+                onChange={(e) => setSubject(e.target.value)}
+                value={subject}
               />
               {/* <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2">
@@ -202,13 +226,15 @@ const ContactUsSection = () => {
                   // onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-50  dark:bg-[#0d1b36] border  border-gray-300 dark:border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-[#2A75BB] dark:focus:border-[#2A75BB] outline-none transition-colors resize-none placeholder:text-gray-600"
                   placeholder="Tell us about your project or inquiry..."
+                  onChange={(e) => setMessage(e.target.value)}
+                  value={message}
                 ></textarea>
               </div>
 
               <Button
-                // onClick={handleSubmit}
-                title="Send Message"
+                title={loading ? "Sending..." : "Send Message"}
                 className="w-full bg-gradient-to-r from-[#2A75BB] to-[#3498db] text-white py-4 px-6 rounded-lg font-semibold hover:from-[#2A75BB]/90 hover:to-[#3498db]/90 transition-all duration-300 shadow-lg shadow-[#2A75BB]/30"
+                onClick={handleSubmit}
               />
             </form>
           </div>

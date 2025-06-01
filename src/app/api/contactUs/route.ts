@@ -6,6 +6,8 @@ export const POST = async (request: Request) => {
     const body = await request.json();
     const { firstName, lastName, email, subject, message } = body;
 
+    console.log("this is contact us body", body);
+
     if (!firstName || !lastName || !email || !subject || !message) {
       return NextResponse.json(
         { error: "Missing required fields" },

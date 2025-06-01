@@ -141,7 +141,7 @@ const useApplyCourse = () => {
         const errorMessage =
           (result.payload as { message: string })?.message ||
           "Submission failed";
-        toast.error(errorMessage); // ✅ Show toast for error
+        showToast("error", errorMessage); // ✅ Show toast for error
       }
     } catch (error) {
       showToast("error", "An unexpected error occurred");
