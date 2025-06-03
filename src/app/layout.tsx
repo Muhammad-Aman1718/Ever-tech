@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { DM_Sans, Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./providers/storeProvide";
 import { ToastContainer } from "react-toastify";
-
 
 const dmSans = DM_Sans({
   subsets: ["latin"],

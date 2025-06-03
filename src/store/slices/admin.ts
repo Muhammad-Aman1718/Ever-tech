@@ -4,7 +4,6 @@ import { AxiosError } from "axios";
 import { adminData, ErrorResponse, SlicesInitialState } from "@/types/types";
 
 export const admin = createAsyncThunk<
-  any,
   adminData,
   { rejectValue: ErrorResponse }
 >("adminLogin/post", async (loginData, { rejectWithValue }) => {

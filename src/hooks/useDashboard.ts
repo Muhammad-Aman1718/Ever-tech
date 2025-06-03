@@ -1,5 +1,5 @@
-import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { getUserData, updateUserStatus } from "@/store/slices/userData";
@@ -18,16 +18,15 @@ const useDashboard = () => {
   const userData = useAppSelector((state) => state.userDataReducer.userData);
   // console.log("this is selector hook user data ", userData);
 
-  const filteredStudents = userData.filter((student) => {
+  const filteredStudents = userData?.filter((student) => {
     if (filterStatus === "Accepted") return student.status === "Accepted";
     if (filterStatus === "Declined") return student.status === "Declined";
     if (filterStatus === null) return student.status === null;
   });
 
   useEffect(() => {
-    const result = dispatch(getUserData());
-    // console.log("this is result =======> ", result);
-  }, []);
+    dispatch(getUserData());
+  }, [dispatch]);
 
   const handleAcceptedStudents = () => setFilterStatus("Accepted");
   const handleDeclinedStudents = () => setFilterStatus("Declined");
@@ -57,7 +56,7 @@ const useDashboard = () => {
     dispatch(getUserData());
   };
   const handleViewDetails = (id: string) => {
-    const student = userData.find((s) => s.id === id);
+    const student = userData?.find((s) => s.id === id);
     setSelectedStudent(student || null);
   };
 

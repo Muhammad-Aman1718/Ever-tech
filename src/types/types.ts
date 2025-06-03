@@ -135,6 +135,5 @@ export interface SlicesInitialState {
   userData?: userData[];
   loading: boolean;
   error: string | null;
-  submittedData: any | null;
+  submittedData: userData | null;
 }
- 

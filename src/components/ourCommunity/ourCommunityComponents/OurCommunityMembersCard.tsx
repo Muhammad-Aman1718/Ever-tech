@@ -18,7 +18,7 @@ const OurCommunityMembersCard: React.FC<OurCommunityMembersCardPropsTypes> = ({
           <p className="text-sm text-gray-600 dark:text-gray-400">{role}</p>
         </div>
       </div>
-      <p className="text-gray-700 dark:text-gray-300">"{text}"</p>
+      <p className="text-gray-700 dark:text-gray-300">&quot;{text}&quot;</p>
       <div className="flex mt-4">
         {[1, 2, 3, 4, 5].map((star) => (
           <Star

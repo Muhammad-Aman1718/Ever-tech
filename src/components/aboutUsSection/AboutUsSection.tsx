@@ -63,7 +63,7 @@ const AboutUsSection = () => {
             </p>
 
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-              Founded in 2019, we've grown from a small startup to a trusted
+              Founded in 2019, we&apos;ve grown from a small startup to a trusted
               technology partner for businesses worldwide, bridging the gap
               between innovative technology and practical business solutions.
             </p>

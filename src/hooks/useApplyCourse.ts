@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useAppDispatch } from "@/store/store";
 import { courseForm, resetFormState } from "@/store/slices/userData";
 import { showToast } from "@/utils/showToast";
+import { AxiosError } from "axios";
 
 const useApplyCourse = () => {
   const dispatch = useAppDispatch();
@@ -144,7 +145,18 @@ const useApplyCourse = () => {
         showToast("error", errorMessage); // ✅ Show toast for error
       }
     } catch (error) {
-      showToast("error", "An unexpected error occurred");
+      const errorAxios = error as AxiosError;
+      if (errorAxios) {
+        console.error("Axios error:", {
+          message: errorAxios.message,
+          status: errorAxios.response?.status,
+          data: errorAxios.response?.data,
+        });
+        showToast("error", "Something went wrong");
+      } else {
+        console.error("Unexpected error:", error);
+        showToast("error", "An unexpected error occurred");
+      }
     } finally {
       setIsLoading(false);
     }

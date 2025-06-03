@@ -2,6 +2,7 @@ import { contact } from "@/store/slices/contact";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { ContactUs } from "@/types/types";
 import { showToast } from "@/utils/showToast";
+import { AxiosError } from "axios";
 import { useState } from "react";
 
 const useContactUs = () => {
@@ -39,7 +40,20 @@ const useContactUs = () => {
           "Submission failed";
         showToast("error", errorMessage); // ✅ Show toast for error
       }
-    } catch (error) {}
+    } catch (error) {
+      const errorAxios = error as AxiosError;
+      if (errorAxios) {
+        console.error("Axios error:", {
+          message: errorAxios.message,
+          status: errorAxios.response?.status,
+          data: errorAxios.response?.data,
+        });
+        showToast("error", "Something went wrong");
+      } else {
+        console.error("Unexpected error:", error);
+        showToast("error", "An unexpected error occurred");
+      }
+    }
   };
 
   return {

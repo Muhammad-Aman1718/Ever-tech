@@ -1,4 +1,3 @@
-import { FileUploadPropsTypes } from "@/types/types";
 import React from "react";
 
 const useFileUpload = (onChange: (file: File | null) => void) => {

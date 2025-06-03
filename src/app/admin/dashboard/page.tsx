@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import useDashboard from "@/hooks/useDashboard";
 import MainContainer from "@/components/MainContainer";
 import Button from "@/components/buttons/Button";
@@ -89,7 +89,7 @@ const Dashboard = () => {
         </div>
 
         <StudentTable
-          students={filteredStudents}
+          students={filteredStudents!}
           onAccept={handleAccept}
           onDecline={handleDecline}
           onViewDetails={handleViewDetails}

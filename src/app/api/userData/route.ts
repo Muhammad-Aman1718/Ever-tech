@@ -133,7 +133,7 @@ export const POST = async (req: NextRequest) => {
   }
 };
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   try {
     const users = await prisma.userData.findMany();
     // console.log("this is users of get api =======> ", users);
@@ -163,11 +163,8 @@ export const GET = async (req: NextRequest) => {
   }
 };
 
-export const PUT = async (
-  req: NextRequest
-) => {
+export const PUT = async (req: NextRequest) => {
   try {
-
     const body = await req.json();
 
     // console.log("this is put api id and status ======>", body);

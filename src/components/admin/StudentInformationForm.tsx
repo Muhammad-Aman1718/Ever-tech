@@ -1,5 +1,6 @@
 import React from "react";
 import { userData } from "@/types/types";
+import Image from "next/image";
 
 interface StudentInformationFormPropsTypes {
   student: userData;
@@ -31,8 +32,8 @@ const StudentInformationForm: React.FC<StudentInformationFormPropsTypes> = ({
         {/* Profile Section */}
         <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
           <div className="relative">
-            <img
-              src={student.profilePic}
+            <Image
+              src={student.profilePic!}
               alt="Profile"
               className="w-36 h-36 object-cover rounded-xl border-3 border-[#2A75BB]/20 shadow-lg"
             />
@@ -89,8 +90,8 @@ const StudentInformationForm: React.FC<StudentInformationFormPropsTypes> = ({
             <p className="font-semibold text-[#2A75BB] mb-3 text-center">
               CNIC Front
             </p>
-            <img
-              src={student.cnicFront}
+            <Image
+              src={student.cnicFront!}
               alt="CNIC Front"
               className="w-full max-w-[400px] mx-auto border border-[#2A75BB]/30 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
             />
@@ -100,8 +101,8 @@ const StudentInformationForm: React.FC<StudentInformationFormPropsTypes> = ({
             <p className="font-semibold text-[#2A75BB] mb-3 text-center">
               CNIC Back
             </p>
-            <img
-              src={student.cnicBack}
+            <Image
+              src={student.cnicBack!}
               alt="CNIC Back"
               className="w-full max-w-[400px] mx-auto border border-[#2A75BB]/30 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
             />
