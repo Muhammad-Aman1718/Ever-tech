@@ -464,7 +464,7 @@ const StudentInformationForm: React.FC<StudentInformationFormPropsTypes> = ({
 
         {/* CNIC Images */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
             <p className="font-semibold text-[#2A75BB] mb-3 text-center">
               CNIC Front
             </p>
@@ -473,7 +473,7 @@ const StudentInformationForm: React.FC<StudentInformationFormPropsTypes> = ({
               alt="CNIC Front"
               className="w-full max-w-[400px] mx-auto border border-[#2A75BB]/30 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
             />
-          </div> */}
+          </div>
         
           <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
             <p className="font-semibold text-[#2A75BB] mb-3 text-center">
