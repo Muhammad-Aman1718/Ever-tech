@@ -16,7 +16,7 @@ const useDashboard = () => {
 
   const dispatch = useAppDispatch();
   const userData = useAppSelector((state) => state.userDataReducer.userData);
-  console.log("this is selector hook user data ", userData);
+  // console.log("this is selector hook user data ", userData);
 
   const filteredStudents = userData.filter((student) => {
     if (filterStatus === "Accepted") return student.status === "Accepted";
@@ -26,18 +26,18 @@ const useDashboard = () => {
 
   useEffect(() => {
     const result = dispatch(getUserData());
-    console.log("this is result =======> ", result);
+    // console.log("this is result =======> ", result);
   }, []);
 
   const handleAcceptedStudents = () => setFilterStatus("Accepted");
   const handleDeclinedStudents = () => setFilterStatus("Declined");
   const handleNewStudents = () => {
-    console.log("handleNewStudents");
+    // console.log("handleNewStudents");
     setFilterStatus(null);
   };
 
   const handleLogout = () => {
-    console.log("this is handleLogout ====> clicked");
+    // console.log("this is handleLogout ====> clicked");
     setLoading(true);
     Cookies.remove("adminToken");
     router.push("/admin/login");
@@ -45,14 +45,14 @@ const useDashboard = () => {
   };
 
   const handleAccept = async (id: string) => {
-    console.log("this is handleAccept clicked ");
+    // console.log("this is handleAccept clicked ");
 
     await dispatch(updateUserStatus({ id, status: "Accepted" }));
     dispatch(getUserData());
   };
 
   const handleDecline = async (id: string) => {
-    console.log("this is handleDecline clicked ");
+    // console.log("this is handleDecline clicked ");
     await dispatch(updateUserStatus({ id, status: "Declined" }));
     dispatch(getUserData());
   };

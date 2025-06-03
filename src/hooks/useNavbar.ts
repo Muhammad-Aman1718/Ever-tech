@@ -1,5 +1,5 @@
 import { navItems } from "@/constant/data";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 
 const useNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

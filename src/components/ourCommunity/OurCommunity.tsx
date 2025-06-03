@@ -1,5 +1,4 @@
 import React from "react";
-import { Code, Users, BookOpen, Star } from "lucide-react";
 import { ourCommunityMembers, ourCommunityProgress } from "@/constant/data";
 import OurCommunityProgressCard from "./ourCommunityComponents/OurCommunityProgressCard";
 import OurCommunityMembersCard from "./ourCommunityComponents/OurCommunityMembersCard";

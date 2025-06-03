@@ -1,26 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
-import { adminData, ErrorResponse } from "@/types/types";
+import { adminData, ErrorResponse, SlicesInitialState } from "@/types/types";
 
 export const admin = createAsyncThunk<
   any,
   adminData,
   { rejectValue: ErrorResponse }
 >("adminLogin/post", async (loginData, { rejectWithValue }) => {
-  console.log("Thunk Start - admin Data:", loginData);
   try {
     const response = await axiosInstance.post("/api/adminLogin", loginData);
-    console.log("Full API Response:", response.data);
+    // console.log("Full API Response:", response.data);
     const { token } = response.data;
-    console.log("token ========> ", token);
+    // console.log("token ========> ", token);
 
     localStorage.setItem("token", token);
     return response.data;
   } catch (error) {
     const errorAxios = error as AxiosError<ErrorResponse>;
 
-    console.error("This is Axios Error:", errorAxios);
+    // console.error("This is Axios Error:", errorAxios);
 
     // return error in a way Redux can handle
     if (errorAxios.response && errorAxios.response.data) {
@@ -31,13 +30,7 @@ export const admin = createAsyncThunk<
   }
 });
 
-interface AdminLoginState {
-  loading: boolean;
-  error: string | null;
-  submittedData: any | null;
-}
-
-const initialState: AdminLoginState = {
+const initialState: SlicesInitialState = {
   loading: false,
   error: null,
   submittedData: null,

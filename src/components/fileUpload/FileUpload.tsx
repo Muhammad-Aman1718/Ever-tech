@@ -1,12 +1,7 @@
 import React from "react";
 import { CheckCircle, Upload, X } from "lucide-react";
-interface FileUploadPropsTypes {
-  label: string;
-  acceptedFiles?: string;
-  onChange: (file: File | null) => void;
-  file: File | null;
-  required?: boolean;
-}
+import { FileUploadPropsTypes } from "@/types/types";
+import useFileUpload from "@/hooks/useFileUpload";
 
 const FileUpload: React.FC<FileUploadPropsTypes> = ({
   label,
@@ -15,28 +10,8 @@ const FileUpload: React.FC<FileUploadPropsTypes> = ({
   file,
   required,
 }) => {
-  const handleDragOver = (e: any) => {
-    e.preventDefault();
-  };
-
-  const handleDrop = (e: any) => {
-    e.preventDefault();
-    const droppedFile = e.dataTransfer.files[0];
-    if (droppedFile) {
-      onChange(droppedFile);
-    }
-  };
-
-  const handleFileSelect = (e: any) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      onChange(selectedFile);
-    }
-  };
-
-  const removeFile = () => {
-    onChange(null);
-  };
+  const { handleDragOver, handleDrop, handleFileSelect, removeFile } =
+    useFileUpload(onChange);
 
   return (
     <div className="space-y-2">

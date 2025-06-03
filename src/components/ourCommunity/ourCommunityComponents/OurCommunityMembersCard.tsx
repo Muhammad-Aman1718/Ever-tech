@@ -1,11 +1,6 @@
 import React from "react";
 import { Star } from "lucide-react";
-
-interface OurCommunityMembersCardPropsTypes {
-  name?: string;
-  role?: string;
-  text?: string;
-}
+import { OurCommunityMembersCardPropsTypes } from "@/types/types";
 
 const OurCommunityMembersCard: React.FC<OurCommunityMembersCardPropsTypes> = ({
   name,

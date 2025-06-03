@@ -46,7 +46,7 @@ export const POST = async (req: NextRequest) => {
     const cnicFrontFile = formData.get("cnicFront") as File;
     const cnicBackFile = formData.get("cnicBack") as File;
 
-    console.log("This is formData =========> ", formData);
+    // console.log("This is formData =========> ", formData);
 
     // Validate all fields
     if (
@@ -69,9 +69,9 @@ export const POST = async (req: NextRequest) => {
       );
     }
 
-    console.log("this is validation is pass ============>");
+    // console.log("this is validation is pass ============>");
 
-    console.log("this is exsit user check ============>");
+    // console.log("this is exsit user check ============>");
     // Check for existing user
     const existingUser = await prisma.userData.findUnique({
       where: { email },
@@ -83,15 +83,15 @@ export const POST = async (req: NextRequest) => {
         { status: 400 }
       );
     }
-    console.log("this is exsit user check is pass ============>");
-    console.log("this is img uploading... ");
+    // console.log("this is exsit user check is pass ============>");
+    // console.log("this is img uploading... ");
 
     const [profilePic, cnicFront, cnicBack] = await Promise.all([
       uploadFile(profilePicFile),
       uploadFile(cnicFrontFile),
       uploadFile(cnicBackFile),
     ]);
-    console.log("this is img uploading done ");
+    // console.log("this is img uploading done ");
 
     // Save to database
     const userData = await prisma.userData.create({
@@ -112,14 +112,14 @@ export const POST = async (req: NextRequest) => {
       },
     });
 
-    console.log("API Success - Data saved:", userData);
+    // console.log("API Success - Data saved:", userData);
     return NextResponse.json({
       success: true,
       message: "Data saved successfully",
       data: userData,
     });
   } catch (error) {
-    console.error("API Error==========> :", error);
+    // console.error("API Error==========> :", error);
     return NextResponse.json(
       {
         success: false,
@@ -136,7 +136,7 @@ export const POST = async (req: NextRequest) => {
 export const GET = async (req: NextRequest) => {
   try {
     const users = await prisma.userData.findMany();
-    console.log("this is users of get api =======> ", users);
+    // console.log("this is users of get api =======> ", users);
 
     return NextResponse.json(
       {
@@ -147,7 +147,7 @@ export const GET = async (req: NextRequest) => {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error fetching user data:", error);
+    // console.error("Error fetching user data:", error);
 
     return NextResponse.json(
       {
@@ -170,7 +170,7 @@ export const PUT = async (
 
     const body = await req.json();
 
-    console.log("this is put api id and status ======>", body);
+    // console.log("this is put api id and status ======>", body);
 
     const { id, status } = body;
 
@@ -185,13 +185,13 @@ export const PUT = async (
       where: { id },
       data: { status },
     });
-    console.log("this is put api updated user ======>", updatedUser);
+    // console.log("this is put api updated user ======>", updatedUser);
     return NextResponse.json(
       { message: "Status updated", data: updatedUser },
       { status: 200 }
     );
   } catch (error) {
-    console.error("Status update error:", error);
+    // console.error("Status update error:", error);
     return NextResponse.json(
       { message: "Something went wrong", error },
       { status: 500 }

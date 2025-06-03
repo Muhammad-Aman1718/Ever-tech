@@ -6,7 +6,7 @@ export const POST = async (request: Request) => {
     const body = await request.json();
     const { firstName, lastName, email, subject, message } = body;
 
-    console.log("this is contact us body", body);
+    // console.log("this is contact us body", body);
 
     if (!firstName || !lastName || !email || !subject || !message) {
       return NextResponse.json(
@@ -44,7 +44,7 @@ export const POST = async (request: Request) => {
       { status: 201 }
     );
   } catch (error) {
-    console.error("Error in contact form submission:", error);
+    // console.error("Error in contact form submission:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

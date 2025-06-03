@@ -1,15 +1,8 @@
 import React from "react";
-import { BookOpen } from "lucide-react";
 import Link from "next/link";
+import { BookOpen } from "lucide-react";
+import { CoursesCardPropsTypes } from "@/types/types";
 import Button from "@/components/buttons/Button";
-
-interface CoursesCardPropsTypes {
-  title?: string;
-  level?: string;
-  tags?: string[];
-  duration?: string;
-  students?: string;
-}
 
 const CoursesCard: React.FC<CoursesCardPropsTypes> = ({
   title,

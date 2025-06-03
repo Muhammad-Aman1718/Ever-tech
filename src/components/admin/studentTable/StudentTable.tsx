@@ -1,81 +1,32 @@
 import React from "react";
-import { userData } from "@/types/types";
+import { StudentTablePropsTypes } from "@/types/types";
 
-type Props = {
-  students: userData[];
-  onAccept: (id: string) => void;
-  onDecline: (id: string) => void;
-  onViewDetails: (id: string) => void;
-};
-
-const StudentTable: React.FC<Props> = ({
+const StudentTable: React.FC<StudentTablePropsTypes> = ({
   students,
   onAccept,
   onDecline,
   onViewDetails,
 }) => {
   return (
-    // <div className="overflow-x-auto my-8 ">
-    //   <table className="min-w-full border border-gray-300 text-sm text-left bg-white  ">
-    //     <thead className="bg-[#2A75BB] text-white">
-    //       <tr>
-    //         <th className="px-4 py-2 border">#</th>
-    //         <th className="px-4 py-2 border">Full Name</th>
-    //         <th className="px-4 py-2 border">Email</th>
-    //         <th className="px-4 py-2 border">City</th>
-    //         <th className="px-4 py-2 border">Course</th>
-    //         <th className="px-4 py-2 border">Actions</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {students?.map((student, index) => (
-    //         <tr key={student.id} className="border-t hover:bg-blue-50">
-    //           <td className="px-4 py-2 border">{index + 1}</td>
-    //           <td className="px-4 py-2 border">{student.fullName}</td>
-    //           <td className="px-4 py-2 border">{student.email}</td>
-    //           <td className="px-4 py-2 border">{student.city}</td>
-    //           <td className="px-4 py-2 border">{student.course?.slice(0, 15) + "..." }</td>
-    //           <td className="px-4 py-2 border space-x-2 text-nowrap">
-    //             {(student.status === null || student.status === "Declined") && (
-    //               <button
-    //                 className="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700"
-    //                 onClick={() => onAccept(student.id!)}
-    //               >
-    //                 Accept
-    //               </button>
-    //             )}
-
-    //             {(student.status === null || student.status === "Accepted") && (
-    //               <button
-    //                 className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
-    //                 onClick={() => onDecline(student.id!)}
-    //               >
-    //                 Decline
-    //               </button>
-    //             )}
-
-    //             <button
-    //               className="bg-[#2A75BB] text-white px-2 py-1 rounded hover:bg-blue-800"
-    //               onClick={() => onViewDetails(student.id!)}
-    //             >
-    //               View Details
-    //             </button>
-    //           </td>
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </table>
-    // </div>
-
     <div className="overflow-x-auto my-8 bg-white rounded-xl shadow-lg border border-[#2A75BB]/20">
       <table className="min-w-full text-sm text-left">
         <thead className="bg-gradient-to-r from-[#2A75BB] to-blue-600 text-white">
           <tr>
-            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">#</th>
-            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">Full Name</th>
-            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">Email</th>
-            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">City</th>
-            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">Course</th>
+            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">
+              #
+            </th>
+            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">
+              Full Name
+            </th>
+            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">
+              Email
+            </th>
+            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">
+              City
+            </th>
+            <th className="text-nowrap px-6 py-4 font-semibold tracking-wide">
+              Course
+            </th>
             <th className="text-nowrap px-6 py-4 font-semibold tracking-wide text-center">
               Actions
             </th>
@@ -93,8 +44,12 @@ const StudentTable: React.FC<Props> = ({
               <td className="text-nowrap px-6 py-4 text-gray-800 font-medium">
                 {student.fullName}
               </td>
-              <td className="text-nowrap px-6 py-4 text-gray-600">{student.email}</td>
-              <td className="text-nowrap px-6 py-4 text-gray-600">{student.city}</td>
+              <td className="text-nowrap px-6 py-4 text-gray-600">
+                {student.email}
+              </td>
+              <td className="text-nowrap px-6 py-4 text-gray-600">
+                {student.city}
+              </td>
               <td className="text-nowrap px-6 py-4 text-gray-600">
                 <span className="bg-gray-100 px-2 py-1 rounded-full text-xs">
                   {student.course?.slice(0, 15) + "..."}

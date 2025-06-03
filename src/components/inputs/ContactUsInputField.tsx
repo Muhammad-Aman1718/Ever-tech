@@ -1,20 +1,7 @@
 import React from "react";
+import { ContactUsInputFieldPropsTypes } from "@/types/types";
 
-interface contactUsInputFieldPropsTypes {
-  label?: string;
-  inputType?: React.HTMLInputTypeAttribute;
-  name?: string;
-  value?: string;
-  onChange?: (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => void;
-  placeholder?: string;
-  required?: boolean;
-}
-
-const ContactUsInputField: React.FC<contactUsInputFieldPropsTypes> = ({
+const ContactUsInputField: React.FC<ContactUsInputFieldPropsTypes> = ({
   label,
   inputType,
   name,
@@ -26,7 +13,6 @@ const ContactUsInputField: React.FC<contactUsInputFieldPropsTypes> = ({
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
-        {/* First Name */}
         {label}
       </label>
       <input

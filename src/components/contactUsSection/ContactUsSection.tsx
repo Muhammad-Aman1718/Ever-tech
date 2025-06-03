@@ -1,12 +1,10 @@
 "use client";
 import React from "react";
-// import { Mail, Phone, MapPin } from "lucide-react";
 import Button from "../buttons/Button";
 import InformationCard from "./contactUsComponents/InformationCard";
 import ContactUsInputField from "../inputs/ContactUsInputField";
 import { companyInformation } from "@/constant/data";
 import useContactUs from "@/hooks/useContactUs";
-import Loader from "../Loader";
 
 const ContactUsSection = () => {
   const {
@@ -44,54 +42,6 @@ const ContactUsSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8">
-            {/* <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-r from-[#2A75BB] to-[#3498db] flex items-center justify-center">
-                <MapPin className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  Office Address
-                </h3>
-                <p className="text-gray-400">
-                  123 Tech Street, Innovation District
-                  <br />
-                  Karachi, Pakistan 75000
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-r from-[#2A75BB] to-[#3498db] flex items-center justify-center">
-                <Phone className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  Phone Number
-                </h3>
-                <p className="text-gray-400">
-                  +92 300 1234567
-                  <br />
-                  +92 21 12345678
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-6">
-              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-r from-[#2A75BB] to-[#3498db] flex items-center justify-center">
-                <Mail className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  Email Address
-                </h3>
-                <p className="text-gray-400">
-                  info@techsoft.com
-                  <br />
-                  support@techsoft.com
-                </p>
-              </div>
-            </div> */}
-
             {companyInformation.map((data, index) => (
               <InformationCard
                 key={index}
@@ -143,32 +93,6 @@ const ContactUsSection = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   value={lastName}
                 />
-                {/* <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-2">
-                  First Name
-                  </label>
-                  <input
-                  type="text"
-                  name="firstName"
-                  // value={formData.firstName}
-                  // onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-[#0d1b36] border border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-[#2A75BB] focus:border-[#2A75BB] outline-none transition-colors placeholder:text-gray-600"
-                  placeholder="Your first name"
-                  />
-                  </div>
-                  <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-2">
-                  Last Name
-                  </label>
-                  <input
-                  type="text"
-                  name="lastName"
-                    // value={formData.lastName}
-                    // onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-[#0d1b36] border border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-[#2A75BB] focus:border-[#2A75BB] outline-none transition-colors placeholder:text-gray-600"
-                    placeholder="Your last name"
-                  />
-                </div> */}
               </div>
 
               <ContactUsInputField
@@ -179,20 +103,6 @@ const ContactUsSection = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
-              {/* <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  // value={formData.email}
-                  // onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-[#0d1b36] border border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-[#2A75BB] focus:border-[#2A75BB] outline-none transition-colors placeholder:text-gray-600"
-                  placeholder="your.email@example.com"
-                />
-              </div> */}
-
               <ContactUsInputField
                 label="Subject"
                 inputType="text"
@@ -201,20 +111,6 @@ const ContactUsSection = () => {
                 onChange={(e) => setSubject(e.target.value)}
                 value={subject}
               />
-              {/* <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  // value={formData.subject}
-                  // onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-[#0d1b36] border border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-[#2A75BB] focus:border-[#2A75BB] outline-none transition-colors placeholder:text-gray-600"
-                  placeholder="What's this about?"
-                />
-              </div> */}
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
                   Message
@@ -222,8 +118,6 @@ const ContactUsSection = () => {
                 <textarea
                   rows={5}
                   name="message"
-                  // value={formData.message}
-                  // onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-50  dark:bg-[#0d1b36] border  border-gray-300 dark:border-[#2A75BB]/30 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-[#2A75BB] dark:focus:border-[#2A75BB] outline-none transition-colors resize-none placeholder:text-gray-600"
                   placeholder="Tell us about your project or inquiry..."
                   onChange={(e) => setMessage(e.target.value)}

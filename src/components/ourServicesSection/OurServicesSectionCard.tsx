@@ -1,12 +1,8 @@
 import React from "react";
 import Button from "../buttons/Button";
 import { ArrowRight, LucideIcon } from "lucide-react";
+import { OurServicesSectionCardPropsTypes } from "@/types/types";
 
-interface OurServicesSectionCardPropsTypes {
-  title?: string;
-  discription?: string;
-  icon?: LucideIcon;
-}
 
 const OurServicesSectionCard: React.FC<OurServicesSectionCardPropsTypes> = ({
   title,

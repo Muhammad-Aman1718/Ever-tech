@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
-import { ErrorResponse } from "@/types/types";
+import { ErrorResponse, SlicesInitialState } from "@/types/types";
 
 interface contactUs {
   firstName?: string;
@@ -16,9 +16,7 @@ export const contact = createAsyncThunk(
   async (contactData: contactUs, { rejectWithValue }) => {
     console.log("Thunk Start - contact Data:", contactData);
     try {
-      const response = await axiosInstance.post("/api/contactUs", contactData, {
-        timeout: 20000,
-      });
+      const response = await axiosInstance.post("/api/contactUs", contactData);
       console.log("Full API Response:", response.data);
 
       return response.data;
@@ -33,13 +31,9 @@ export const contact = createAsyncThunk(
   }
 );
 
-interface AdminLoginState {
-  loading: boolean;
-  error: string | null;
-  submittedData: any | null;
-}
 
-const initialState: AdminLoginState = {
+
+const initialState: SlicesInitialState = {
   loading: false,
   error: null,
   submittedData: null,

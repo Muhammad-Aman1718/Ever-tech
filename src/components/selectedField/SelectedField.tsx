@@ -1,17 +1,6 @@
+import { SelectFieldPropsTypes } from "@/types/types";
 import React from "react";
 
-interface SelectFieldPropsTypes {
-  label?: string;
-  placeholder?: string;
-  value?: string;
-  required?: boolean;
-  onChange?: (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => void;
-  options?: string[];
-}
 
 const SelectField: React.FC<SelectFieldPropsTypes> = ({
   label,

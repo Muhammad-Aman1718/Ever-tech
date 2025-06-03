@@ -1,13 +1,7 @@
-import { LucideIcon } from "lucide-react";
 import React from "react";
+import { ProgressCardPropsTypes } from "@/types/types";
 
-interface progressCardPropsTypes {
-  statLabel?: string;
-  statValue?: string;
-  statIcon?: LucideIcon;
-}
-
-const ProgressCard: React.FC<progressCardPropsTypes> = ({
+const ProgressCard: React.FC<ProgressCardPropsTypes> = ({
   statLabel,
   statValue,
   statIcon: StatIcon,
@@ -18,7 +12,9 @@ const ProgressCard: React.FC<progressCardPropsTypes> = ({
         {/* <Users className="h-8 w-8 text-[#2A75BB]" /> */}
         {StatIcon && <StatIcon className="h-8 w-8 text-[#2A75BB]" />}
       </div>
-      <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">{statValue}</div>
+      <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+        {statValue}
+      </div>
       <p className="text-gray-400 dark:text-gray-400">{statLabel}</p>
     </div>
   );

@@ -1,10 +1,10 @@
 "use client";
+import Cookies from "js-cookie";
 import { useState } from "react";
 import { admin } from "@/store/slices/admin";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { showToast } from "@/utils/showToast";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 
 const useLogin = () => {
   const [email, setEmail] = useState("");

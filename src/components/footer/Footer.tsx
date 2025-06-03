@@ -1,17 +1,14 @@
 "use client";
-
 import React from "react";
+import Link from "next/link";
 import { Code } from "lucide-react";
 import {
   footerCourses,
   footerServices,
   footerSocialLinks,
 } from "@/constant/data";
-import Link from "next/link";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="bg-white dark:bg-[#0a192f] border-t  border-gray-200 dark:border-[#2A75BB]/20 pt-16 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +40,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Services</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+              Services
+            </h3>
             <ul className="space-y-3 text-gray-600 dark:text-gray-400">
               {footerServices.map((service, index) => (
                 <li key={index}>
@@ -59,7 +58,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Courses</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+              Courses
+            </h3>
             <ul className="space-y-3 text-gray-600 dark:text-gray-400">
               {footerCourses.map((course, index) => (
                 <li key={index}>

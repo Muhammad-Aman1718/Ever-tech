@@ -1,15 +1,8 @@
 import { contact } from "@/store/slices/contact";
 import { useAppDispatch, useAppSelector } from "@/store/store";
+import { ContactUs } from "@/types/types";
 import { showToast } from "@/utils/showToast";
 import { useState } from "react";
-
-interface contactUs {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-}
 
 const useContactUs = () => {
   const [firstName, setFirstName] = useState("");
@@ -23,7 +16,7 @@ const useContactUs = () => {
 
   const handleSubmit = async () => {
     try {
-      const contactData: contactUs = {
+      const contactData: ContactUs = {
         firstName,
         lastName,
         email,

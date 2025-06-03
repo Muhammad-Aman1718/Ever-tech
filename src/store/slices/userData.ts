@@ -1,19 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
-import { ErrorResponse, userData } from "@/types/types";
+import { ErrorResponse, SlicesInitialState } from "@/types/types";
 
 export const courseForm = createAsyncThunk(
   "courseForm/post",
   async (formData: FormData, { rejectWithValue }) => {
-    console.log("Thunk Start - FormData:", ...formData.entries());
+    // console.log("Thunk Start - FormData:", ...formData.entries());
     try {
       const response = await axiosInstance.post("/api/userData", formData, {
         headers: { "Content-Type": "multipart/form-data" },
         timeout: 100000,
       });
 
-      console.log("Full API Response:", response.data);
+      // console.log("Full API Response:", response.data);
       return response.data;
     } catch (error) {
       const errorAxios = error as AxiosError<ErrorResponse>;
@@ -62,14 +62,7 @@ export const updateUserStatus = createAsyncThunk(
   }
 );
 
-interface UserDataState {
-  userData: userData[];
-  loading: boolean;
-  error: string | null;
-  submittedData: any | null;
-}
-
-const initialState: UserDataState = {
+const initialState: SlicesInitialState = {
   userData: [],
   loading: false,
   error: null,

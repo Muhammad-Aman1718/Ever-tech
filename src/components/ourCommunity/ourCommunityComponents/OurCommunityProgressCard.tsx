@@ -1,15 +1,8 @@
-import { LucideIcon } from "lucide-react";
 import React from "react";
-
-interface ourCommunityProgressCardPropsTypes {
-  color?: string;
-  value?: string;
-  label?: string;
-  icon?: LucideIcon;
-}
+import { OurCommunityProgressCardPropsTypes } from "@/types/types";
 
 const OurCommunityProgressCard: React.FC<
-  ourCommunityProgressCardPropsTypes
+  OurCommunityProgressCardPropsTypes
 > = ({ color, value, label, icon: Icon }) => {
   return (
     <div
