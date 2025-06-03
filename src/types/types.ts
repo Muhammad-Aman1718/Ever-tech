@@ -18,6 +18,7 @@ export interface userData {
 }
 
 export interface adminData {
+  token?: string;
   email?: string;
   password?: string;
 }

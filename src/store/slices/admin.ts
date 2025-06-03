@@ -5,6 +5,7 @@ import { adminData, ErrorResponse, SlicesInitialState } from "@/types/types";
 
 export const admin = createAsyncThunk<
   adminData,
+  adminData,
   { rejectValue: ErrorResponse }
 >("adminLogin/post", async (loginData, { rejectWithValue }) => {
   try {

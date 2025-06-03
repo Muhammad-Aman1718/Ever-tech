@@ -44,9 +44,11 @@ export const POST = async (request: Request) => {
       { status: 201 }
     );
   } catch (error) {
-    // console.error("Error in contact form submission:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      {
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      },
       { status: 500 }
     );
   }
