@@ -33,7 +33,7 @@ const useContactUs = () => {
       const result = await dispatch(contact(contactData));
 
       if (contact.fulfilled.match(result)) {
-        showToast("success", "Application submitted successfully!");
+        showToast("success", "Message submitted successfully!");
         setFirstName("");
         setLastName("");
         setEmail("");
