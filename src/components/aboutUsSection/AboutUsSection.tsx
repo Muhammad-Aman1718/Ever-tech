@@ -74,14 +74,16 @@ const AboutUsSection = () => {
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#2A75BB]/20 flex items-center justify-center mr-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600  dark:bg-[#2A75BB]"></div>
                   </div>
-                  <span className="text-gray-600 dark:text-gray-300">{item}</span>
+                  <span className="text-gray-600 dark:text-gray-300">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
 
             <Button
               title="Our Journey"
-              className="bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] dark:from-[#2A75BB] dark:to-[#3498db] text-white px-8 py-4 rounded-lg font-semibold hover:from-[#2A75BB]/90 hover:to-[#3498db]/90 transition-all duration-300 shadow-lg shadow-[#2A75BB]/30"
+              className="bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] dark:from-[#2A75BB] dark:to-[#3498db] text-white px-8 py-4 rounded-lg font-semibold hover:from-[#3b82f6]/90 hover:to-[#60a5fa]/90 dark:hover:from-[#2A75BB]/90 dark:hover:to-[#3498db]/90 transition-all duration-300 shadow-lg shadow-[#2A75BB]/30"
             />
           </div>
         </div>
