@@ -1,10 +1,10 @@
 // app/api/adminLogin/route.ts
+import type { NextRequest } from "next/server";
 import { prisma } from "@/config/prisma";
 import { adminData } from "@/types/types";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
