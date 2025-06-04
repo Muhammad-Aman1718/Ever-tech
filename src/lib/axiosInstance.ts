@@ -1,11 +1,11 @@
 import axios from "axios";
+// process.env.NEXTAUTH_URL
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXTAUTH_URL, // API Base URL
+  baseURL: "http://localhost:3000", // API Base URL
   timeout: 50000, // 10 seconds timeout
   headers: {
     "Content-Type": "application/json",
-    // "Content-Type" : ""
   },
 });
 
