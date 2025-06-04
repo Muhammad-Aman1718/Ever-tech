@@ -177,11 +177,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mongodb",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mongodb+srv://ever-tech:evertech@ever-tech-solution.m2k4r3g.mongodb.net/ever-tech-solution?retryWrites=true&w=majority&appName=ever-tech-solution"
+        "value": null
       }
     }
   },

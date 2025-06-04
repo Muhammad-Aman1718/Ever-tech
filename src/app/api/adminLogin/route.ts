@@ -1,5 +1,6 @@
 // app/api/adminLogin/route.ts
 import { prisma } from "@/config/prisma";
+import { adminData } from "@/types/types";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
@@ -10,7 +11,7 @@ export async function POST(request: NextRequest) {
     // console.log("1. Starting login process");
 
     // Parse request body
-    const body = await request.json();
+    const body: adminData = await request.json();
     // console.log("2. Parsed body:", body);
 
     const { email, password } = body;
