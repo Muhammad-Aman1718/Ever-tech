@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     // console.log("6. Comparing passwords");
     const passwordValid = await bcrypt.compare(password, admin.password);
-    console.log("this is valid password========> ", passwordValid);
+    // console.log("this is valid password========> ", passwordValid);
 
     if (!passwordValid) {
       // console.log("7. Password mismatch");
