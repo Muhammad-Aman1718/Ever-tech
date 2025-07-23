@@ -17,6 +17,7 @@ export interface userData {
   cnicBack?: string;
 }
 
+
 export interface adminData {
   token?: string;
   email?: string;
